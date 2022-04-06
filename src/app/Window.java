@@ -26,6 +26,14 @@ public class Window extends JFrame implements ActionListener {
     //ViewMenuItemsCheckbox
     private JCheckBoxMenuItem viewStatusBarMenuItem, viewJToolBarMenuItem;
 
+    //toolbar
+    private JToolBar toolBar;
+
+    //toolbar items
+    private JButton saveButton, printButton, logoutButton, closeButton, settingsButton, infoButton ;
+
+
+
 
 
     //konstruktor klasy Window
@@ -51,6 +59,9 @@ public class Window extends JFrame implements ActionListener {
 
         //tworzenie menu aplikacji
         createMenu();
+
+        //tworzenie toolbaru dla aplikacji
+        createToolBar();
 
     }
 
@@ -141,8 +152,10 @@ public class Window extends JFrame implements ActionListener {
         menuBar.add(viewMenu);
         menuBar.add(helpMenu);
 
-        //Dodanie elementów do fileMenu
+        //Metoda tworząca menuItems
         createMenuItem();
+
+        //Dodanie elementów do fileMenu
         fileMenu.add(fileLoginMenuItem);
         fileMenu.add(fileLogoutMenuItem);
         fileMenu.add(filePrintMenuItem);
@@ -233,6 +246,78 @@ public class Window extends JFrame implements ActionListener {
 
 
     }
+
+
+    private JToolBar createJToolBar(boolean floatable,boolean borderPainted, int howManyRows, int howManyColumns){
+
+        JToolBar jToolBar = new JToolBar();
+
+        jToolBar.setFloatable(floatable);
+        jToolBar.setBorderPainted(borderPainted);
+        jToolBar.setLayout(new GridLayout(howManyRows,howManyColumns));
+
+
+
+
+        return jToolBar;
+    }
+
+    private void createToolBar(){
+
+        //3 wiersze są puste na przyszłość
+        toolBar = createJToolBar(false,false,8,1);
+
+        //Metoda tworząca przyciski do toolbara
+        createToolbarButton();
+
+        //Dodanie elementów do Toolbara
+        toolBar.add(saveButton);
+        toolBar.add(printButton);
+        toolBar.add(logoutButton);
+        toolBar.add(closeButton);
+        toolBar.add(settingsButton);
+        toolBar.add(infoButton);
+
+
+
+
+        //Ustawienie toolbar'a w oknie
+        this.add(toolBar,BorderLayout.WEST);
+
+
+    }
+
+    //Konstruktor przycisków do toolbar'a
+    private JButton createJButton(String tooltip){
+
+        JButton jButton = new JButton("");
+        jButton.setToolTipText(tooltip);
+        jButton.addActionListener(this);
+
+        return jButton;
+    }
+
+    //Tworzenie elementów Toolbar Button
+    private void createToolbarButton(){
+
+        saveButton = createJButton("Zapisz");
+        printButton = createJButton("Drukuj");
+        logoutButton = createJButton("Wyloguj");
+        closeButton = createJButton("Zamknij");
+        settingsButton = createJButton("Ustawienia");
+        infoButton = createJButton("Informacje o programie");
+
+    }
+
+
+    //Konstruktor ikon
+    public Icon createMyIcon(String file) {
+        String name = "/grafika/"+file;
+        Icon icon = new ImageIcon(getClass().getResource(name));
+
+        return icon;
+    }
+
 
 
     @Override
