@@ -33,6 +33,8 @@ public class Window extends JFrame implements ActionListener {
     private JButton saveButton, printButton, logoutButton, closeButton, settingsButton, infoButton ;
 
 
+    //Ikony do toolBara
+    private Icon iconSave, iconPrint, iconLogout, iconClose, iconSettings, iconInfo;
 
 
 
@@ -41,6 +43,7 @@ public class Window extends JFrame implements ActionListener {
 
         //tytuł aplikacji
         setTitle("Aplikacja");
+
 
         //Rozmiar i położenie okna
         setDimensionWindow(getResolution());
@@ -57,8 +60,17 @@ public class Window extends JFrame implements ActionListener {
             }
         });
 
+        //Metoda tworząca menuItems
+        createMenuItem();
+
         //tworzenie menu aplikacji
         createMenu();
+
+        //Tworzenie ikon dla przyciskow toolbara
+        createIcon();
+
+        //Metoda tworząca przyciski do toolbara
+        createToolbarButton();
 
         //tworzenie toolbaru dla aplikacji
         createToolBar();
@@ -152,8 +164,7 @@ public class Window extends JFrame implements ActionListener {
         menuBar.add(viewMenu);
         menuBar.add(helpMenu);
 
-        //Metoda tworząca menuItems
-        createMenuItem();
+
 
         //Dodanie elementów do fileMenu
         fileMenu.add(fileLoginMenuItem);
@@ -161,7 +172,7 @@ public class Window extends JFrame implements ActionListener {
         fileMenu.add(filePrintMenuItem);
         fileMenu.add(fileExitMenuItem);
 
-        //Dodanie elementow do editMenu
+        //Dodanie elementów do editMenu
         editMenu.add(editCopyMenuItem);
         editMenu.add(editCutMenuItem);
         editMenu.add(editUndoMenuItem);
@@ -257,8 +268,6 @@ public class Window extends JFrame implements ActionListener {
         jToolBar.setLayout(new GridLayout(howManyRows,howManyColumns));
 
 
-
-
         return jToolBar;
     }
 
@@ -267,8 +276,6 @@ public class Window extends JFrame implements ActionListener {
         //3 wiersze są puste na przyszłość
         toolBar = createJToolBar(false,false,8,1);
 
-        //Metoda tworząca przyciski do toolbara
-        createToolbarButton();
 
         //Dodanie elementów do Toolbara
         toolBar.add(saveButton);
@@ -288,11 +295,12 @@ public class Window extends JFrame implements ActionListener {
     }
 
     //Konstruktor przycisków do toolbar'a
-    private JButton createJButton(String tooltip){
+    private JButton createJToolBarButton(String tooltip,Icon icon){
 
-        JButton jButton = new JButton("");
+        JButton jButton = new JButton("",icon);
         jButton.setToolTipText(tooltip);
         jButton.addActionListener(this);
+        jButton.setEnabled(true);
 
         return jButton;
     }
@@ -300,28 +308,40 @@ public class Window extends JFrame implements ActionListener {
     //Tworzenie elementów Toolbar Button
     private void createToolbarButton(){
 
-        saveButton = createJButton("Zapisz");
-        printButton = createJButton("Drukuj");
-        logoutButton = createJButton("Wyloguj");
-        closeButton = createJButton("Zamknij");
-        settingsButton = createJButton("Ustawienia");
-        infoButton = createJButton("Informacje o programie");
+        saveButton = createJToolBarButton("Zapisz",iconSave);
+        printButton = createJToolBarButton("Drukuj",iconPrint);
+        logoutButton = createJToolBarButton("Wyloguj",iconLogout);
+        closeButton = createJToolBarButton("Zamknij",iconClose);
+        settingsButton = createJToolBarButton("Ustawienia",iconSettings);
+        infoButton = createJToolBarButton("Informacje o programie",iconInfo);
 
     }
 
 
     //Konstruktor ikon
-    public Icon createMyIcon(String file) {
+    private Icon createJIcon(String file) {
         String name = "/grafika/"+file;
         Icon icon = new ImageIcon(getClass().getResource(name));
 
         return icon;
     }
 
+    private void createIcon(){
 
+
+        //Ikony do Toolbara
+        iconPrint = createJIcon("print.jpg");
+        iconSave = createJIcon("save.jpg");
+        iconClose = createJIcon("close.jpg");
+        iconLogout = createJIcon("logout.jpg");
+        iconInfo = createJIcon("about.jpg");
+        iconSettings = createJIcon("settings.jpg");
+
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
 
     }
 }
