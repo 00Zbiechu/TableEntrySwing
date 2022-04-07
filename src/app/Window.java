@@ -6,8 +6,8 @@ import java.awt.event.*;
 
 public class Window extends JFrame implements ActionListener {
 
-    private int windowWidth;
-    private int windowHeight;
+    public static int windowWidth;
+    public static int windowHeight;
 
     private String etykietyMenu[] = {"Pliki","Edytuj","Widok","Pomoc"};
     private String etykietyFileMenu[] = {"Logowanie","Wylogowanie","Drukuj","Zamknij"};
@@ -77,7 +77,7 @@ public class Window extends JFrame implements ActionListener {
 
     }
 
-    //metoda pobierająca rozmiar okna;
+    //metoda z interfejsu DimensionWindow, pobierająca rozmiar okna;
     private Dimension getResolution() {
 
         //klasa toolkit zawiera metodę, umożliwiającą pobranie rozmiaru okna
@@ -339,8 +339,20 @@ public class Window extends JFrame implements ActionListener {
 
     }
 
+    //metoda sprawdzająca źródło wywołujące zdarzenie okna
     @Override
     public void actionPerformed(ActionEvent e) {
+
+        if(e.getSource()==fileExitMenuItem || e.getSource()==closeButton){
+
+            closeWindow();
+
+        }else if(e.getSource()==helpAboutMenuItem || e.getSource()==infoButton){
+
+            AboutWindow aboutWindow = new AboutWindow();
+            aboutWindow.setVisible(true);
+
+        }
 
 
     }
