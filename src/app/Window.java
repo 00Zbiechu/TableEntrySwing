@@ -9,6 +9,9 @@ public class Window extends JFrame implements ActionListener {
     public static int windowWidth;
     public static int windowHeight;
 
+    public static int windowX;
+    public static int windowY;
+
     private String etykietyMenu[] = {"Pliki","Edytuj","Widok","Pomoc"};
     private String etykietyFileMenu[] = {"Logowanie","Wylogowanie","Drukuj","Zamknij"};
     private String etykietyEditMenu[] = {"Kopiuj","Wytnij","Cofnij"};
@@ -60,13 +63,21 @@ public class Window extends JFrame implements ActionListener {
             }
         });
 
+        //Tworzenie GUI
+        initGUI();
+
+    }
+
+    //Metoda służąca do wywoływania metod tworzących GUI
+    private void initGUI(){
+
         //Metoda tworząca menuItems
         createMenuItem();
 
         //tworzenie menu aplikacji
         createMenu();
 
-        //Tworzenie ikon dla przyciskow toolbara
+        //Tworzenie ikon dla przycisków toolbara
         createIcon();
 
         //Metoda tworząca przyciski do toolbara
@@ -108,6 +119,9 @@ public class Window extends JFrame implements ActionListener {
 
         int X = resolution.width/4;
         int Y = resolution.height/4;
+
+        this.windowX = X;
+        this.windowY = Y;
 
         setLocation(X,Y);
 
