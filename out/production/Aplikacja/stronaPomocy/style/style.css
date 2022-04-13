@@ -1,0 +1,49 @@
+#logo{
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+
+
+}
+
+
+#logo > img{
+
+	margin-right: 1em;
+
+}
+
+#main-container{
+	padding: 1em;
+}
+
+@media only screen and (min-width: 768px) {
+
+	  #main-container{
+
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: flex-start;
+		align-content: flex-start;
+
+	}
+
+	#panelWest, #panelEast{
+
+		width: 50%;
+
+	}
+
+}
+
+
+
+
+
+

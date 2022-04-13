@@ -1,15 +1,19 @@
 package app;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.net.URL;
 
 public class HelpWindow extends JDialog {
 
 
     private double helpWindowWidth;
     private double helpWindowHeight;
+
+    private JEditorPane editor;
+    private URL url;
+
 
 
     HelpWindow(){
@@ -27,6 +31,17 @@ public class HelpWindow extends JDialog {
             }
         });
 
+        //Stworzenie editorPane
+        createEditorPane();
+
+        //Ustawianie url
+        setURL("/stronaPomocy/index.html");
+
+        //Ładowanie index.html do editorPane
+        loadHTML(editor,url);
+
+        //dodawanie załadowanego url'em pane do okna
+        this.add(new JScrollPane(editor));
 
 
     }
@@ -58,13 +73,35 @@ public class HelpWindow extends JDialog {
     }
 
 
-    //Konstruktor paneli dla HelpWindow
-    private JPanel createJPanel(Color color){
+    private JEditorPane createJEditorPane(){
 
-        JPanel jPanel = new JPanel();
-        jPanel.setBackground(color);
+        JEditorPane editorPane = new JEditorPane();
+        editorPane.setEditable(false);
 
-        return jPanel;
+        return editorPane;
+    }
+
+    private void createEditorPane(){
+
+        this.editor = createJEditorPane();
+
+    }
+
+
+    private void setURL(String url){
+
+        this.url = app.HelpWindow.class.getResource(url);
+
+    }
+
+    private void loadHTML(JEditorPane editorPane, URL url) {
+
+        try {
+            editorPane.setPage(url);
+        }
+        catch(Exception e) {
+            editorPane.setText("Nie można znaleźć takiego pliku URL " + url);
+        }
 
     }
 
