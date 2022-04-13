@@ -59,13 +59,13 @@ public class HelpWindow extends JDialog {
     }
 
     //Ustawianie lokalizacji okna HelpWindow na podstawie głównego okna
-    private void setLocationHelpWindow(int widthMain, int heightMain, double widthAbout, double heightAbout){
+    private void setLocationHelpWindow(int widthMain, int heightMain, double widthHelp, double heightHelp){
 
         int screenSizeWidth = widthMain*2;
         int screenSIzeHeight = heightMain*2;
 
-        int locationAboutX = (int)(screenSizeWidth-widthAbout)/2;
-        int locationAboutY = (int)(screenSIzeHeight-heightAbout)/2;
+        int locationAboutX = (int)(screenSizeWidth-widthHelp)/2;
+        int locationAboutY = (int)(screenSIzeHeight-heightHelp)/2;
 
         setLocation(locationAboutX,locationAboutY);
 

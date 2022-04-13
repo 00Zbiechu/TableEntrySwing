@@ -374,6 +374,11 @@ public class Window extends JFrame implements ActionListener {
             HelpWindow helpWindow = new HelpWindow();
             helpWindow.setVisible(true);
 
+        }else if(e.getSource()==fileLoginMenuItem){
+
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.setVisible(true);
+
         }
 
 

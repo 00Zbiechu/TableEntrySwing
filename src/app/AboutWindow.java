@@ -45,7 +45,7 @@ public class AboutWindow extends JDialog implements ActionListener {
         setLocationAboutWindow(Window.windowWidth,Window.windowHeight,aboutWindowWidth,aboutWindowHeight);
 
         //Zamknięcie okna
-        this.addWindowListener	(new WindowAdapter(){
+        this.addWindowListener(new WindowAdapter(){
             public void windowClosing(WindowEvent e){
                 setVisible(false);
             }
@@ -208,24 +208,29 @@ public class AboutWindow extends JDialog implements ActionListener {
     }
 
 
+    private JLabel createJLabels(String label){
+
+        JLabel jLabel = new JLabel(label+"\n");
+        jLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+        return jLabel;
+    }
+
+
 
 
 
     private void createLabels(){
 
+        applicationName = createJLabels("Aplikacja PK");
+        applicationVersion = createJLabels("wersja 1.0.1");
+        authorName = createJLabels("Mateusz Zbiewski");
+        collageName = createJLabels("Politechnika Koszalińska");
 
-        //Wyjustowane do środka komponenty do panelu panelInfo
-        applicationName = new JLabel("Aplikacja PK\n");
-            applicationName.setHorizontalAlignment(SwingConstants.CENTER);
-        applicationVersion = new JLabel("wersja 1.0.1\n");
-            applicationVersion.setHorizontalAlignment(SwingConstants.CENTER);
-        authorName = new JLabel("Mateusz Zbiewski\n");
-            authorName.setHorizontalAlignment(SwingConstants.CENTER);
-        collageName = new JLabel("Politechnika Koszalińska");
-            collageName.setHorizontalAlignment(SwingConstants.CENTER);
+
 
         //Komponent do panelu panelMail
-        authorMail = new JLabel("mail@tu.koszalin.pl");
+        authorMail = createJLabels("mail@tu.koszalin.pl");
 
 
     }
