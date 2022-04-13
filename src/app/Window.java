@@ -16,7 +16,7 @@ public class Window extends JFrame implements ActionListener {
     private String etykietyFileMenu[] = {"Logowanie","Wylogowanie","Drukuj","Zamknij"};
     private String etykietyEditMenu[] = {"Kopiuj","Wytnij","Cofnij"};
     private String etykietyViewMenu[] = {"Ukryj pasek statusu","Ukryj pasek narzędziowy"};
-    private String etykietyHelpMenu[] = {"Ustawienia","Informacje o programie"};
+    private String etykietyHelpMenu[] = {"Pomoc","Informacje o programie"};
 
     //zmienne przechowujące komponenty menu
     private JMenuBar menuBar;
@@ -33,11 +33,11 @@ public class Window extends JFrame implements ActionListener {
     private JToolBar toolBar;
 
     //toolbar items
-    private JButton saveButton, printButton, logoutButton, closeButton, settingsButton, infoButton ;
+    private JButton saveButton, printButton, logoutButton, closeButton, helpButton, infoButton ;
 
 
     //Ikony do toolBara
-    private Icon iconSave, iconPrint, iconLogout, iconClose, iconSettings, iconInfo;
+    private Icon iconSave, iconPrint, iconLogout, iconClose, iconHelp, iconInfo;
 
 
 
@@ -296,7 +296,7 @@ public class Window extends JFrame implements ActionListener {
         toolBar.add(printButton);
         toolBar.add(logoutButton);
         toolBar.add(closeButton);
-        toolBar.add(settingsButton);
+        toolBar.add(helpButton);
         toolBar.add(infoButton);
 
 
@@ -326,7 +326,7 @@ public class Window extends JFrame implements ActionListener {
         printButton = createJToolBarButton("Drukuj",iconPrint);
         logoutButton = createJToolBarButton("Wyloguj",iconLogout);
         closeButton = createJToolBarButton("Zamknij",iconClose);
-        settingsButton = createJToolBarButton("Ustawienia",iconSettings);
+        helpButton = createJToolBarButton("Pomoc", iconHelp);
         infoButton = createJToolBarButton("Informacje o programie",iconInfo);
 
     }
@@ -349,7 +349,7 @@ public class Window extends JFrame implements ActionListener {
         iconClose = createJIcon("close.jpg");
         iconLogout = createJIcon("logout.jpg");
         iconInfo = createJIcon("about.jpg");
-        iconSettings = createJIcon("settings.jpg");
+        iconHelp = createJIcon("settings.jpg");
 
     }
 
@@ -359,12 +359,20 @@ public class Window extends JFrame implements ActionListener {
 
         if(e.getSource()==fileExitMenuItem || e.getSource()==closeButton){
 
+            //Zamknięcie okna głównego
             closeWindow();
 
         }else if(e.getSource()==helpAboutMenuItem || e.getSource()==infoButton){
 
+            //Pokazanie okna AboutWindow
             AboutWindow aboutWindow = new AboutWindow();
             aboutWindow.setVisible(true);
+
+        }else if(e.getSource()==helpSettingsMenuItem || e.getSource()== helpButton){
+
+            //Pokazane okna HelpWindow
+            HelpWindow helpWindow = new HelpWindow();
+            helpWindow.setVisible(true);
 
         }
 

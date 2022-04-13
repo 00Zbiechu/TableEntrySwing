@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class AboutWindow extends JDialog implements ActionListener {
 
@@ -26,7 +28,7 @@ public class AboutWindow extends JDialog implements ActionListener {
                    authorMail;
 
     //Przycisk wyjścia
-    JButton exit;
+    private JButton exit;
 
 
 
@@ -42,6 +44,14 @@ public class AboutWindow extends JDialog implements ActionListener {
         //Ustawianie lokalizacji okna na połowę wielkości głównego okna
         setLocationAboutWindow(Window.windowWidth,Window.windowHeight,aboutWindowWidth,aboutWindowHeight);
 
+        //Zamknięcie okna
+        this.addWindowListener	(new WindowAdapter(){
+            public void windowClosing(WindowEvent e){
+                setVisible(false);
+            }
+        });
+
+
         initGUI();
 
     }
@@ -50,10 +60,12 @@ public class AboutWindow extends JDialog implements ActionListener {
     private void initGUI(){
 
         //Tworzenie komponentów GUI
-        createComponents();
+        createButtons();
+        createIcons();
+        createLabels();
 
         //Tworzenie paneli
-        createPanelAboutWindow();
+        createPanelsAboutWindow();
 
 
         //ustawienie layoutu dla panelMain oraz dodanie do niego paneli pomocniczych, dodanie komponentów do paneli
@@ -61,7 +73,7 @@ public class AboutWindow extends JDialog implements ActionListener {
 
     }
 
-    //Ustawienie rozmiaru okna AboutWindow
+    //Ustawienie rozmiaru okna AboutWindow na podstawie wielkości głównego okna Window
     private void setSizeAboutWindow(int widthMainWindow,int heightMainWindow){
 
         this.aboutWindowWidth = widthMainWindow/2;
@@ -72,7 +84,7 @@ public class AboutWindow extends JDialog implements ActionListener {
 
     }
 
-    //Ustawianie lokalizacji okna AboutWindow
+    //Ustawianie lokalizacji okna AboutWindow na podstawie lokalizacji głównego Okna
     private void setLocationAboutWindow(int widthMain, int heightMain, int widthAbout, int heightAbout){
 
         int screenSizeWidth = widthMain*2;
@@ -96,7 +108,7 @@ public class AboutWindow extends JDialog implements ActionListener {
 
     }
 
-    private void createPanelAboutWindow(){
+    private void createPanelsAboutWindow(){
 
 
         //Tworzenie górnego panelu, który będzie przechowywał komponenty GUI
@@ -181,26 +193,25 @@ public class AboutWindow extends JDialog implements ActionListener {
     //Konstruktor obrazków, tylko że JLabel
     private JLabel createJIcon(String file) {
 
-
-
         String name = "/grafika/"+file;
         JLabel icon = new JLabel(new ImageIcon(getClass().getResource(name)));
-
-
-
-
 
 
         return icon;
     }
 
-
-
-    private void createComponents(){
+    private void createIcons(){
 
         //Komponent do panelu panelLogo
         authorIcon = createJIcon("author_logo.jpg");
 
+    }
+
+
+
+
+
+    private void createLabels(){
 
 
         //Wyjustowane do środka komponenty do panelu panelInfo
@@ -214,13 +225,25 @@ public class AboutWindow extends JDialog implements ActionListener {
             collageName.setHorizontalAlignment(SwingConstants.CENTER);
 
         //Komponent do panelu panelMail
-        authorMail = new JLabel("00Zbiewski@gmail.com");
+        authorMail = new JLabel("mail@tu.koszalin.pl");
 
+
+    }
+
+    private JButton createJButton(String label){
+
+        JButton jbutton = new JButton(label);
+        jbutton.addActionListener(this);
+
+        return jbutton;
+
+    }
+
+
+    private void createButtons(){
 
         //Przycisk do panelu panelOK-zamknięcie okna (zniknięcia okna)
-        exit = new JButton("OK");
-        exit.addActionListener(this);
-
+        exit = createJButton("OK");
 
     }
 
