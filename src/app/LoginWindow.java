@@ -1,5 +1,7 @@
 package app;
 
+import com.jgoodies.forms.layout.FormLayout;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -34,6 +36,13 @@ public class LoginWindow extends JDialog implements ActionListener {
 
     //Wywołanie metod tworzących GUI
     private void initGUI(){
+
+
+        //Tworzenie pola tekstowego do wprowadzanie loginu dla usera
+        createTextFiled();
+
+        //Tworzenie pola do wprowadzania hasła usera
+        createPasswordFiled();
 
         //Tworzenie etykiet tekstowych
         createLabels();
@@ -85,11 +94,16 @@ public class LoginWindow extends JDialog implements ActionListener {
 
     private void createPanels(){
 
+        //Stworzeni panelu loginPanel i dodanie do niego stworzonego form layoutu
         this.loginPanel = createJPanel(Color.WHITE);
+        loginPanel.setLayout(createFormLayout(loginWindowWidth,loginWindowHeight));
 
-        //Dodanie przycisków do loginPanel
+        //Dodanie komponentów do loginPanel
+        loginPanel.add(loginMessage);
         loginPanel.add(labelForLogin);
         loginPanel.add(labelForPassword);
+        loginPanel.add(loginUser);
+        loginPanel.add(passwordUser);
         loginPanel.add(confirm);
         loginPanel.add(exit);
 
@@ -132,6 +146,60 @@ public class LoginWindow extends JDialog implements ActionListener {
         this.loginMessage = createJLabels("Proszę podać dane logowania");
         this.labelForLogin = createJLabels("Login: ");
         this.labelForPassword = createJLabels("Hasło: ");
+
+    }
+
+
+    private JTextField createJTextFiled(){
+
+        JTextField jTextField = new JTextField();
+
+        return jTextField;
+
+    }
+
+    private void createTextFiled(){
+
+        this.loginUser = createJTextFiled();
+
+    }
+
+
+    private JPasswordField createJPasswordFiled(){
+
+        JPasswordField jPasswordField = new JPasswordField();
+
+        return jPasswordField;
+    }
+
+    private void createPasswordFiled(){
+
+        this.passwordUser = createJPasswordFiled();
+
+    }
+
+
+    //Tworzenie Layoutu dla okna LoginWindow
+    private LayoutManager createFormLayout(int windowWidth,int windowHeight) {
+
+        //Zmienna pomocnicza do obliczenia wielkości kolumn (dwóch)
+        long windowW = Math.round(windowWidth*0.30);
+        long windowWTwo = Math.round(windowWidth*0.70);
+
+        //Zmienne pomocnicze do obliczenia wielkości wierszy (czterech)
+        long windowH = Math.round(windowHeight*0.25);
+        long windowHTwo = Math.round(windowHeight*0.25);
+        long windowHThree = Math.round(windowHeight*0.25);
+        long windowHFour = Math.round(windowHeight*0.25);
+
+        String columnConfiguration = windowW+"px, "+windowWTwo+"px";
+        String rowConfiguration = windowH+"px, "+windowHTwo+"px"+windowHThree+"px, "+windowHFour+"px";
+
+
+        FormLayout formLayout = new FormLayout(columnConfiguration,rowConfiguration);
+
+        return formLayout;
+
 
     }
 
