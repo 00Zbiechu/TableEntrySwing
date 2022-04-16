@@ -64,12 +64,10 @@ public class AboutWindow extends JDialog implements ActionListener {
         createIcons();
         createLabels();
 
-        //Tworzenie paneli
+        //Tworzenie paneluMain oraz dodanie do nich paneli pomocniczych, dodanie komponentów do paneli
+        //Ustawianie layoutu dla Paneli
         createPanelsAboutWindow();
 
-
-        //ustawienie layoutu dla panelMain oraz dodanie do niego paneli pomocniczych, dodanie komponentów do paneli
-        addLayoutToPanels();
 
     }
 
@@ -108,21 +106,6 @@ public class AboutWindow extends JDialog implements ActionListener {
 
     }
 
-    private void createPanelsAboutWindow(){
-
-
-        //Tworzenie górnego panelu, który będzie przechowywał komponenty GUI
-        panelMain = createJPanel(Color.BLUE);
-
-            //panele pomocnicze, które będą dodane do panelu panelMain
-            panelLogo = createJPanel(Color.WHITE);
-            panelInfo = createJPanel(Color.WHITE);
-            panelMail = createJPanel(Color.WHITE);
-            panelOk = createJPanel(Color.WHITE);
-
-
-    }
-
     //Tworzenie Layoutu dla okna AboutWindow
     private LayoutManager createFormLayout(int windowWidth,int windowHeight) {
 
@@ -132,7 +115,7 @@ public class AboutWindow extends JDialog implements ActionListener {
 
         //Zmienne pomocnicze do obliczenia wielkości wierszy (dwóch)
         long windowH = Math.round(windowHeight*0.60);
-        long windowHTwo = Math.round(windowHeight*40);
+        long windowHTwo = Math.round(windowHeight*0.40);
 
         String columnConfiguration = windowW+"px, "+windowWTwo+"px";
         String rowConfiguration = windowH+"px, "+windowHTwo+"px";
@@ -140,34 +123,22 @@ public class AboutWindow extends JDialog implements ActionListener {
 
         FormLayout formLayout = new FormLayout(columnConfiguration,rowConfiguration);
 
-       return formLayout;
+        return formLayout;
 
 
     }
 
+    private void createPanelsAboutWindow(){
 
-    private void addLayoutToPanels(){
 
-        CellConstraints cc = new CellConstraints();
+        //Tworzenie górnego panelu, który będzie przechowywał komponenty GUI
+        panelMain = createJPanel(Color.BLUE);
 
-        //Ustawienie layout FormLayout dla panelu panelMain
-        panelMain.setLayout(createFormLayout(aboutWindowWidth,aboutWindowHeight));
-
-        //Dodanie paneli do panelu panelMain
-        panelMain.add(panelLogo,cc.xy(1,1,CellConstraints.FILL,CellConstraints.FILL));
-        panelMain.add(panelInfo,cc.xy(2,1,CellConstraints.FILL,CellConstraints.FILL));
-        panelMain.add(panelMail,cc.xy(1,2,CellConstraints.FILL,CellConstraints.FILL));
-        panelMain.add(panelOk,cc.xy(2,2,CellConstraints.FILL,CellConstraints.FILL));
-        add(panelMain);
-
-            //Ustawienie flowLayout dla 'paneli potomnych'
-            panelLogo.setLayout(new FlowLayout());
-            panelMail.setLayout(new FlowLayout());
-            panelOk.setLayout(new FlowLayout());
-
-            //Ustawienie GridLayout dla panelInfo, żeby wszystko było w osobnych wierszach
-            panelInfo.setLayout(new GridLayout(4,1));
-
+            //panele pomocnicze, które będą dodane do panelu panelMain
+            panelLogo = createJPanel(Color.WHITE);
+            panelInfo = createJPanel(Color.WHITE);
+            panelMail = createJPanel(Color.LIGHT_GRAY);
+            panelOk = createJPanel(Color.LIGHT_GRAY);
 
 
             //Dodanie logo autora do panelu panelLogo
@@ -186,9 +157,32 @@ public class AboutWindow extends JDialog implements ActionListener {
             panelOk.add(exit);
 
 
+            //FormLayout
+            CellConstraints cc = new CellConstraints();
+
+            //Ustawienie layout FormLayout dla panelu panelMain
+            panelMain.setLayout(createFormLayout(aboutWindowWidth,aboutWindowHeight));
+
+            //Dodanie paneli do panelu panelMain
+            panelMain.add(panelLogo,cc.xy(1,1,CellConstraints.FILL,CellConstraints.FILL));
+            panelMain.add(panelInfo,cc.xy(2,1,CellConstraints.FILL,CellConstraints.FILL));
+            panelMain.add(panelMail,cc.xy(1,2,CellConstraints.FILL,CellConstraints.FILL));
+            panelMain.add(panelOk,cc.xy(2,2,CellConstraints.FILL,CellConstraints.FILL));
+            add(panelMain);
+
+            //Ustawienie flowLayout dla 'paneli potomnych'
+            panelLogo.setLayout(new FlowLayout());
+            panelMail.setLayout(new FlowLayout());
+            panelOk.setLayout(new FlowLayout());
+
+            //Ustawienie GridLayout dla panelInfo, żeby wszystko było w osobnych wierszach
+            panelInfo.setLayout(new GridLayout(4,1));
 
 
     }
+
+
+
 
     //Konstruktor obrazków, tylko że JLabel
     private JLabel createJIcon(String file) {

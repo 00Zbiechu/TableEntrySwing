@@ -1,5 +1,6 @@
 package app;
 
+import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
 
 import javax.swing.*;
@@ -12,7 +13,7 @@ public class LoginWindow extends JDialog implements ActionListener {
     private int loginWindowWidth;
     private int loginWindowHeight;
 
-    private JPanel loginPanel;
+    private JPanel loginPanel,loginMessagePanel,loginBottomPanel;
 
     private JLabel loginMessage,labelForLogin,labelForPassword;
     private JTextField loginUser;
@@ -38,10 +39,10 @@ public class LoginWindow extends JDialog implements ActionListener {
     private void initGUI(){
 
 
-        //Tworzenie pola tekstowego do wprowadzanie loginu dla usera
+        //Tworzenie pola tekstowego do wprowadzanie loginu
         createTextFiled();
 
-        //Tworzenie pola do wprowadzania hasła usera
+        //Tworzenie pola do wprowadzania hasła
         createPasswordFiled();
 
         //Tworzenie etykiet tekstowych
@@ -50,8 +51,8 @@ public class LoginWindow extends JDialog implements ActionListener {
         //Tworzenie przycisków
         createButtons();
 
-        //Tworzenie paneli i dodawanie do nich komponentów GUI
-        createPanels();
+        //Tworzenie paneli i dodawanie do nich komponentów GUI oraz Layoutów
+        createPanelsLoginWindow();
 
     }
 
@@ -81,6 +82,28 @@ public class LoginWindow extends JDialog implements ActionListener {
 
     }
 
+    //Tworzenie Layoutu dla okna LoginWindow
+    private LayoutManager createFormLayout(int windowWidth,int windowHeight) {
+
+        //Zmienna pomocnicza do obliczenia wielkości kolumn (dwóch)
+        long windowW = Math.round(windowWidth*0.20);
+        long windowWTwo = Math.round(windowWidth*0.80);
+
+        //Zmienne pomocnicze do obliczenia wielkości wierszy (trzech)
+        long windowH = Math.round(windowHeight*0.25);
+        long windowHTwo = Math.round(windowHeight*0.25);
+
+        String columnConfiguration = windowW+"px, "+windowWTwo+"px";
+        String rowConfiguration = windowH+"px, "+windowHTwo+"px,";
+
+
+        FormLayout formLayout = new FormLayout(columnConfiguration,rowConfiguration);
+
+        return formLayout;
+
+
+    }
+
 
     //Konstruktor paneli
     private JPanel createJPanel(Color color){
@@ -92,35 +115,49 @@ public class LoginWindow extends JDialog implements ActionListener {
 
     }
 
-    private void createPanels(){
+    private void createPanelsLoginWindow(){
 
-        //Stworzeni panelu loginPanel i dodanie do niego stworzonego form layoutu
+        //Stworzenie panelu przechowującego wiadomość o konieczności zalogowania się
+        loginMessagePanel = createJPanel(Color.WHITE);
+
+        //Dodanie loginMessage do loginMessagePanel
+        loginMessagePanel.add(loginMessage);
+
+        //Stworzenie panelu przechowującego przyciski
+        loginBottomPanel = createJPanel(Color.LIGHT_GRAY);
+            loginBottomPanel.add(confirm);
+            loginBottomPanel.add(exit);
+
+
+
+
+        //Obiekt do obsługi komórek układu form Layout dla panelu loginPanel
+        CellConstraints cc = new CellConstraints();
+
+        //Stworzenie panelu loginPanel i dodanie do niego stworzonego form layoutu
         this.loginPanel = createJPanel(Color.WHITE);
         loginPanel.setLayout(createFormLayout(loginWindowWidth,loginWindowHeight));
 
+
         //Dodanie komponentów do loginPanel
-        loginPanel.add(loginMessage);
-        loginPanel.add(labelForLogin);
-        loginPanel.add(labelForPassword);
-        loginPanel.add(loginUser);
-        loginPanel.add(passwordUser);
-        loginPanel.add(confirm);
-        loginPanel.add(exit);
-
-
+            add(loginMessagePanel,BorderLayout.NORTH);
+            loginPanel.add(labelForLogin,cc.xy(1,1,CellConstraints.RIGHT,CellConstraints.CENTER));
+            loginPanel.add(loginUser,cc.xy(2,1,CellConstraints.LEFT,CellConstraints.CENTER));
+            loginPanel.add(labelForPassword,cc.xy(1,2,CellConstraints.RIGHT,CellConstraints.CENTER));
+            loginPanel.add(passwordUser,cc.xy(2,2,CellConstraints.LEFT,CellConstraints.CENTER));
+            add(loginBottomPanel,BorderLayout.SOUTH);
 
         //Dodanie loginPanel do głównego okna
-        this.add(loginPanel);
-
-
+        add(loginPanel);
 
     }
+
 
 
     private JButton createJButton(String label){
 
         JButton jbutton = new JButton(label);
-        jbutton.addActionListener((ActionListener) this);
+        jbutton.addActionListener(this);
 
         return jbutton;
 
@@ -150,9 +187,9 @@ public class LoginWindow extends JDialog implements ActionListener {
     }
 
 
-    private JTextField createJTextFiled(){
+    private JTextField createJTextFiled(int numberColumns){
 
-        JTextField jTextField = new JTextField();
+        JTextField jTextField = new JTextField(numberColumns);
 
         return jTextField;
 
@@ -160,48 +197,24 @@ public class LoginWindow extends JDialog implements ActionListener {
 
     private void createTextFiled(){
 
-        this.loginUser = createJTextFiled();
+        loginUser = createJTextFiled(18);
 
     }
 
 
-    private JPasswordField createJPasswordFiled(){
+    private JPasswordField createJPasswordFiled(int numberColumns){
 
-        JPasswordField jPasswordField = new JPasswordField();
+        JPasswordField jPasswordField = new JPasswordField(numberColumns);
 
         return jPasswordField;
     }
 
     private void createPasswordFiled(){
 
-        this.passwordUser = createJPasswordFiled();
+        passwordUser = createJPasswordFiled(18);
 
     }
 
-
-    //Tworzenie Layoutu dla okna LoginWindow
-    private LayoutManager createFormLayout(int windowWidth,int windowHeight) {
-
-        //Zmienna pomocnicza do obliczenia wielkości kolumn (dwóch)
-        long windowW = Math.round(windowWidth*0.30);
-        long windowWTwo = Math.round(windowWidth*0.70);
-
-        //Zmienne pomocnicze do obliczenia wielkości wierszy (czterech)
-        long windowH = Math.round(windowHeight*0.25);
-        long windowHTwo = Math.round(windowHeight*0.25);
-        long windowHThree = Math.round(windowHeight*0.25);
-        long windowHFour = Math.round(windowHeight*0.25);
-
-        String columnConfiguration = windowW+"px, "+windowWTwo+"px";
-        String rowConfiguration = windowH+"px, "+windowHTwo+"px"+windowHThree+"px, "+windowHFour+"px";
-
-
-        FormLayout formLayout = new FormLayout(columnConfiguration,rowConfiguration);
-
-        return formLayout;
-
-
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
