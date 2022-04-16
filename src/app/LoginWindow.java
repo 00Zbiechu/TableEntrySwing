@@ -20,6 +20,10 @@ public class LoginWindow extends JDialog implements ActionListener {
     private JPasswordField passwordUser;
     private JButton confirm,exit;
 
+    //Dane logowania
+    private String login = "root";
+    private String password = "1234";
+
     LoginWindow(){
 
         setTitle("Logowanie");
@@ -218,6 +222,22 @@ public class LoginWindow extends JDialog implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
+        if(e.getSource()==confirm){
+
+            String userDataL = String.valueOf(loginUser.getText()).trim();
+            String userDataP = String.valueOf(passwordUser.getPassword()).trim();
+
+            if(userDataL.equals(login)&& userDataP.equals(password)){
+                dispose();
+            }else{
+                loginMessage.setText("Błędne dane logowania");
+                loginMessage.setForeground(Color.RED);
+            }
+
+        }else if(e.getSource()==exit){
+            dispose();
+        }
 
     }
 }
