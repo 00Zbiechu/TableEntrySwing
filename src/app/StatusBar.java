@@ -50,7 +50,7 @@ public class StatusBar extends JPanel {
 
 
         //Zmienne pomocnicze do obliczenia wielkości wierszy (jeden)
-        long windowH = Math.round(windowHeight*0.07);
+        long windowH = Math.round(windowHeight*0.06);
 
         String columnConfiguration = windowW+"px, "+windowWTwo+"px,"+windowWThree+"px,"+windowWFour+"px,"
                 +windowWFive+"px,"+windowWSix+"px";
@@ -99,8 +99,7 @@ public class StatusBar extends JPanel {
     private void addComponentsAndSetLayout(){
 
         this.setLayout(createFormLayout(Window.windowWidth,Window.windowHeight));
-        this.setBackground(Color.LIGHT_GRAY);
-        this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        this.setBackground(new Color(219,219,219));
 
         //Utworzenie obiektu do obsługi komórek formLayout
         CellConstraints cc = new CellConstraints();

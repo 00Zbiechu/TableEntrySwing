@@ -52,6 +52,13 @@ public class Window extends JFrame implements ActionListener {
     //Okno Logowania
     private LoginWindow loginWindow;
 
+    //Panel blokady aplikacji
+    private JPanel loginRequired;
+    private JLabel loginRequiredMessage;
+
+    //Centralny panel aplikacji
+    private CentralPanel centralPanel;
+
 
     //konstruktor klasy Window
     Window(){
@@ -79,12 +86,15 @@ public class Window extends JFrame implements ActionListener {
         //Tworzenie GUI
         initGUI();
 
-        //Ustawianie statusu aplikacji
+        //Ustawianie statusu aplikacji-start
         statusBar.setStatusAndValueOfApplication("Uruchomiono","True");
 
 
         //Sprawdzenie, czy można się zalogować
         isLaunched(statusBar.getStatus(),statusBar.getValue());
+
+
+
 
 
     }
@@ -112,6 +122,12 @@ public class Window extends JFrame implements ActionListener {
 
         //Utworzenie wszystkich okien pomocniczych
         launchWindows();
+
+        //Utworzenie etykiet tekstowych
+        createLabels();
+
+        //Utworzenie paneli
+        createPanels();
 
 
     }
@@ -396,6 +412,44 @@ public class Window extends JFrame implements ActionListener {
 
     }
 
+    private JPanel createJPanel(Color color){
+
+        JPanel jpanel = new JPanel();
+        jpanel.setBackground(color);
+
+        return jpanel;
+
+    }
+
+    private void createPanels(){
+
+        //Panel zawierający informację o konieczności logowania
+        this.loginRequired = createJPanel(Color.LIGHT_GRAY);
+            loginRequired.setLayout(new GridLayout(1,1));
+
+            //Dodanie komponentów GUI do panelu loginRequired
+            loginRequired.add(loginRequiredMessage);
+
+
+            //Dodanie loginRequired do okna głównego
+            add(loginRequired);
+
+    }
+
+    private JLabel createJLabel(String text){
+
+        JLabel jLabel = new JLabel(text);
+
+        return jLabel;
+
+    }
+
+    private void createLabels(){
+
+        loginRequiredMessage = createJLabel("Musisz się zalogować, aby odblokować aplikację.");
+            loginRequiredMessage.setHorizontalAlignment(SwingConstants.CENTER);
+    }
+
     //Utworzenie obiektów Okien, żeby stworzyć je tylko raz
     private void launchWindows(){
 
@@ -407,13 +461,18 @@ public class Window extends JFrame implements ActionListener {
 
     private void isLaunched(String status, String value){
 
-        if(status.equals("Uruchomiono") && value.equals("True")){
+        if(status.equals("Uruchomiono") && value.equals("True")) {
 
             loginWindow.setVisible(true);
+            loginWindow.setAlwaysOnTop(true);
+
 
         }
 
+
+
     }
+
 
 
 
