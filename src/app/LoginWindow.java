@@ -35,7 +35,10 @@ public class LoginWindow extends JDialog implements ActionListener {
         //Ustawienie lokalizacji okna
         setLocationLoginWindow(Window.windowWidth,Window.windowHeight,loginWindowWidth,loginWindowHeight);
 
+
         initGUI();
+
+
 
     }
 
@@ -57,6 +60,7 @@ public class LoginWindow extends JDialog implements ActionListener {
 
         //Tworzenie paneli i dodawanie do nich komponentów GUI oraz Layoutów
         createPanelsLoginWindow();
+
 
     }
 
@@ -229,10 +233,12 @@ public class LoginWindow extends JDialog implements ActionListener {
             String userDataP = String.valueOf(passwordUser.getPassword()).trim();
 
             if(userDataL.equals(login)&& userDataP.equals(password)){
+                Window.statusBar.setStatusAndValueOfApplication("Logowanie","True");
                 dispose();
             }else{
                 loginMessage.setText("Błędne dane logowania");
                 loginMessage.setForeground(Color.RED);
+                Window.statusBar.setStatusAndValueOfApplication("Logowanie","False");
             }
 
         }else if(e.getSource()==exit){

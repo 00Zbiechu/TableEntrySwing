@@ -12,6 +12,7 @@ public class Window extends JFrame implements ActionListener {
     public static int windowX;
     public static int windowY;
 
+
     private String etykietyMenu[] = {"Pliki","Edytuj","Widok","Pomoc"};
     private String etykietyFileMenu[] = {"Logowanie","Wylogowanie","Drukuj","Zamknij"};
     private String etykietyEditMenu[] = {"Kopiuj","Wytnij","Cofnij"};
@@ -39,6 +40,17 @@ public class Window extends JFrame implements ActionListener {
     //Ikony do toolBara
     private Icon iconSave, iconPrint, iconLogout, iconClose, iconHelp, iconInfo;
 
+    //Pasek statusu
+    public static StatusBar statusBar;
+
+    //Okno pomocy
+    private HelpWindow helpWindow;
+
+    //Okno o aplikacji
+    private AboutWindow aboutWindow;
+
+    //Okno Logowania
+    private LoginWindow loginWindow;
 
 
     //konstruktor klasy Window
@@ -63,8 +75,17 @@ public class Window extends JFrame implements ActionListener {
             }
         });
 
+
         //Tworzenie GUI
         initGUI();
+
+        //Ustawianie statusu aplikacji
+        statusBar.setStatusAndValueOfApplication("Uruchomiono","True");
+
+
+        //Sprawdzenie, czy można się zalogować
+        isLaunched(statusBar.getStatus(),statusBar.getValue());
+
 
     }
 
@@ -85,6 +106,13 @@ public class Window extends JFrame implements ActionListener {
 
         //tworzenie toolbaru dla aplikacji
         createToolBar();
+
+        //Dodane stopki (pasek statusu aplikacji)
+        createFooter();
+
+        //Utworzenie wszystkich okien pomocniczych
+        launchWindows();
+
 
     }
 
@@ -353,6 +381,42 @@ public class Window extends JFrame implements ActionListener {
 
     }
 
+    private StatusBar createStatusBar(){
+
+        StatusBar statusBar = new StatusBar();
+
+        return statusBar;
+
+    }
+
+    private void createFooter(){
+
+        statusBar = createStatusBar();
+            add(statusBar,BorderLayout.SOUTH);
+
+    }
+
+    //Utworzenie obiektów Okien, żeby stworzyć je tylko raz
+    private void launchWindows(){
+
+        helpWindow = new HelpWindow();
+        aboutWindow = new AboutWindow();
+        loginWindow = new LoginWindow();
+
+    }
+
+    private void isLaunched(String status, String value){
+
+        if(status.equals("Uruchomiono") && value.equals("True")){
+
+            loginWindow.setVisible(true);
+
+        }
+
+    }
+
+
+
     //metoda sprawdzająca źródło wywołujące zdarzenie okna
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -365,18 +429,15 @@ public class Window extends JFrame implements ActionListener {
         }else if(e.getSource()==helpAboutMenuItem || e.getSource()==infoButton){
 
             //Pokazanie okna AboutWindow
-            AboutWindow aboutWindow = new AboutWindow();
             aboutWindow.setVisible(true);
 
         }else if(e.getSource()==helpSettingsMenuItem || e.getSource()== helpButton){
 
             //Pokazane okna HelpWindow
-            HelpWindow helpWindow = new HelpWindow();
             helpWindow.setVisible(true);
 
         }else if(e.getSource()==fileLoginMenuItem){
 
-            LoginWindow loginWindow = new LoginWindow();
             loginWindow.setVisible(true);
 
         }
