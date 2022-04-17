@@ -224,6 +224,8 @@ public class LoginWindow extends JDialog implements ActionListener {
     }
 
 
+
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -233,15 +235,33 @@ public class LoginWindow extends JDialog implements ActionListener {
             String userDataP = String.valueOf(passwordUser.getPassword()).trim();
 
             if(userDataL.equals(login)&& userDataP.equals(password)){
+
+                //Ustawianie wartości na pasku statusu za pomocą zmiennej statycznej przechowującej obiekt StatusBar,
+                // wywołany w klasie Window
                 Window.statusBar.setStatusAndValueOfApplication("Logowanie","True");
+
+
+                //Wywołanie metody ukrywającej widoczność paneluBlokady z klasy Window, pokazującej CentralPanel (panele są zmiennymi statycznymi)
+                //Miejsce na metodę zamieniającą widzialność okien Blokady i okna Aplikacji
+
                 dispose();
+
+
             }else{
+
                 loginMessage.setText("Błędne dane logowania");
                 loginMessage.setForeground(Color.RED);
                 Window.statusBar.setStatusAndValueOfApplication("Logowanie","False");
+                Window.loginRequired.setVisible(true);
+
             }
 
         }else if(e.getSource()==exit){
+            //Zmiana stylu i tekstu komunikatu w momencie zamknięcia okna,
+            // żeby użytkownik nie zobaczył błędu przy jego ponownym ukazaniu
+            loginMessage.setText("Proszę podać dane logowania");
+            loginMessage.setForeground(Color.BLACK);
+
             dispose();
         }
 

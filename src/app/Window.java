@@ -1,5 +1,7 @@
 package app;
 
+import com.jgoodies.forms.layout.FormLayout;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -53,11 +55,11 @@ public class Window extends JFrame implements ActionListener {
     private LoginWindow loginWindow;
 
     //Panel blokady aplikacji
-    private JPanel loginRequired;
+    public static JPanel loginRequired;
     private JLabel loginRequiredMessage;
 
     //Centralny panel aplikacji
-    private CentralPanel centralPanel;
+    public static CentralPanel centralPanel;
 
 
     //konstruktor klasy Window
@@ -91,7 +93,7 @@ public class Window extends JFrame implements ActionListener {
 
 
         //Sprawdzenie, czy można się zalogować
-        isLaunched(statusBar.getStatus(),statusBar.getValue());
+        //isLaunched(statusBar.getStatus(),statusBar.getValue());
 
 
 
@@ -421,20 +423,40 @@ public class Window extends JFrame implements ActionListener {
 
     }
 
+
+
     private void createPanels(){
 
+
+        //Tworzenie panelu centralnego
+        this.centralPanel = new CentralPanel();
+
+
+        //Dodanie panelu centralnego do okna aplikacji
+        add(centralPanel);
+
+
+        //Do zrobienia w przyszłości --------------------------------
         //Panel zawierający informację o konieczności logowania
-        this.loginRequired = createJPanel(Color.LIGHT_GRAY);
-            loginRequired.setLayout(new GridLayout(1,1));
-
-            //Dodanie komponentów GUI do panelu loginRequired
-            loginRequired.add(loginRequiredMessage);
+        //this.loginRequired = createJPanel(Color.LIGHT_GRAY);
+        //loginRequired.setLayout(new GridLayout(1,1));
 
 
-            //Dodanie loginRequired do okna głównego
-            add(loginRequired);
+        //Dodanie komponentów GUI do panelu loginRequired
+        //loginRequired.add(loginRequiredMessage);
+
+        //Dodanie panelu blokady do okna aplikacji
+        //add(loginRequired);
+        //-------------------------------------------------------------
+
+
+
+
+
+
 
     }
+
 
     private JLabel createJLabel(String text){
 
@@ -469,9 +491,14 @@ public class Window extends JFrame implements ActionListener {
 
         }
 
-
-
     }
+
+
+
+
+
+
+
 
 
 
