@@ -26,6 +26,7 @@ public class LoginWindow extends JDialog implements ActionListener {
 
     LoginWindow(){
 
+
         setTitle("Logowanie");
         setResizable(false);
 

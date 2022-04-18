@@ -9,9 +9,9 @@ import java.awt.*;
 
 public class CentralPanel extends JPanel {
 
-    private JPanel panelInsert,panelTable,panelAction;
+    private JPanel  panelInsert,panelTable,panelAction, panelOperation, panelResult;
 
-    private JLabel labelInsertNumber, labelInsertPositionX, labelInsertPositionY;
+    private JLabel labelInsertNumber, labelInsertPositionX, labelInsertPositionY, labelSelectOperation;
 
     private JTextField insertNumber;
 
@@ -19,12 +19,18 @@ public class CentralPanel extends JPanel {
 
     private JTable table;
 
-    private JButton clearButton, commitButton, saveButton;
+    private JButton clearButton, commitButton, saveButton, calculate;
+
+    private Icon iconClearButton, iconCommitButton, iconSaveButton, iconCalculate;
+
+    private JComboBox selectOperation;
+
+    private TextArea resultArea;
 
 
     CentralPanel(){
 
-        setLayout(new GridLayout(3,1));
+        setLayout(new GridLayout(4,1));
         initGUI();
 
     }
@@ -44,8 +50,17 @@ public class CentralPanel extends JPanel {
         //Tworzenie tabeli
         createTable();
 
+        //Tworzenie ikon do przycisków
+        createIcon();
+
         //Tworzenie przycisków
          createButton();
+
+        //Tworzenie comboBox'a
+        createComboBox();
+
+        //Tworzenie TextArea
+        createTextArea();
 
         //Tworzenie paneli
         createPanel();
@@ -73,6 +88,7 @@ public class CentralPanel extends JPanel {
         this.labelInsertNumber = createJLabel("Wprowadź wartość: ");
         this.labelInsertPositionX = createJLabel("Wybierz kolumnę: ");
         this.labelInsertPositionY = createJLabel("Wybierz wiersz: ");
+        this.labelSelectOperation = createJLabel("Wybierz operację do obliczenia: ");
 
     }
 
@@ -118,6 +134,7 @@ public class CentralPanel extends JPanel {
 
 
         JTable jTable = new JTable(col,row);
+            jTable.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
 
         return jTable;
@@ -130,9 +147,9 @@ public class CentralPanel extends JPanel {
 
     }
 
-    private JButton createJButton(String text){
+    private JButton createJButton(String text,Icon icon){
 
-        JButton jButton = new JButton(text);
+        JButton jButton = new JButton(text,icon);
 
         return jButton;
 
@@ -140,9 +157,11 @@ public class CentralPanel extends JPanel {
 
     private void createButton(){
 
-        this.clearButton = createJButton("Wyczyść");
-        this.commitButton = createJButton("Wprowadź");
-        this.saveButton = createJButton("Zapisz");
+        this.clearButton = createJButton("Wyczyść",iconClearButton);
+        this.commitButton = createJButton("Wprowadź",iconCommitButton);
+        this.saveButton = createJButton("Zapisz",iconSaveButton);
+        this.calculate = createJButton("Oblicz",iconCalculate);
+
 
     }
 
@@ -156,9 +175,50 @@ public class CentralPanel extends JPanel {
 
     private void createPanel(){
 
-        this.panelInsert = createJPanel();
-        this.panelTable = createJPanel();
-        this.panelAction = createJPanel();
+            //Panele pomocnicze, które będą dodane do panelMain
+            this.panelInsert = createJPanel();
+            this.panelTable = createJPanel();
+            this.panelAction = createJPanel();
+            this.panelOperation = createJPanel();
+            this.panelResult = createJPanel();
+
+    }
+
+    //Konstruktor ikon
+    private Icon createJIcon(String file) {
+        String name = "/grafika/"+file;
+        Icon icon = new ImageIcon(getClass().getResource(name));
+
+        return icon;
+    }
+
+    private void createIcon(){
+
+        this.iconClearButton = createJIcon("min_close.jpg");
+        this.iconCommitButton = createJIcon("min_login.jpg");
+        this.iconSaveButton = createJIcon("min_print.jpg");
+        this.iconCalculate = createJIcon("min_about.jpg");
+
+    }
+
+    private JComboBox createJComboBox(){
+
+        JComboBox jComboBox = new JComboBox();
+
+        return jComboBox;
+
+    }
+
+    private void createComboBox(){
+
+        this.selectOperation = createJComboBox();
+
+
+    }
+
+    private void createTextArea(){
+
+        this.resultArea = new TextArea();
 
     }
 
@@ -197,8 +257,8 @@ public class CentralPanel extends JPanel {
         long windowW = Math.round(windowWidth*0.70);
         long windowWTwo = Math.round(windowWidth*0.20);
 
-        //Zmienne pomocnicze do obliczenia wielkości wierszy (dwóch)
-        long windowH = Math.round(windowHeight*0.50);
+        //Zmienne pomocnicze do obliczenia wielkości wierszy (jeden)
+        long windowH = Math.round(windowHeight*0.40);
 
         String columnConfiguration = windowW+"px, "+windowWTwo+"px";
         String rowConfiguration = windowH+"px";
@@ -217,18 +277,19 @@ public class CentralPanel extends JPanel {
         //Obiekt służący do obsługi komórek
         CellConstraints cc = new CellConstraints();
 
+
         //Panel górny --------------------------------------------------------------------
 
             //Ustawianie layoutu dla JPanelu na podstawie wielkości okna aplikacji
             panelInsert.setLayout(createFormLayoutTop(Window.windowWidth,Window.windowHeight));
-                panelInsert.add(labelInsertNumber,cc.xy(1,1,CellConstraints.CENTER,CellConstraints.CENTER));
-                panelInsert.add(insertNumber,cc.xy(2,1,CellConstraints.LEFT,CellConstraints.CENTER));
+                panelInsert.add(labelInsertNumber,cc.xy(1,1,CellConstraints.CENTER,CellConstraints.BOTTOM));
+                panelInsert.add(insertNumber,cc.xy(2,1,CellConstraints.LEFT,CellConstraints.BOTTOM));
 
-                panelInsert.add(labelInsertPositionX,cc.xy(3,1,CellConstraints.CENTER,CellConstraints.CENTER));
-                panelInsert.add(sliderX,cc.xy(4,1,CellConstraints.LEFT,CellConstraints.CENTER));
+                panelInsert.add(labelInsertPositionX,cc.xy(3,1,CellConstraints.CENTER,CellConstraints.BOTTOM));
+                panelInsert.add(sliderX,cc.xy(4,1,CellConstraints.LEFT,CellConstraints.BOTTOM));
 
-                panelInsert.add(labelInsertPositionY,cc.xy(5,1,CellConstraints.CENTER,CellConstraints.CENTER));
-                panelInsert.add(sliderY,cc.xy(6,1,CellConstraints.LEFT,CellConstraints.CENTER));
+                panelInsert.add(labelInsertPositionY,cc.xy(5,1,CellConstraints.CENTER,CellConstraints.BOTTOM));
+                panelInsert.add(sliderY,cc.xy(6,1,CellConstraints.LEFT,CellConstraints.BOTTOM));
 
             //Dodanie paneluInsert do głównego okna aplikacji
             add(panelInsert);
@@ -237,7 +298,7 @@ public class CentralPanel extends JPanel {
 
         //Panel środkowy ---------------------------------------------------------------------
         panelTable.setLayout(createFormLayoutMid(Window.windowWidth,Window.windowHeight));
-            panelTable.add(table,cc.xy(1,1,CellConstraints.CENTER,CellConstraints.TOP));
+            panelTable.add(table,cc.xy(1,1,CellConstraints.FILL,CellConstraints.TOP));
             panelTable.add(panelAction,cc.xy(2,1,CellConstraints.CENTER,CellConstraints.TOP));
 
                 //Wypełnianie panelu akcji przyciskami i nadanie mu stylu, żeby układały się w 1 kolumnie
@@ -249,6 +310,33 @@ public class CentralPanel extends JPanel {
 
             //Dodawanie paneluTable do głównego okna aplikacji
             add(panelTable);
+
+
+        //Panel dolny-wybór operacji do wykonania-------------------------------------------------
+        panelOperation.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+                //Dodanie komponentów GUI do panelu Operation
+                panelOperation.add(labelSelectOperation);
+                panelOperation.add(selectOperation);
+                panelOperation.add(calculate);
+
+            //Dodanie panelu panelOperation do okna głównego
+            add(panelOperation);
+
+
+
+        //Panel dolny-rezultat wykonanej operacji ------------------------------------------------
+
+                //Dodanie komponentów GUI do paneluRezultatu
+                panelResult.add(resultArea);
+
+            //Dodanie panelu panelResult do głównego okna
+            //add(panelResult);
+
+
+
+
+
     }
 
 
