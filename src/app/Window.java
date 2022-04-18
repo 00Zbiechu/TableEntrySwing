@@ -1,6 +1,5 @@
 package app;
 
-import com.jgoodies.forms.layout.FormLayout;
 
 import javax.swing.*;
 import java.awt.*;
@@ -54,11 +53,10 @@ public class Window extends JFrame implements ActionListener {
     //Okno Logowania
     private LoginWindow loginWindow;
 
-    //Panel blokady aplikacji
-    public static JPanel loginRequired;
-    private JLabel loginRequiredMessage;
+    //Panel blokady aplikacji-statyczne, żeby mieć dostęp z klasy LoginWindow
+    public static LockWindow loginRequired;
 
-    //Centralny panel aplikacji
+    //Centralny panel aplikacji-statyczne, żeby mieć dostęp z klasy LoginWindow
     public static CentralPanel centralPanel;
 
 
@@ -93,7 +91,7 @@ public class Window extends JFrame implements ActionListener {
 
 
         //Sprawdzenie, czy można się zalogować
-        //isLaunched(statusBar.getStatus(),statusBar.getValue());
+        isLaunched(statusBar.getStatus(),statusBar.getValue());
 
 
 
@@ -125,11 +123,6 @@ public class Window extends JFrame implements ActionListener {
         //Utworzenie wszystkich okien pomocniczych
         launchWindows();
 
-        //Utworzenie etykiet tekstowych
-        createLabels();
-
-        //Utworzenie paneli
-        createPanels();
 
         //Stworzenie panelu centralnego aplikacji
         createScrollCentralPanel();
@@ -287,10 +280,10 @@ public class Window extends JFrame implements ActionListener {
                 KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.ALT_MASK));
 
         filePrintMenuItem = createJMenuItem(etykietyFileMenu[2],
-                KeyStroke.getKeyStroke(KeyEvent.VK_P,ActionEvent.ALT_MASK));
+                KeyStroke.getKeyStroke(KeyEvent.VK_D,ActionEvent.ALT_MASK));
 
         fileExitMenuItem = createJMenuItem(etykietyFileMenu[3],
-                KeyStroke.getKeyStroke(KeyEvent.VK_E,ActionEvent.ALT_MASK));
+                KeyStroke.getKeyStroke(KeyEvent.VK_R,ActionEvent.ALT_MASK));
 
 
         //viewMenu
@@ -309,11 +302,11 @@ public class Window extends JFrame implements ActionListener {
                 KeyStroke.getKeyStroke(KeyEvent.VK_X,ActionEvent.SHIFT_MASK));
 
         editUndoMenuItem = createJMenuItem(etykietyEditMenu[2],
-                KeyStroke.getKeyStroke(KeyEvent.VK_B,ActionEvent.SHIFT_MASK));
+                KeyStroke.getKeyStroke(KeyEvent.VK_R,ActionEvent.SHIFT_MASK));
 
         //helpMenu
         helpSettingsMenuItem = createJMenuItem(etykietyHelpMenu[0],
-                KeyStroke.getKeyStroke(KeyEvent.VK_S,ActionEvent.ALT_MASK));
+                KeyStroke.getKeyStroke(KeyEvent.VK_1,ActionEvent.ALT_MASK));
 
         helpAboutMenuItem = createJMenuItem(etykietyHelpMenu[1],
                 KeyStroke.getKeyStroke(KeyEvent.VK_0,ActionEvent.ALT_MASK));
@@ -428,33 +421,6 @@ public class Window extends JFrame implements ActionListener {
 
 
 
-    private void createPanels(){
-
-
-        //Dodanie panelu centralnego do okna aplikacji
-        //add(centralPanel);
-
-
-        //Do zrobienia w przyszłości --------------------------------
-        //Panel zawierający informację o konieczności logowania
-        //this.loginRequired = createJPanel(Color.LIGHT_GRAY);
-        //loginRequired.setLayout(new GridLayout(1,1));
-
-
-        //Dodanie komponentów GUI do panelu loginRequired
-        //loginRequired.add(loginRequiredMessage);
-
-        //Dodanie panelu blokady do okna aplikacji
-        //add(loginRequired);
-        //-------------------------------------------------------------
-
-
-
-
-
-
-
-    }
 
 
     private JLabel createJLabel(String text){
@@ -467,19 +433,21 @@ public class Window extends JFrame implements ActionListener {
 
     private void createScrollCentralPanel(){
 
-        //Próba stworzenie scroll-owego layoutu
-        this.centralPanel = new CentralPanel(); //Tworzenie obiektu klasy CentralPanel
-        JScrollPane scrollableArea = new JScrollPane(centralPanel);
-        scrollableArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        this.getContentPane().add(scrollableArea);
+            this.centralPanel = new CentralPanel(); //Tworzenie obiektu klasy CentralPanel
+                centralPanel.setVisible(false); //Początkowa widoczność wyłączona
+            this.loginRequired = new LockWindow(); //Tworzenie obiektu klasy LockWindow
+
+        JPanel panelMain = new JPanel();
+                panelMain.add(centralPanel);
+                panelMain.add(loginRequired);
+
+            JScrollPane scrollableArea = new JScrollPane(panelMain);
+            scrollableArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+            this.getContentPane().add(scrollableArea);
 
     }
 
-    private void createLabels(){
 
-        loginRequiredMessage = createJLabel("Musisz się zalogować, aby odblokować aplikację.");
-            loginRequiredMessage.setHorizontalAlignment(SwingConstants.CENTER);
-    }
 
     //Utworzenie obiektów Okien, żeby stworzyć je tylko raz
     private void launchWindows(){
@@ -501,13 +469,6 @@ public class Window extends JFrame implements ActionListener {
         }
 
     }
-
-
-
-
-
-
-
 
 
 
@@ -534,6 +495,13 @@ public class Window extends JFrame implements ActionListener {
         }else if(e.getSource()==fileLoginMenuItem){
 
             loginWindow.setVisible(true);
+
+        }else if(e.getSource()==logoutButton || e.getSource()==fileLogoutMenuItem){
+
+            Window.statusBar.setStatusAndValueOfApplication("Logowanie","False");
+            Window.loginRequired.setVisible(true);
+            Window.centralPanel.setVisible(false);
+
 
         }
 

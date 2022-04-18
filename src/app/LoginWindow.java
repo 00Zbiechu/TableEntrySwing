@@ -226,6 +226,24 @@ public class LoginWindow extends JDialog implements ActionListener {
 
 
 
+    private void login(){
+
+        Window.loginRequired.setVisible(false);
+        Window.centralPanel.setVisible(true);
+
+    }
+
+
+    private void logout(){
+
+        Window.loginRequired.setVisible(true);
+        Window.centralPanel.setVisible(false);
+
+    }
+
+
+
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -244,7 +262,7 @@ public class LoginWindow extends JDialog implements ActionListener {
 
                 //Wywołanie metody ukrywającej widoczność paneluBlokady z klasy Window, pokazującej CentralPanel (panele są zmiennymi statycznymi)
                 //Miejsce na metodę zamieniającą widzialność okien Blokady i okna Aplikacji
-
+                login();
                 dispose();
 
 
@@ -253,7 +271,9 @@ public class LoginWindow extends JDialog implements ActionListener {
                 loginMessage.setText("Błędne dane logowania");
                 loginMessage.setForeground(Color.RED);
                 Window.statusBar.setStatusAndValueOfApplication("Logowanie","False");
-                Window.loginRequired.setVisible(true);
+                logout();
+
+
 
             }
 

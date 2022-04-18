@@ -388,4 +388,12 @@ public class CentralPanel extends JPanel {
     }
 
 
+    //Metoda potrzebna do zmiany wyglądu centralPanel w przypadku niezalogowania
+    public void loginRequired(){
+
+        this.removeAll();
+
+    }
+
+
 }
