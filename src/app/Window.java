@@ -131,6 +131,9 @@ public class Window extends JFrame implements ActionListener {
         //Utworzenie paneli
         createPanels();
 
+        //Stworzenie panelu centralnego aplikacji
+        createScrollCentralPanel();
+
 
     }
 
@@ -428,12 +431,8 @@ public class Window extends JFrame implements ActionListener {
     private void createPanels(){
 
 
-        //Tworzenie panelu centralnego
-        this.centralPanel = new CentralPanel();
-
-
         //Dodanie panelu centralnego do okna aplikacji
-        add(centralPanel);
+        //add(centralPanel);
 
 
         //Do zrobienia w przyszłości --------------------------------
@@ -463,6 +462,16 @@ public class Window extends JFrame implements ActionListener {
         JLabel jLabel = new JLabel(text);
 
         return jLabel;
+
+    }
+
+    private void createScrollCentralPanel(){
+
+        //Próba stworzenie scroll-owego layoutu
+        this.centralPanel = new CentralPanel(); //Tworzenie obiektu klasy CentralPanel
+        JScrollPane scrollableArea = new JScrollPane(centralPanel);
+        scrollableArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        this.getContentPane().add(scrollableArea);
 
     }
 
