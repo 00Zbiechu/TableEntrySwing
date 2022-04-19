@@ -167,6 +167,7 @@ public class LoginWindow extends JDialog implements ActionListener {
 
         JButton jbutton = new JButton(label);
         jbutton.addActionListener(this);
+        jbutton.setBackground(Color.WHITE);
 
         return jbutton;
 

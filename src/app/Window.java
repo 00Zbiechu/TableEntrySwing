@@ -1,6 +1,8 @@
 package app;
 
 
+import com.jgoodies.forms.layout.FormLayout;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -16,7 +18,7 @@ public class Window extends JFrame implements ActionListener {
 
     private String etykietyMenu[] = {"Pliki","Edytuj","Widok","Pomoc"};
     private String etykietyFileMenu[] = {"Logowanie","Wylogowanie","Drukuj","Zamknij"};
-    private String etykietyEditMenu[] = {"Kopiuj","Wytnij","Cofnij"};
+    private String etykietyEditMenu[] = {"Wyczyść","Wprowadź","Zapisz"};
     private String etykietyViewMenu[] = {"Ukryj pasek statusu","Ukryj pasek narzędziowy"};
     private String etykietyHelpMenu[] = {"Pomoc","Informacje o programie"};
 
@@ -91,7 +93,7 @@ public class Window extends JFrame implements ActionListener {
 
 
         //Sprawdzenie, czy można się zalogować
-        isLaunched(statusBar.getStatus(),statusBar.getValue());
+        //isLaunched(statusBar.getStatus(),statusBar.getValue());
 
 
 
@@ -169,6 +171,7 @@ public class Window extends JFrame implements ActionListener {
 
 
     }
+
 
 
     //Metoda zamykająca okno
@@ -287,10 +290,10 @@ public class Window extends JFrame implements ActionListener {
 
 
         //viewMenu
-        viewJToolBarMenuItem = createJMenuCheckBoxItem(etykietyViewMenu[0],false,
+        viewJToolBarMenuItem = createJMenuCheckBoxItem(etykietyViewMenu[1],false,
                 KeyStroke.getKeyStroke(KeyEvent.VK_T,ActionEvent.ALT_MASK));
 
-        viewStatusBarMenuItem = createJMenuCheckBoxItem(etykietyViewMenu[1],false,
+        viewStatusBarMenuItem = createJMenuCheckBoxItem(etykietyViewMenu[0],false,
                 KeyStroke.getKeyStroke(KeyEvent.VK_B,ActionEvent.ALT_MASK));
 
 
@@ -330,7 +333,7 @@ public class Window extends JFrame implements ActionListener {
     private void createToolBar(){
 
         //3 wiersze są puste na przyszłość
-        toolBar = createJToolBar(false,false,8,1);
+        toolBar = createJToolBar(false,true,6,1);
 
 
         //Dodanie elementów do Toolbara
@@ -357,6 +360,7 @@ public class Window extends JFrame implements ActionListener {
         jButton.setToolTipText(tooltip);
         jButton.addActionListener(this);
         jButton.setEnabled(true);
+        jButton.setBackground(Color.WHITE);
 
         return jButton;
     }
@@ -384,14 +388,12 @@ public class Window extends JFrame implements ActionListener {
 
     private void createIcon(){
 
-
-        //Ikony do Toolbara
-        iconPrint = createJIcon("print.jpg");
-        iconSave = createJIcon("save.jpg");
-        iconClose = createJIcon("close.jpg");
-        iconLogout = createJIcon("logout.jpg");
-        iconInfo = createJIcon("about.jpg");
-        iconHelp = createJIcon("settings.jpg");
+            iconPrint = createJIcon("print.jpg");
+            iconSave = createJIcon("save.jpg");
+            iconClose = createJIcon("close.jpg");
+            iconLogout = createJIcon("logout.jpg");
+            iconInfo = createJIcon("about.jpg");
+            iconHelp = createJIcon("settings.jpg");
 
     }
 
@@ -434,16 +436,16 @@ public class Window extends JFrame implements ActionListener {
     private void createScrollCentralPanel(){
 
             this.centralPanel = new CentralPanel(); //Tworzenie obiektu klasy CentralPanel
-                centralPanel.setVisible(false); //Początkowa widoczność wyłączona
+                centralPanel.setVisible(true); //Początkowa widoczność wyłączona
             this.loginRequired = new LockWindow(); //Tworzenie obiektu klasy LockWindow
 
         JPanel panelMain = new JPanel();
                 panelMain.add(centralPanel);
-                panelMain.add(loginRequired);
+                //panelMain.add(loginRequired);
 
             JScrollPane scrollableArea = new JScrollPane(panelMain);
             scrollableArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-            this.getContentPane().add(scrollableArea);
+            add(scrollableArea);
 
     }
 
@@ -470,6 +472,41 @@ public class Window extends JFrame implements ActionListener {
 
     }
 
+    //Metoda odpowiedzialna za ukrywanie/pokazywanie toolbara
+    private void setVisibilityToolBar(boolean valueOFVisibility){
+
+        if(valueOFVisibility==false){
+
+            toolBar.setVisible(true);
+            statusBar.setStatusAndValueOfApplication("Pasek narzędziowy","Widoczny");
+
+
+        }else if(valueOFVisibility==true){
+
+            toolBar.setVisible(false);
+            statusBar.setStatusAndValueOfApplication("Pasek narzędziowy","Ukryty");
+
+        }
+
+    }
+
+    //Metoda odpowiedzialna za ukrywanie/pokazywanie statusbara
+    private void setVisibilityStatusBar(boolean valueOFVisibility){
+
+        if(valueOFVisibility==false){
+
+            statusBar.setVisible(true);
+            statusBar.setStatusAndValueOfApplication("Pasek statusu","Widoczny");
+
+        }else if(valueOFVisibility==true){
+
+            statusBar.setVisible(false);
+            statusBar.setStatusAndValueOfApplication("Pasek statusu","Ukryty");
+
+        }
+
+    }
+
 
 
 
@@ -486,22 +523,38 @@ public class Window extends JFrame implements ActionListener {
 
             //Pokazanie okna AboutWindow
             aboutWindow.setVisible(true);
+            statusBar.setStatusAndValueOfApplication("Uruchomienie okna","O programie");
 
         }else if(e.getSource()==helpSettingsMenuItem || e.getSource()== helpButton){
 
             //Pokazane okna HelpWindow
             helpWindow.setVisible(true);
+            statusBar.setStatusAndValueOfApplication("Uruchomienie okna","Pomoc");
 
         }else if(e.getSource()==fileLoginMenuItem){
 
+            //Pokazanie okna logowania
             loginWindow.setVisible(true);
+            statusBar.setStatusAndValueOfApplication("Logowanie","W trakcie");
 
         }else if(e.getSource()==logoutButton || e.getSource()==fileLogoutMenuItem){
 
-            Window.statusBar.setStatusAndValueOfApplication("Logowanie","False");
+            //Wylogowanie-ustawienie statusu na Logowanie false i ukrycie panelu Aplikacji, pokazanie panelu blokady
             Window.loginRequired.setVisible(true);
             Window.centralPanel.setVisible(false);
+            Window.statusBar.setStatusAndValueOfApplication("Logowanie","False");
 
+
+        }else if(e.getSource()==viewJToolBarMenuItem){
+
+            // Ukrycie/Pokazanie toolbar'a
+            setVisibilityToolBar(viewJToolBarMenuItem.getState());
+
+
+        }else if(e.getSource()==viewStatusBarMenuItem){
+
+            //Ukrycie/Pokazanie statusBara
+            setVisibilityStatusBar(viewStatusBarMenuItem.getState());
 
         }
 

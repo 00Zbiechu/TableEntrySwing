@@ -4,12 +4,15 @@ import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
 
-public class CentralPanel extends JPanel {
+public class CentralPanel extends JPanel implements ActionListener {
 
     private JPanel  panelInsert,panelTable,panelAction, panelOperation, panelResult;
 
@@ -27,7 +30,7 @@ public class CentralPanel extends JPanel {
 
     private JComboBox selectOperation;
 
-    private String[] dateComboBox = {"Średnia","Suma","MAX","MIX"};
+    private String[] dateComboBox = {"Średnia","Suma","MAX","MIN"};
 
     private JTextArea resultArea;
 
@@ -35,6 +38,7 @@ public class CentralPanel extends JPanel {
     CentralPanel(){
 
         initGUI();
+
 
     }
 
@@ -91,7 +95,7 @@ public class CentralPanel extends JPanel {
         this.labelInsertNumber = createJLabel(" Wprowadź wartość: ");
         this.labelInsertPositionX = createJLabel("X:");
         this.labelInsertPositionY = createJLabel("Y: ");
-        this.labelSelectOperation = createJLabel(" Wybierz operację do obliczenia: ");
+        this.labelSelectOperation = createJLabel(" Wybierz operację: ");
 
     }
 
@@ -138,6 +142,7 @@ public class CentralPanel extends JPanel {
 
         JTable jTable = new JTable(col,row);
             jTable.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            jTable.setEnabled(false);
 
 
         return jTable;
@@ -153,6 +158,8 @@ public class CentralPanel extends JPanel {
     private JButton createJButton(String text,Icon icon){
 
         JButton jButton = new JButton(text,icon);
+        jButton.addActionListener(this);
+        jButton.setBackground(Color.WHITE);
 
         return jButton;
 
@@ -184,13 +191,14 @@ public class CentralPanel extends JPanel {
 
         titledBorder.setTitleJustification(TitledBorder.CENTER);
         jp.setBorder(titledBorder);
-        jp.setLayout(new BorderLayout());
+        jp.setLayout(new BorderLayout(0,0));
 
         //Pole JTextArea wewnątrz paneluResult
         this.resultArea = new JTextArea();
         resultArea.setLineWrap(true);
         resultArea.setEditable(false);
-        jp.add(new JScrollPane(resultArea),BorderLayout.CENTER);
+
+        jp.add(resultArea,BorderLayout.CENTER);
         return jp;
     }
 
@@ -216,16 +224,17 @@ public class CentralPanel extends JPanel {
 
     private void createIcon(){
 
-        this.iconClearButton = createJIcon("min_close.jpg");
-        this.iconCommitButton = createJIcon("min_login.jpg");
+        this.iconClearButton = createJIcon("min_clear.jpg");
+        this.iconCommitButton = createJIcon("min_insert.png");
         this.iconSaveButton = createJIcon("min_print.jpg");
-        this.iconCalculate = createJIcon("min_about.jpg");
+        this.iconCalculate = createJIcon("min_operation.jpg");
 
     }
 
     private JComboBox createJComboBox(){
 
         JComboBox jComboBox = new JComboBox();
+        jComboBox.setBackground(Color.WHITE);
 
         return jComboBox;
 
@@ -281,11 +290,11 @@ public class CentralPanel extends JPanel {
 
 
         //Zmienna pomocnicza do obliczenia wielkości kolumn (dwóch)
-        long windowW = Math.round(windowWidth*0.70);
+        long windowW = Math.round(windowWidth*0.60);
         long windowWTwo = Math.round(windowWidth*0.20);
 
         //Zmienne pomocnicze do obliczenia wielkości wierszy (jeden)
-        long windowH = Math.round(windowHeight*0.20);
+        long windowH = Math.round(windowHeight*0.21);
 
         String columnConfiguration = windowW+"px, "+windowWTwo+"px";
         String rowConfiguration = windowH+"px";
@@ -301,12 +310,12 @@ public class CentralPanel extends JPanel {
 
 
         //Zmienna pomocnicza do obliczenia wielkości kolumn (dwóch)
-        long windowW = Math.round(windowWidth*0.35);
-        long windowWTwo = Math.round(windowWidth*0.15);
+        long windowW = Math.round(windowWidth*0.17);
+        long windowWTwo = Math.round(windowWidth*0.14);
         long windowWThree = Math.round(windowWidth*0.20);
 
         //Zmienne pomocnicze do obliczenia wielkości wierszy (jeden)
-        long windowH = Math.round(windowHeight*0.20);
+        long windowH = Math.round(windowHeight*0.15);
 
         String columnConfiguration = windowW+"px, "+windowWTwo+"px,"+windowWThree+"px";
         String rowConfiguration = windowH+"px";
@@ -324,7 +333,7 @@ public class CentralPanel extends JPanel {
     private void addComponentsAndSetLayout(){
 
         //Ustawianie Layoutu dla głównego okna aplikacji
-        setLayout(new GridLayout(4,1,0,0));
+        this.setLayout(new GridLayout(4,1,0,0));
 
         //Obiekt służący do obsługi komórek
         CellConstraints cc = new CellConstraints();
@@ -388,12 +397,34 @@ public class CentralPanel extends JPanel {
     }
 
 
-    //Metoda potrzebna do zmiany wyglądu centralPanel w przypadku niezalogowania
-    public void loginRequired(){
 
-        this.removeAll();
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        if(e.getSource()==commitButton && insertNumber!=null){
+
+            Logic.insertDataIntoTable(insertNumber.getText(),sliderX.getValue(),sliderY.getValue(),table);
+            Window.statusBar.setStatusAndValueOfApplication("Wprowadzono wartość",String.valueOf(insertNumber.getText()));
+
+        }else if(e.getSource()==calculate){
+
+            Logic.calculate(String.valueOf(selectOperation.getSelectedItem()),table,resultArea);
+            Window.statusBar.setStatusAndValueOfApplication("Wykonanie operacji",String.valueOf(selectOperation.getSelectedItem()));
+
+        }else if(e.getSource()==clearButton){
+
+            Logic.clear(table,resultArea);
+            Window.statusBar.setStatusAndValueOfApplication("Czyszczenie tabeli","True");
+
+        }else if(e.getSource()==saveButton){
+
+            try {
+                Logic.saveFile(this,table);
+            } catch (IOException ex) {
+                Window.statusBar.setStatusAndValueOfApplication("Błąd zapisu","Pliku");
+            }
+
+        }
 
     }
-
-
 }

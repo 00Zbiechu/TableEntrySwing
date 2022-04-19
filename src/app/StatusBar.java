@@ -39,10 +39,10 @@ public class StatusBar extends JPanel {
         //Zmienna pomocnicza do obliczenia wielkości kolumn (sześć)
         long windowW = Math.round(windowWidth*0.16); //descriptionStatusBar
 
-        long windowWTwo = Math.round(windowWidth*0.36); //odstęp
+        long windowWTwo = Math.round(windowWidth*0.30); //odstęp
 
         long windowWThree = Math.round(windowWidth*0.10); //statusLabel
-        long windowWFour = Math.round(windowWidth*0.16); //statusField
+        long windowWFour = Math.round(windowWidth*0.22); //statusField
 
         long windowWFive = Math.round(windowWidth*0.10); //statusLabel
         long windowWSix = Math.round(windowWidth*0.16); //statusField
@@ -90,8 +90,8 @@ public class StatusBar extends JPanel {
 
     private void createTextField(){
 
-        statusField = createJTextFiled(6);
-        valueField = createJTextFiled(6);
+        statusField = createJTextFiled(25);
+        valueField = createJTextFiled(15);
 
     }
 

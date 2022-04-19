@@ -197,7 +197,7 @@ public class AboutWindow extends JDialog implements ActionListener {
     private void createIcons(){
 
         //Komponent do panelu panelLogo
-        authorIcon = createJIcon("author_logo.jpg");
+        authorIcon = createJIcon("author_logo.png");
 
     }
 
@@ -233,6 +233,7 @@ public class AboutWindow extends JDialog implements ActionListener {
 
         JButton jbutton = new JButton(label);
         jbutton.addActionListener(this);
+        jbutton.setBackground(Color.WHITE);
 
         return jbutton;
 
