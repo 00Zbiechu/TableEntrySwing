@@ -3,6 +3,8 @@ package app;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -145,6 +147,8 @@ public class Logic {
 
         public static void saveFile(Component parent,JTable table) throws IOException {
 
+            Window.statusBar.setStatusAndValueOfApplication("Zapis do pliku","Tablicy");
+
             //Stworzenie obiektu do obsługi okna wyboru pliku
             JFileChooser fileChooser = new JFileChooser();
 
@@ -155,7 +159,7 @@ public class Logic {
             int result = fileChooser.showOpenDialog(parent);
 
             //Jeśli wybrano plik
-            FileWriter fileWriter = null;
+            FileWriter fileWriter = null; //obiekt służący do pisania w pliku
             if (result == JFileChooser.APPROVE_OPTION) {
 
                 //Plik wybrany
@@ -175,13 +179,26 @@ public class Logic {
 
                     for (int j = 0; j < 5; j++)
 
-                        fileWriter.append("     "+table.getValueAt(i, j));
+                        fileWriter.append("            "+table.getValueAt(i, j));
 
                 }
 
             }
 
             fileWriter.close();
+
+        }
+
+        public static void printTable(JTable table){
+
+            PrinterJob pj = PrinterJob.getPrinterJob();
+
+            if (pj.printDialog()) {
+                try {pj.print();}
+                catch (PrinterException exc) {
+                    System.out.println(exc);
+                }
+            }
 
 
         }

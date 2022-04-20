@@ -22,7 +22,7 @@ public class CentralPanel extends JPanel implements ActionListener {
 
     private JSlider sliderX,sliderY;
 
-    private JTable table;
+    public static JTable table;
 
     private JButton clearButton, commitButton, saveButton, calculate;
 
@@ -416,12 +416,12 @@ public class CentralPanel extends JPanel implements ActionListener {
             Logic.clear(table,resultArea);
             Window.statusBar.setStatusAndValueOfApplication("Czyszczenie tabeli","True");
 
-        }else if(e.getSource()==saveButton){
+        }else if(e.getSource()==this.saveButton) {
 
             try {
                 Logic.saveFile(this,table);
             } catch (IOException ex) {
-                Window.statusBar.setStatusAndValueOfApplication("Błąd zapisu","Pliku");
+                ex.printStackTrace();
             }
 
         }

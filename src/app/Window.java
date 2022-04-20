@@ -6,6 +6,7 @@ import com.jgoodies.forms.layout.FormLayout;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 
 public class Window extends JFrame implements ActionListener {
 
@@ -555,6 +556,18 @@ public class Window extends JFrame implements ActionListener {
 
             //Ukrycie/Pokazanie statusBara
             setVisibilityStatusBar(viewStatusBarMenuItem.getState());
+
+        }else if(e.getSource()==saveButton){
+
+            try {
+                Logic.saveFile(this,CentralPanel.table);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+
+        }else if(e.getSource()==printButton){
+
+            Logic.printTable(CentralPanel.table);
 
         }
 
