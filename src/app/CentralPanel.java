@@ -403,12 +403,11 @@ public class CentralPanel extends JPanel implements ActionListener {
         if(e.getSource()==commitButton && insertNumber!=null){
 
             Logic.insertDataIntoTable(insertNumber.getText(),sliderX.getValue(),sliderY.getValue(),table);
-            Window.statusBar.setStatusAndValueOfApplication("Wprowadzono wartość",String.valueOf(insertNumber.getText()));
+
 
         }else if(e.getSource()==calculate){
 
             Logic.calculate(String.valueOf(selectOperation.getSelectedItem()),table,resultArea);
-            Window.statusBar.setStatusAndValueOfApplication("Wykonanie operacji",String.valueOf(selectOperation.getSelectedItem()));
 
         }else if(e.getSource()==clearButton){
 

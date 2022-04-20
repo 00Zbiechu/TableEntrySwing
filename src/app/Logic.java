@@ -15,10 +15,18 @@ public class Logic {
 
         public static void insertDataIntoTable(String data, int x, int y, JTable table){
 
+            int value=0;
+            try {
+               value =  Integer.parseInt(data);
+               Window.statusBar.setStatusAndValueOfApplication("Wprowadzono wartość",String.valueOf(value));
+            }catch (Exception e){
+                Window.statusBar.setStatusAndValueOfApplication("Podaną złą wartość",String.valueOf(value));
+            }
+
             //Model do obsługi tabeli
             DefaultTableModel model = (DefaultTableModel)table.getModel();
             //Wprowadzenie zmian do tabeli
-            model.setValueAt(Integer.parseInt(data),--y,--x);
+            model.setValueAt(value,--y,--x);
             table.selectAll();
 
 
@@ -27,6 +35,7 @@ public class Logic {
 
         public static void calculate(String operation,JTable table,JTextArea textArea){
 
+            Window.statusBar.setStatusAndValueOfApplication("Wykonanie operacji",String.valueOf(operation));
 
             if(operation.equals("Średnia")){
 
@@ -82,9 +91,11 @@ public class Logic {
                     //Dodanie elementów tablicy do ArrayListy, która ma metodę zwracającą MAX element
                     ArrayList<Integer> allElements = new ArrayList<Integer>();
 
-                    for(int i=0;i<5;i++){
+                    try {
 
-                        for(int j=0;j<5;j++){
+                        for(int i=0;i<5;i++){
+
+                            for(int j=0;j<5;j++){
 
                                 if(table.getValueAt(i,j)==null){
                                     continue;
@@ -92,11 +103,15 @@ public class Logic {
                                     allElements.add((int)(table.getValueAt(i,j)));
                                 }
 
+                            }
+
                         }
 
+                        textArea.setText("MAX element to: "+Collections.max(allElements)+"\n");
+                    }catch (Exception e){
+                        Window.statusBar.setStatusAndValueOfApplication("Tablica","Pusta");
                     }
 
-                textArea.setText("MAX element to: "+Collections.max(allElements)+"\n");
 
 
             }else if(operation.equals("MIN")){
@@ -104,21 +119,25 @@ public class Logic {
                 //Dodanie elementów tablicy do ArrayListy, która ma metodę zwracającą MIN element
                 ArrayList<Integer> allElements = new ArrayList<Integer>();
 
-                for(int i=0;i<5;i++){
+                try{
+                    for(int i=0;i<5;i++){
 
-                    for(int j=0;j<5;j++){
+                        for(int j=0;j<5;j++){
 
-                        if(table.getValueAt(i,j)==null){
-                            continue;
-                        }else{
-                            allElements.add((int)(table.getValueAt(i,j)));
+                            if(table.getValueAt(i,j)==null){
+                                continue;
+                            }else{
+                                allElements.add((int)(table.getValueAt(i,j)));
+                            }
+
                         }
 
                     }
-
+                    textArea.setText("MIN element to: "+Collections.min(allElements)+"\n");
+                }catch (Exception e){
+                    Window.statusBar.setStatusAndValueOfApplication("Tablica","Pusta");
                 }
 
-                textArea.setText("MIN element to: "+Collections.min(allElements)+"\n");
 
             }
 
