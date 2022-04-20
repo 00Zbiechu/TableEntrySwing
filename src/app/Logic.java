@@ -191,12 +191,14 @@ public class Logic {
 
         public static void printTable(JTable table){
 
+            Window.statusBar.setStatusAndValueOfApplication("Drukowanie","True");
+
             PrinterJob pj = PrinterJob.getPrinterJob();
 
             if (pj.printDialog()) {
                 try {pj.print();}
                 catch (PrinterException exc) {
-                    System.out.println(exc);
+
                 }
             }
 

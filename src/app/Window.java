@@ -1,8 +1,6 @@
 package app;
 
 
-import com.jgoodies.forms.layout.FormLayout;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -29,7 +27,7 @@ public class Window extends JFrame implements ActionListener {
 
     //MenuItems
     private JMenuItem  fileLoginMenuItem, fileLogoutMenuItem, filePrintMenuItem, fileExitMenuItem,
-            helpSettingsMenuItem, helpAboutMenuItem, editUndoMenuItem, editCutMenuItem, editCopyMenuItem;
+            helpSettingsMenuItem, helpAboutMenuItem, editSaveItem, editCommitItem, editClearItem;
 
     //ViewMenuItemsCheckbox
     private JCheckBoxMenuItem viewStatusBarMenuItem, viewJToolBarMenuItem;
@@ -54,7 +52,7 @@ public class Window extends JFrame implements ActionListener {
     private AboutWindow aboutWindow;
 
     //Okno Logowania
-    private LoginWindow loginWindow;
+    public static LoginWindow loginWindow;
 
     //Panel blokady aplikacji-statyczne, żeby mieć dostęp z klasy LoginWindow
     public static LockWindow loginRequired;
@@ -94,7 +92,7 @@ public class Window extends JFrame implements ActionListener {
 
 
         //Sprawdzenie, czy można się zalogować
-        //isLaunched(statusBar.getStatus(),statusBar.getValue());
+        isLaunched(statusBar.getStatus(),statusBar.getValue());
 
 
 
@@ -233,9 +231,8 @@ public class Window extends JFrame implements ActionListener {
         fileMenu.add(fileExitMenuItem);
 
         //Dodanie elementów do editMenu
-        editMenu.add(editCopyMenuItem);
-        editMenu.add(editCutMenuItem);
-        editMenu.add(editUndoMenuItem);
+        editMenu.add(editClearItem);
+        editMenu.add(editSaveItem);
 
         //Dodanie elementów do helpMenu
         helpMenu.add(helpSettingsMenuItem);
@@ -299,13 +296,11 @@ public class Window extends JFrame implements ActionListener {
 
 
         //editMenu
-        editCopyMenuItem = createJMenuItem(etykietyEditMenu[0],
+        editClearItem = createJMenuItem(etykietyEditMenu[0],
                 KeyStroke.getKeyStroke(KeyEvent.VK_C,ActionEvent.SHIFT_MASK));
 
-        editCutMenuItem = createJMenuItem(etykietyEditMenu[1],
-                KeyStroke.getKeyStroke(KeyEvent.VK_X,ActionEvent.SHIFT_MASK));
 
-        editUndoMenuItem = createJMenuItem(etykietyEditMenu[2],
+        editSaveItem = createJMenuItem(etykietyEditMenu[2],
                 KeyStroke.getKeyStroke(KeyEvent.VK_R,ActionEvent.SHIFT_MASK));
 
         //helpMenu
@@ -437,12 +432,12 @@ public class Window extends JFrame implements ActionListener {
     private void createScrollCentralPanel(){
 
             this.centralPanel = new CentralPanel(); //Tworzenie obiektu klasy CentralPanel
-                centralPanel.setVisible(true); //Początkowa widoczność wyłączona
+                centralPanel.setVisible(false); //Początkowa widoczność wyłączona
             this.loginRequired = new LockWindow(); //Tworzenie obiektu klasy LockWindow
 
         JPanel panelMain = new JPanel();
                 panelMain.add(centralPanel);
-                //panelMain.add(loginRequired);
+                panelMain.add(loginRequired);
 
             JScrollPane scrollableArea = new JScrollPane(panelMain);
             scrollableArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -520,18 +515,6 @@ public class Window extends JFrame implements ActionListener {
             //Zamknięcie okna głównego
             closeWindow();
 
-        }else if(e.getSource()==helpAboutMenuItem || e.getSource()==infoButton){
-
-            //Pokazanie okna AboutWindow
-            aboutWindow.setVisible(true);
-            statusBar.setStatusAndValueOfApplication("Uruchomienie okna","O programie");
-
-        }else if(e.getSource()==helpSettingsMenuItem || e.getSource()== helpButton){
-
-            //Pokazane okna HelpWindow
-            helpWindow.setVisible(true);
-            statusBar.setStatusAndValueOfApplication("Uruchomienie okna","Pomoc");
-
         }else if(e.getSource()==fileLoginMenuItem){
 
             //Pokazanie okna logowania
@@ -546,7 +529,30 @@ public class Window extends JFrame implements ActionListener {
             Window.statusBar.setStatusAndValueOfApplication("Logowanie","False");
 
 
-        }else if(e.getSource()==viewJToolBarMenuItem){
+        }else if(e.getSource()==printButton || e.getSource()==filePrintMenuItem){
+
+            //Drukowanie
+            Logic.printTable(CentralPanel.table);
+
+        }
+        //----------------------------------------------------FileMenu
+        else if(e.getSource()==saveButton || e.getSource()==editSaveItem){
+
+            //Zapis do pliku
+            try {
+                Logic.saveFile(this,CentralPanel.table);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+
+        }else if(e.getSource()==editClearItem){
+
+            //Czyszczenie tabeli
+            Logic.clear(CentralPanel.table,CentralPanel.resultArea);
+
+        }
+        //--------------------------------------------------EditMenu
+        else if(e.getSource()==viewJToolBarMenuItem){
 
             // Ukrycie/Pokazanie toolbar'a
             setVisibilityToolBar(viewJToolBarMenuItem.getState());
@@ -557,17 +563,19 @@ public class Window extends JFrame implements ActionListener {
             //Ukrycie/Pokazanie statusBara
             setVisibilityStatusBar(viewStatusBarMenuItem.getState());
 
-        }else if(e.getSource()==saveButton){
+        }
+        //--------------------------------------------------HelpMenu
+        else if(e.getSource()==helpAboutMenuItem || e.getSource()==infoButton){
 
-            try {
-                Logic.saveFile(this,CentralPanel.table);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
+            //Pokazanie okna AboutWindow
+            aboutWindow.setVisible(true);
+            statusBar.setStatusAndValueOfApplication("Uruchomienie okna","O programie");
 
-        }else if(e.getSource()==printButton){
+        }else if(e.getSource()==helpSettingsMenuItem || e.getSource()== helpButton){
 
-            Logic.printTable(CentralPanel.table);
+            //Pokazane okna HelpWindow
+            helpWindow.setVisible(true);
+            statusBar.setStatusAndValueOfApplication("Uruchomienie okna","Pomoc");
 
         }
 

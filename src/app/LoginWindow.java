@@ -20,6 +20,7 @@ public class LoginWindow extends JDialog implements ActionListener {
     private JPasswordField passwordUser;
     private JButton confirm,exit;
 
+
     //Dane logowania
     private String login = "root";
     private String password = "1234";
@@ -38,6 +39,8 @@ public class LoginWindow extends JDialog implements ActionListener {
 
 
         initGUI();
+
+
 
 
 

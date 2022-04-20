@@ -8,7 +8,6 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 
 
@@ -32,7 +31,7 @@ public class CentralPanel extends JPanel implements ActionListener {
 
     private String[] dateComboBox = {"Średnia","Suma","MAX","MIN"};
 
-    private JTextArea resultArea;
+    public static JTextArea resultArea;
 
 
     CentralPanel(){
