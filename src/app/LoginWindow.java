@@ -126,6 +126,8 @@ public class LoginWindow extends JDialog implements ActionListener {
 
     private void createPanelsLoginWindow() {
 
+
+
         //Stworzenie panelu przechowującego wiadomość o konieczności zalogowania się
         loginMessagePanel = createJPanel(Color.WHITE);
 
@@ -204,7 +206,7 @@ public class LoginWindow extends JDialog implements ActionListener {
 
     private void createTextFiled() {
 
-        loginUser = createJTextFiled(18);
+        loginUser = createJTextFiled(20);
 
     }
 
@@ -218,7 +220,7 @@ public class LoginWindow extends JDialog implements ActionListener {
 
     private void createPasswordFiled() {
 
-        passwordUser = createJPasswordFiled(18);
+        passwordUser = createJPasswordFiled(20);
 
     }
 
@@ -304,6 +306,7 @@ public class LoginWindow extends JDialog implements ActionListener {
                     userDataL = getDataUserL(loginUser);
                 } catch (Exception ex) {
                     Window.statusBar.setStatusAndValueOfApplication("Dane logowania","Zła długość");
+                    JOptionPane.showMessageDialog(this,"Login jest za długi/krótki!","Uwaga!",JOptionPane.WARNING_MESSAGE);
                 }
 
                 //Hasło sprawdzanie długości, jeśli za długie/krótkie rzuć wyjątek
@@ -312,6 +315,7 @@ public class LoginWindow extends JDialog implements ActionListener {
                     userDataP = getDataUserP(passwordUser);
                 } catch (Exception ex) {
                     Window.statusBar.setStatusAndValueOfApplication("Dane logowania","Zła długość");
+                    JOptionPane.showMessageDialog(this,"Hasło jest za długie/krótkie!","Uwaga!",JOptionPane.WARNING_MESSAGE);
                 }
 
 

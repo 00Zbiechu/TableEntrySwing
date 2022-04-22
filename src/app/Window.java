@@ -92,10 +92,7 @@ public class Window extends JFrame implements ActionListener {
 
 
         //Sprawdzenie, czy można się zalogować
-        isLaunched(statusBar.getStatus(),statusBar.getValue());
-
-
-
+        //isLaunched(statusBar.getStatus(),statusBar.getValue());
 
 
     }
@@ -146,14 +143,13 @@ public class Window extends JFrame implements ActionListener {
     //metoda ustawiająca rozmiar okna aplikacji na połowę rozmiaru okna i przypisująca te wartości do zmiennych
     private void setDimensionWindow(Dimension resolution){
 
-        this.windowWidth = resolution.width/2;
-        this.windowHeight = resolution.height/2;
+        windowWidth = resolution.width/2;
+        windowHeight = resolution.height/2;
         setSize(windowWidth,windowHeight);
-        setResizable(false);
+        setResizable(true);
 
         //Pokazuje ile wynosi rozmiar okna
         //System.out.println(windowWidth+" "+windowHeight);
-
 
     }
 
@@ -163,14 +159,13 @@ public class Window extends JFrame implements ActionListener {
         int X = resolution.width/4;
         int Y = resolution.height/4;
 
-        this.windowX = X;
-        this.windowY = Y;
+        windowX = X;
+        windowY = Y;
 
         setLocation(X,Y);
 
 
     }
-
 
 
     //Metoda zamykająca okno
@@ -329,7 +324,7 @@ public class Window extends JFrame implements ActionListener {
     private void createToolBar(){
 
         //3 wiersze są puste na przyszłość
-        toolBar = createJToolBar(false,true,6,1);
+        toolBar = createJToolBar(false,true,1,6);
 
 
         //Dodanie elementów do Toolbara
@@ -344,7 +339,7 @@ public class Window extends JFrame implements ActionListener {
 
 
         //Ustawienie toolbar'a w oknie
-        this.add(toolBar,BorderLayout.WEST);
+        this.add(toolBar,BorderLayout.NORTH);
 
 
     }
@@ -421,23 +416,16 @@ public class Window extends JFrame implements ActionListener {
 
 
 
-    private JLabel createJLabel(String text){
-
-        JLabel jLabel = new JLabel(text);
-
-        return jLabel;
-
-    }
-
     private void createScrollCentralPanel(){
 
-            this.centralPanel = new CentralPanel(); //Tworzenie obiektu klasy CentralPanel
-                centralPanel.setVisible(false); //Początkowa widoczność wyłączona
-            this.loginRequired = new LockWindow(); //Tworzenie obiektu klasy LockWindow
+
+            centralPanel = new CentralPanel(); //Tworzenie obiektu klasy CentralPanel
+                centralPanel.setVisible(true); //Początkowa widoczność wyłączona
+            loginRequired = new LockWindow(); //Tworzenie obiektu klasy LockWindow
 
         JPanel panelMain = new JPanel();
                 panelMain.add(centralPanel);
-                panelMain.add(loginRequired);
+                //panelMain.add(loginRequired);
 
             JScrollPane scrollableArea = new JScrollPane(panelMain);
             scrollableArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -532,23 +520,23 @@ public class Window extends JFrame implements ActionListener {
         }else if(e.getSource()==printButton || e.getSource()==filePrintMenuItem){
 
             //Drukowanie
-            Logic.printTable(CentralPanel.table);
+            //Logic.printTable(CentralPanel.table);
 
         }
         //----------------------------------------------------FileMenu
         else if(e.getSource()==saveButton || e.getSource()==editSaveItem){
 
             //Zapis do pliku
-            try {
-                Logic.saveFile(this,CentralPanel.table);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
+//            try {
+//                Logic.saveFile(this,CentralPanel.table);
+//            } catch (IOException ex) {
+//                ex.printStackTrace();
+//            }
 
         }else if(e.getSource()==editClearItem){
 
             //Czyszczenie tabeli
-            Logic.clear(CentralPanel.table,CentralPanel.resultArea);
+            //Logic.clear(CentralPanel.table,CentralPanel.resultArea);
 
         }
         //--------------------------------------------------EditMenu

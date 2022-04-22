@@ -13,27 +13,33 @@ import java.util.Collections;
 
 public class Logic {
 
-        public static void insertDataIntoTable(String data, int x, int y, JTable table){
+
+        public static void insertDataIntoTable(String data, int x, int y, JTable table, Component parent){
 
             int value=0;
             try {
                value =  Integer.parseInt(data);
                Window.statusBar.setStatusAndValueOfApplication("Wprowadzono wartość",String.valueOf(value));
+
+                //Model do obsługi tabeli
+                DefaultTableModel model = (DefaultTableModel)table.getModel();
+                //Wprowadzenie zmian do tabeli
+                model.setValueAt(value,--y,--x);
+                table.selectAll();
+
             }catch (Exception e){
-                Window.statusBar.setStatusAndValueOfApplication("Podaną złą wartość",String.valueOf(value));
+                Window.statusBar.setStatusAndValueOfApplication("Podaną złą wartość","Błąd");
+                JOptionPane.showMessageDialog(parent,"Wprowadzono niewłaściwą wartość!","Zła wartość",JOptionPane.WARNING_MESSAGE);
             }
 
-            //Model do obsługi tabeli
-            DefaultTableModel model = (DefaultTableModel)table.getModel();
-            //Wprowadzenie zmian do tabeli
-            model.setValueAt(value,--y,--x);
-            table.selectAll();
+
 
 
         }
 
 
-        public static void calculate(String operation,JTable table,JTextArea textArea){
+
+        public static void calculate(String operation,JTable table,JTextArea textArea, Component parent){
 
             Window.statusBar.setStatusAndValueOfApplication("Wykonanie operacji",String.valueOf(operation));
 
@@ -46,11 +52,7 @@ public class Logic {
 
                         for(int j=0;j<5;j++){
 
-                            if(table.getValueAt(i,j)==null){
-                                sum=sum+0;
-                            }else{
-                                sum=sum+(int)(table.getValueAt(i,j));
-                            }
+                            sum=sum+(int)(table.getValueAt(i,j));
 
                         }
 
@@ -74,11 +76,7 @@ public class Logic {
 
                     for(int j=0;j<5;j++){
 
-                        if(table.getValueAt(i,j)==null){
-                            sum=sum+0;
-                        }else{
-                            sum=sum+(int)(table.getValueAt(i,j));
-                        }
+                        sum=sum+(int)(table.getValueAt(i,j));
 
                     }
 
@@ -97,11 +95,8 @@ public class Logic {
 
                             for(int j=0;j<5;j++){
 
-                                if(table.getValueAt(i,j)==null){
-                                    continue;
-                                }else{
-                                    allElements.add((int)(table.getValueAt(i,j)));
-                                }
+
+                                allElements.add((int)(table.getValueAt(i,j)));
 
                             }
 
@@ -110,6 +105,7 @@ public class Logic {
                         textArea.setText("MAX element to: "+Collections.max(allElements)+"\n");
                     }catch (Exception e){
                         Window.statusBar.setStatusAndValueOfApplication("Tablica","Pusta");
+                        JOptionPane.showMessageDialog(parent,"Tablica jest pusta proszę ją wypełnić.");
                     }
 
 
@@ -124,11 +120,8 @@ public class Logic {
 
                         for(int j=0;j<5;j++){
 
-                            if(table.getValueAt(i,j)==null){
-                                continue;
-                            }else{
-                                allElements.add((int)(table.getValueAt(i,j)));
-                            }
+                            allElements.add((int)(table.getValueAt(i,j)));
+
 
                         }
 
@@ -136,6 +129,7 @@ public class Logic {
                     textArea.setText("MIN element to: "+Collections.min(allElements)+"\n");
                 }catch (Exception e){
                     Window.statusBar.setStatusAndValueOfApplication("Tablica","Pusta");
+                    JOptionPane.showMessageDialog(parent,"Tablica jest pusta proszę ją wypełnić!","Brak danych",JOptionPane.WARNING_MESSAGE);
                 }
 
 
@@ -149,12 +143,14 @@ public class Logic {
             //Model do obsługi tabeli
             DefaultTableModel model = (DefaultTableModel) table.getModel();
 
+            String data[][] = new String[5][5];
+
             //Wprowadzenie zmian do tabeli
             for (int i = 0; i < 5; i++) {
 
                 for (int j = 0; j < 5; j++) {
 
-                    model.setValueAt(null, i, j);
+                    model.setValueAt(0, i, j);
 
                 }
 
