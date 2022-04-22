@@ -520,23 +520,23 @@ public class Window extends JFrame implements ActionListener {
         }else if(e.getSource()==printButton || e.getSource()==filePrintMenuItem){
 
             //Drukowanie
-            //Logic.printTable(CentralPanel.table);
+            Logic.printTable(CentralPanel.table);
 
         }
         //----------------------------------------------------FileMenu
         else if(e.getSource()==saveButton || e.getSource()==editSaveItem){
 
             //Zapis do pliku
-//            try {
-//                Logic.saveFile(this,CentralPanel.table);
-//            } catch (IOException ex) {
-//                ex.printStackTrace();
-//            }
+            try {
+                Logic.saveFile(this,CentralPanel.table);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
 
         }else if(e.getSource()==editClearItem){
 
             //Czyszczenie tabeli
-            //Logic.clear(CentralPanel.table,CentralPanel.resultArea);
+            Logic.clear(CentralPanel.table,CentralPanel.resultArea);
 
         }
         //--------------------------------------------------EditMenu
