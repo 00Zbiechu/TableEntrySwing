@@ -21,11 +21,9 @@ public class Logic {
                value =  Integer.parseInt(data);
                Window.statusBar.setStatusAndValueOfApplication("Wprowadzono wartość",String.valueOf(value));
 
-                //Model do obsługi tabeli
-                DefaultTableModel model = (DefaultTableModel)table.getModel();
                 //Wprowadzenie zmian do tabeli
-                model.setValueAt(value,--y,--x);
-                table.selectAll();
+                table.setValueAt(String.valueOf(value),--y,--x);
+                //table.selectAll();
 
             }catch (Exception e){
                 Window.statusBar.setStatusAndValueOfApplication("Podaną złą wartość","Błąd");
@@ -52,7 +50,7 @@ public class Logic {
 
                         for(int j=0;j<5;j++){
 
-                            sum=sum+(int)(table.getValueAt(i,j));
+                            sum=sum+Integer.parseInt((String) table.getValueAt(i,j));
 
                         }
 
@@ -76,7 +74,7 @@ public class Logic {
 
                     for(int j=0;j<5;j++){
 
-                        sum=sum+(int)(table.getValueAt(i,j));
+                        sum=sum+Integer.parseInt((String) table.getValueAt(i,j));
 
                     }
 
@@ -96,7 +94,7 @@ public class Logic {
                             for(int j=0;j<5;j++){
 
 
-                                allElements.add((int)(table.getValueAt(i,j)));
+                                allElements.add(Integer.parseInt((String) table.getValueAt(i,j)));
 
                             }
 
@@ -120,7 +118,7 @@ public class Logic {
 
                         for(int j=0;j<5;j++){
 
-                            allElements.add((int)(table.getValueAt(i,j)));
+                            allElements.add(Integer.parseInt((String) table.getValueAt(i,j)));
 
 
                         }
