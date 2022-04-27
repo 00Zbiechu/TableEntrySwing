@@ -220,6 +220,24 @@ public class Logic {
 
         }
 
+        public static String[][] dataTable(String fillData){
+
+            String[][] data = new String[5][5];
+
+                for(int i=0;i<data.length;i++){
+
+                    for(int j=0;j<data.length;j++){
+
+                        data[i][j] = fillData;
+
+                    }
+
+                }
+
+
+            return data;
+        }
+
 }
 
 

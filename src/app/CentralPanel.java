@@ -7,7 +7,6 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +16,8 @@ import java.io.IOException;
 public class CentralPanel extends JPanel implements ActionListener {
 
     private JPanel  panelInsert,panelTable,panelAction, panelOperation, panelResult;
+
+    private JScrollPane scrollTable;
 
     private JLabel labelInsertNumber, labelInsertPositionX, labelInsertPositionY, labelSelectOperation;
 
@@ -33,6 +34,8 @@ public class CentralPanel extends JPanel implements ActionListener {
     private JComboBox selectOperation;
 
     private String[] dateComboBox = {"Średnia","Suma","MAX","MIN"};
+
+    private String[] labelForTableColumns = {"1","2","3","4","5"};
 
     public static JTextArea resultArea;
 
@@ -139,23 +142,23 @@ public class CentralPanel extends JPanel implements ActionListener {
 
     }
 
-    private JTable createJTable(int col, int row){
+    private JTable createJTable(String[] colLabels,String [][] data){
 
 
-        JTable jTable = new JTable(col,row);
+        JTable jTable = new JTable(data,colLabels);
             jTable.setBorder(BorderFactory.createLineBorder(Color.BLACK));
             jTable.setEnabled(false);
 
 
 
-            //Początkowe wypełnianie tabeli zerami
-            DefaultTableModel model = (DefaultTableModel) jTable.getModel();
-
-            for (int i = 0; i < 5; i++) {
-                for (int j = 0; j < 5; j++) {
-                    model.setValueAt(0, i, j);
-                }
-            }
+            //Początkowe wypełnianie tabeli zerami na sztywno
+//            DefaultTableModel model = (DefaultTableModel) jTable.getModel();
+//
+//            for (int i = 0; i < 5; i++) {
+//                for (int j = 0; j < 5; j++) {
+//                    model.setValueAt(0, i, j);
+//                }
+//            }
 
 
             //Ustawianie justowania komórek na prawą stronę
@@ -167,7 +170,9 @@ public class CentralPanel extends JPanel implements ActionListener {
 
     private void createTable(){
 
-        this.table = createJTable(5,5);
+        this.table = createJTable(labelForTableColumns,Logic.dataTable("0"));
+
+        scrollTable = new JScrollPane(table);
 
 
     }
@@ -312,7 +317,7 @@ public class CentralPanel extends JPanel implements ActionListener {
         long windowWTwo = Math.round(windowWidth*0.20);
 
         //Zmienne pomocnicze do obliczenia wielkości wierszy (jeden)
-        long windowH = Math.round(windowHeight*0.21);
+        long windowH = Math.round(windowHeight*0.28);
 
         String columnConfiguration = windowW+"px, "+windowWTwo+"px";
         String rowConfiguration = windowH+"px";
@@ -377,7 +382,7 @@ public class CentralPanel extends JPanel implements ActionListener {
 
         //Panel środkowy ---------------------------------------------------------------------
         panelTable.setLayout(createFormLayoutMid(Window.windowWidth,Window.windowHeight));
-            panelTable.add(table,cc.xy(1,1,CellConstraints.FILL,CellConstraints.TOP));
+            panelTable.add(scrollTable,cc.xy(1,1,CellConstraints.FILL,CellConstraints.TOP));
             panelTable.add(panelAction,cc.xy(2,1,CellConstraints.CENTER,CellConstraints.TOP));
 
                 //Wypełnianie panelu akcji przyciskami i nadanie mu stylu, żeby układały się w 1 kolumnie
