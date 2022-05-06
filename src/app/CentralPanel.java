@@ -1,49 +1,44 @@
 package app;
 
+import app.TableMVC.ControllerTable;
+import app.TableMVC.ModelTable;
+import app.TableMVC.ViewTable;
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
+
 
 
 public class CentralPanel extends JPanel implements ActionListener {
 
-    private JPanel  panelInsert,panelTable,panelAction, panelOperation, panelResult;
-
-    private JScrollPane scrollTable;
+    private JPanel  panelInsert, panelMid, panelOperation, panelResult;
 
     private JLabel labelInsertNumber, labelInsertPositionX, labelInsertPositionY, labelSelectOperation;
 
-    private JTextField insertNumber;
+    public static JTextField insertNumber;
 
     private JSlider sliderX,sliderY;
 
-    public static JTable table;
+    private Icon iconCalculate;
 
-    private JButton clearButton, commitButton, saveButton, calculate;
-
-    private Icon iconClearButton, iconCommitButton, iconSaveButton, iconCalculate;
+    private JButton calculate;
 
     private JComboBox selectOperation;
 
     private String[] dateComboBox = {"Średnia","Suma","MAX","MIN"};
 
-    private String[] labelForTableColumns = {"1","2","3","4","5"};
-
     public static JTextArea resultArea;
+
 
 
     CentralPanel(){
 
         initGUI();
-
 
     }
 
@@ -59,14 +54,11 @@ public class CentralPanel extends JPanel implements ActionListener {
         //Tworzenie sliderów
         createSlider();
 
-        //Tworzenie tabeli
-        createTable();
-
         //Tworzenie ikon do przycisków
         createIcon();
 
         //Tworzenie przycisków
-         createButton();
+        createButton();
 
         //Tworzenie comboBox'a
         createComboBox();
@@ -142,40 +134,6 @@ public class CentralPanel extends JPanel implements ActionListener {
 
     }
 
-    private JTable createJTable(String[] colLabels,String [][] data){
-
-
-        JTable jTable = new JTable(data,colLabels);
-            jTable.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            jTable.setEnabled(false);
-
-
-
-            //Początkowe wypełnianie tabeli zerami na sztywno
-//            DefaultTableModel model = (DefaultTableModel) jTable.getModel();
-//
-//            for (int i = 0; i < 5; i++) {
-//                for (int j = 0; j < 5; j++) {
-//                    model.setValueAt(0, i, j);
-//                }
-//            }
-
-
-            //Ustawianie justowania komórek na prawą stronę
-            ((DefaultTableCellRenderer)jTable.getDefaultRenderer(String.class)).setHorizontalAlignment(SwingConstants.RIGHT);
-
-            return jTable;
-
-    }
-
-    private void createTable(){
-
-        this.table = createJTable(labelForTableColumns,Logic.dataTable("0"));
-
-        scrollTable = new JScrollPane(table);
-
-
-    }
 
     private JButton createJButton(String text,Icon icon){
 
@@ -187,11 +145,10 @@ public class CentralPanel extends JPanel implements ActionListener {
 
     }
 
+
     private void createButton(){
 
-        this.clearButton = createJButton("Wyczyść",iconClearButton);
-        this.commitButton = createJButton("Wprowadź",iconCommitButton);
-        this.saveButton = createJButton("Zapisz",iconSaveButton);
+
         this.calculate = createJButton("Oblicz",iconCalculate);
 
 
@@ -226,12 +183,11 @@ public class CentralPanel extends JPanel implements ActionListener {
 
     private void createPanel(){
 
-            //Panele pomocnicze, które będą dodane do panelMain
-            this.panelInsert = createJPanel();
-            this.panelTable = createJPanel();
-            this.panelAction = createJPanel();
-            this.panelOperation = createJPanel();
-            this.panelResult = createResultPanel("Rezultat operacji",Color.BLACK);
+        //Panele pomocnicze, które będą dodane do panelMain
+        this.panelInsert = createJPanel();
+        this.panelMid = createJPanel();
+        this.panelOperation = createJPanel();
+        this.panelResult = createResultPanel("Rezultat operacji",Color.BLACK);
 
 
     }
@@ -246,9 +202,6 @@ public class CentralPanel extends JPanel implements ActionListener {
 
     private void createIcon(){
 
-        this.iconClearButton = createJIcon("min_clear.jpg");
-        this.iconCommitButton = createJIcon("min_insert.png");
-        this.iconSaveButton = createJIcon("min_print.jpg");
         this.iconCalculate = createJIcon("min_operation.jpg");
 
     }
@@ -278,8 +231,6 @@ public class CentralPanel extends JPanel implements ActionListener {
         }
 
     }
-
-
 
 
 
@@ -313,13 +264,13 @@ public class CentralPanel extends JPanel implements ActionListener {
 
 
         //Zmienna pomocnicza do obliczenia wielkości kolumn (dwóch)
-        long windowW = Math.round(windowWidth*0.60);
+        long windowW = Math.round(windowWidth*0.80);
         long windowWTwo = Math.round(windowWidth*0.20);
 
         //Zmienne pomocnicze do obliczenia wielkości wierszy (jeden)
         long windowH = Math.round(windowHeight*0.28);
 
-        String columnConfiguration = windowW+"px, "+windowWTwo+"px";
+        String columnConfiguration = windowW+"px";
         String rowConfiguration = windowH+"px";
 
 
@@ -364,54 +315,47 @@ public class CentralPanel extends JPanel implements ActionListener {
 
         //Panel górny --------------------------------------------------------------------
 
-            //Ustawianie layoutu dla JPanelu na podstawie wielkości okna aplikacji
-            panelInsert.setLayout(createFormLayoutTop(Window.windowWidth,Window.windowHeight));
-                panelInsert.add(labelInsertNumber,cc.xy(1,1,CellConstraints.RIGHT,CellConstraints.BOTTOM));
-                panelInsert.add(insertNumber,cc.xy(2,1,CellConstraints.LEFT,CellConstraints.BOTTOM));
+        //Ustawianie layoutu dla JPanelu na podstawie wielkości okna aplikacji
+        panelInsert.setLayout(createFormLayoutTop(Window.windowWidth,Window.windowHeight));
+        panelInsert.add(labelInsertNumber,cc.xy(1,1,CellConstraints.RIGHT,CellConstraints.BOTTOM));
+        panelInsert.add(insertNumber,cc.xy(2,1,CellConstraints.LEFT,CellConstraints.BOTTOM));
 
-                panelInsert.add(labelInsertPositionX,cc.xy(3,1,CellConstraints.RIGHT,CellConstraints.BOTTOM));
-                panelInsert.add(sliderX,cc.xy(4,1,CellConstraints.LEFT,CellConstraints.BOTTOM));
+        panelInsert.add(labelInsertPositionX,cc.xy(3,1,CellConstraints.RIGHT,CellConstraints.BOTTOM));
+        panelInsert.add(sliderX,cc.xy(4,1,CellConstraints.LEFT,CellConstraints.BOTTOM));
 
-                panelInsert.add(labelInsertPositionY,cc.xy(5,1,CellConstraints.RIGHT,CellConstraints.BOTTOM));
-                panelInsert.add(sliderY,cc.xy(6,1,CellConstraints.LEFT,CellConstraints.BOTTOM));
+        panelInsert.add(labelInsertPositionY,cc.xy(5,1,CellConstraints.RIGHT,CellConstraints.BOTTOM));
+        panelInsert.add(sliderY,cc.xy(6,1,CellConstraints.LEFT,CellConstraints.BOTTOM));
 
-            //Dodanie paneluInsert do głównego okna aplikacji
-            add(panelInsert);
+        //Dodanie paneluInsert do głównego okna aplikacji
+        add(panelInsert);
 
 
 
         //Panel środkowy ---------------------------------------------------------------------
-        panelTable.setLayout(createFormLayoutMid(Window.windowWidth,Window.windowHeight));
-            panelTable.add(scrollTable,cc.xy(1,1,CellConstraints.FILL,CellConstraints.TOP));
-            panelTable.add(panelAction,cc.xy(2,1,CellConstraints.CENTER,CellConstraints.TOP));
+        panelMid.setLayout(createFormLayoutMid(Window.windowWidth,Window.windowHeight));
 
-                //Wypełnianie panelu akcji przyciskami i nadanie mu stylu, żeby układały się w 1 kolumnie
-                panelAction.setLayout(new GridLayout(3,1,0,5));
-                    panelAction.add(clearButton);
-                    panelAction.add(commitButton);
-                    panelAction.add(saveButton);
+            panelMid.add(,cc.xy(1,1,CellConstraints.CENTER,CellConstraints.CENTER));
 
-
-            //Dodawanie paneluTable do głównego okna aplikacji
-            add(panelTable);
+        //Dodawanie paneluTable do głównego okna aplikacji
+        add(panelMid);
 
 
         //Panel dolny-wybór operacji do wykonania-------------------------------------------------
         panelOperation.setLayout(createFormLayoutBottom(Window.windowWidth,Window.windowHeight));
 
-                //Dodanie komponentów GUI do panelu Operation
-                panelOperation.add(labelSelectOperation,cc.xy(1,1,CellConstraints.RIGHT,CellConstraints.CENTER));
-                panelOperation.add(selectOperation,cc.xy(2,1,CellConstraints.LEFT,CellConstraints.CENTER));
-                panelOperation.add(calculate,cc.xy(3,1,CellConstraints.LEFT,CellConstraints.CENTER));
+        //Dodanie komponentów GUI do panelu Operation
+        panelOperation.add(labelSelectOperation,cc.xy(1,1,CellConstraints.RIGHT,CellConstraints.CENTER));
+        panelOperation.add(selectOperation,cc.xy(2,1,CellConstraints.LEFT,CellConstraints.CENTER));
+        panelOperation.add(calculate,cc.xy(3,1,CellConstraints.LEFT,CellConstraints.CENTER));
 
-            //Dodanie panelu panelOperation do okna głównego
-            add(panelOperation);
+        //Dodanie panelu panelOperation do okna głównego
+        add(panelOperation);
 
 
         //Panel dolny-rezultat wykonanej operacji ------------------------------------------------
 
-            //Dodanie panelu panelResult do głównego okna
-            add(panelResult);
+        //Dodanie panelu panelResult do głównego okna
+        add(panelResult);
 
 
 
@@ -419,38 +363,21 @@ public class CentralPanel extends JPanel implements ActionListener {
 
     }
 
+    public static String getInsertValue(JTextField textField){
+
+        return textField.getText();
+
+    }
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if(e.getSource()==commitButton && insertNumber!=null){
 
-            Logic.insertDataIntoTable(insertNumber.getText(),sliderX.getValue(),sliderY.getValue(),table,this);
-
-
-        }else if(e.getSource()==calculate){
-
-            Logic.calculate(String.valueOf(selectOperation.getSelectedItem()),table,resultArea,this);
-
-        }else if(e.getSource()==clearButton){
-
-            Logic.clear(table,resultArea);
-            Window.statusBar.setStatusAndValueOfApplication("Czyszczenie tabeli","True");
-
-        }else if(e.getSource()==this.saveButton) {
-
-            try {
-                Logic.saveFile(this,table);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-
-        }else if(e.getSource()==selectOperation){
+        if(e.getSource()==selectOperation){
 
             Window.statusBar.setStatusAndValueOfApplication("Pasek operacji","Wybrano");
 
         }
-
     }
 }
