@@ -8,6 +8,8 @@ import app.TableMVC.ModelTable;
 import app.TableMVC.ViewTable;
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
+import org.freixas.jcalendar.JCalendar;
+import org.freixas.jcalendar.JCalendarCombo;
 
 import javax.swing.*;
 import java.awt.*;
@@ -36,6 +38,10 @@ public class CentralPanel extends JPanel{
     ControllerComboBox controllerComboBox;
 
 
+    //Kalendarz
+    JCalendarCombo kalendarz = new JCalendarCombo();
+
+
 
     CentralPanel(){
 
@@ -58,8 +64,6 @@ public class CentralPanel extends JPanel{
 
         //Tworzenie sliderów
         createSlider();
-
-
 
         //Tworzenie paneli
         createPanel();
@@ -197,12 +201,13 @@ public class CentralPanel extends JPanel{
 
 
         //Zmienna pomocnicza do obliczenia wielkości kolumn (dwóch)
-        long windowW = Math.round(windowWidth*0.80);
+        long windowW = Math.round(windowWidth*0.55);
+        long windowWTwo = Math.round(windowWidth*0.30);
 
         //Zmienne pomocnicze do obliczenia wielkości wierszy (jeden)
-        long windowH = Math.round(windowHeight*0.30);
+        long windowH = Math.round(windowHeight*0.25);
 
-        String columnConfiguration = windowW+"px";
+        String columnConfiguration = windowW+"px,"+windowWTwo+"px";
         String rowConfiguration = windowH+"px";
 
 
@@ -255,6 +260,7 @@ public class CentralPanel extends JPanel{
         panelBottom.setLayout(createFormLayoutBottom(Window.windowWidth,Window.windowHeight));
             //Dodane do panelu Operation przechowującego wybór możliwej operacji do wykonania modelu widoku MVC
             panelBottom.add(ControllerComboBox.viewComboBox,cc.xy(1,1,CellConstraints.LEFT,CellConstraints.TOP));
+            panelBottom.add(kalendarz,cc.xy(2,1,CellConstraints.FILL,CellConstraints.FILL));
 
         //Dodanie panelu panelOperation do okna głównego
         add(panelBottom);
