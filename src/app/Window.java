@@ -1,14 +1,12 @@
 package app;
 
-
-import app.TableMVC.ControllerTable;
 import app.TableMVC.ModelTable;
-import app.TableMVC.ViewTable;
+import com.l2fprod.common.swing.JButtonBar;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.IOException;
+
 
 import static app.TableMVC.ControllerTable.modelTable;
 import static app.TableMVC.ControllerTable.viewTable;
@@ -46,9 +44,14 @@ public class Window extends JFrame implements ActionListener {
     public static JButton saveButton, printButton;
     private JButton logoutButton, closeButton, helpButton, infoButton ;
 
-
     //Ikony do toolBara
     private Icon iconSave, iconPrint, iconLogout, iconClose, iconHelp, iconInfo;
+
+    //nawigacja
+    private JButtonBar nawigacja;
+    private Icon iconAdd, iconWhere, iconAccept, iconTrash, iconMath, iconEqual;
+    private JButton addButton,whereButton,acceptButton,trashButton,mathButton,resultButton;
+
 
     //Pasek statusu
     public static StatusBar statusBar;
@@ -124,12 +127,17 @@ public class Window extends JFrame implements ActionListener {
         //tworzenie toolbaru dla aplikacji
         createToolBar();
 
+        //Metoda tworząca przyciski do buttonBara
+        createButtonBarButton();
+
+        //tworzenie nawigacji jButtonBar
+        createButtonBar();
+
         //Dodane stopki (pasek statusu aplikacji)
         createFooter();
 
         //Utworzenie wszystkich okien pomocniczych
         launchWindows();
-
 
         //Stworzenie panelu centralnego aplikacji
         createScrollCentralPanel();
@@ -362,6 +370,8 @@ public class Window extends JFrame implements ActionListener {
         jButton.setEnabled(true);
         jButton.setBackground(Color.WHITE);
 
+        jButton.addActionListener(this);
+
         return jButton;
     }
 
@@ -374,6 +384,58 @@ public class Window extends JFrame implements ActionListener {
         closeButton = createJToolBarButton("Zamknij",iconClose);
         helpButton = createJToolBarButton("Pomoc", iconHelp);
         infoButton = createJToolBarButton("Informacje o programie",iconInfo);
+
+    }
+
+
+    private JButtonBar createJButtonBar(){
+
+        JButtonBar jButtonBar = new JButtonBar();
+            jButtonBar.setPreferredSize(new Dimension((int) (windowWidth*0.05), (int) (windowHeight*0.80)));
+
+        return jButtonBar;
+
+    }
+
+    //Konstruktor przycisków do toolbar'a
+    private JButton createJButtonBarButton(String tooltip,Icon icon){
+
+        JButton jButton = new JButton("",icon);
+        jButton.setToolTipText(tooltip);
+        jButton.addActionListener(this);
+        jButton.setEnabled(true);
+        jButton.setPreferredSize(new Dimension((int) (windowWidth*0.03), (int) (windowHeight*0.10)));
+
+        return jButton;
+    }
+
+
+    private void createButtonBarButton(){
+
+        addButton = createJButtonBarButton("Idź do: Dodaj",iconAdd);
+        whereButton = createJButtonBarButton("Idź do: Pozycja",iconWhere);
+        acceptButton = createJButtonBarButton("Idź do: Wprowadź",iconAccept);
+        trashButton = createJButtonBarButton("Idź do: Usuń",iconTrash);
+        mathButton = createJButtonBarButton("Idź do: Oblicz",iconMath);
+        resultButton = createJButtonBarButton("Idź do: Wynik",iconEqual);
+
+    }
+
+    private void createButtonBar(){
+
+        this.nawigacja = createJButtonBar();
+            nawigacja.setOrientation(SwingConstants.VERTICAL);
+
+            //Dodawanie do JButtonBara
+            nawigacja.add(addButton);
+            nawigacja.add(whereButton);
+            nawigacja.add(acceptButton);
+            nawigacja.add(trashButton);
+            nawigacja.add(mathButton);
+            nawigacja.add(resultButton);
+
+
+        add(nawigacja,BorderLayout.WEST);
 
     }
 
@@ -394,6 +456,14 @@ public class Window extends JFrame implements ActionListener {
             iconLogout = createJIcon("logout.jpg");
             iconInfo = createJIcon("about.jpg");
             iconHelp = createJIcon("settings.jpg");
+
+            //DO nawigacji
+            iconAdd = createJIcon("min_add.jpg");
+            iconWhere = createJIcon("ruler.png");
+            iconAccept = createJIcon("accept.jpg");
+            iconTrash = createJIcon("trash.png");
+            iconMath = createJIcon("math.png");
+            iconEqual = createJIcon("equal.png");
 
     }
 

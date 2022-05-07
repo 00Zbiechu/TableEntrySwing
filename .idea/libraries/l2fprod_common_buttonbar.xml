@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="l2fprod-common-buttonbar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/l2fprod-common-buttonbar.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

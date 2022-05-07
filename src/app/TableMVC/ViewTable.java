@@ -34,8 +34,8 @@ public class ViewTable extends JPanel {
 
         createPanel();
         createTable();
-        createButton();
         createIcon();
+        createButton();
         addComponentsAndSetLayout();
     }
 
@@ -53,46 +53,6 @@ public class ViewTable extends JPanel {
         this.panelAction = createJPanel();
 
     }
-
-
-    private LayoutManager createFormLayoutMid(int windowWidth, int windowHeight){
-
-
-        //Zmienna pomocnicza do obliczenia wielkości kolumn (dwóch)
-        long windowW = Math.round(windowWidth*0.60);
-        long windowWTwo = Math.round(windowWidth*0.20);
-
-        //Zmienne pomocnicze do obliczenia wielkości wierszy (jeden)
-        long windowH = Math.round(windowHeight*0.28);
-
-        String columnConfiguration = windowW+"px, "+windowWTwo+"px";
-        String rowConfiguration = windowH+"px";
-
-
-        FormLayout formLayout = new FormLayout(columnConfiguration,rowConfiguration);
-
-        return formLayout;
-
-    }
-
-    private void addComponentsAndSetLayout(){
-
-        //Obiekt służący do obsługi komórek
-        CellConstraints cc = new CellConstraints();
-
-        //Wypełnianie panelu akcji przyciskami i nadanie mu stylu, żeby układały się w 1 kolumnie
-        panelAction.setLayout(new GridLayout(3,1,0,5));
-            panelAction.add(commitButton);
-            panelAction.add(clearButton);
-            panelAction.add(saveButton);
-
-        //Panel środkowy ---------------------------------------------------------------------
-        this.setLayout(createFormLayoutMid(Window.windowWidth,Window.windowHeight));
-        this.add(scrollTable,cc.xy(1,1, CellConstraints.FILL,CellConstraints.TOP));
-        this.add(panelAction,cc.xy(2,1,CellConstraints.CENTER,CellConstraints.TOP));
-
-    }
-
 
     private void createTable(){
 
@@ -139,6 +99,48 @@ public class ViewTable extends JPanel {
         this.iconSaveButton = createJIcon("min_print.jpg");
 
     }
+
+
+    private LayoutManager createFormLayoutMid(int windowWidth, int windowHeight){
+
+
+        //Zmienna pomocnicza do obliczenia wielkości kolumn (dwóch)
+        long windowW = Math.round(windowWidth*0.60);
+        long windowWTwo = Math.round(windowWidth*0.20);
+
+        //Zmienne pomocnicze do obliczenia wielkości wierszy (jeden)
+        long windowH = Math.round(windowHeight*0.28);
+
+        String columnConfiguration = windowW+"px, "+windowWTwo+"px";
+        String rowConfiguration = windowH+"px";
+
+
+        FormLayout formLayout = new FormLayout(columnConfiguration,rowConfiguration);
+
+        return formLayout;
+
+    }
+
+    private void addComponentsAndSetLayout(){
+
+        //Obiekt służący do obsługi komórek
+        CellConstraints cc = new CellConstraints();
+
+        //Wypełnianie panelu akcji przyciskami i nadanie mu stylu, żeby układały się w 1 kolumnie
+        panelAction.setLayout(new GridLayout(3,1,0,5));
+            panelAction.add(commitButton);
+            panelAction.add(clearButton);
+            panelAction.add(saveButton);
+
+        //Panel środkowy ---------------------------------------------------------------------
+        this.setLayout(createFormLayoutMid(Window.windowWidth,Window.windowHeight));
+        this.add(scrollTable,cc.xy(1,1, CellConstraints.FILL,CellConstraints.FILL));
+        this.add(panelAction,cc.xy(2,1,CellConstraints.CENTER,CellConstraints.CENTER));
+
+    }
+
+
+
 
     //Metoda umożliwiająca dodanie listenera do przycisków - dodanie odbędzie się z klasy kontroler,
     // gdzie został utworzony listener

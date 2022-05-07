@@ -8,5 +8,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="forms-1.2.0" level="project" />
+    <orderEntry type="library" name="l2fprod-common-buttonbar" level="project" />
+    <orderEntry type="library" name="jcalendar" level="project" />
   </component>
 </module>

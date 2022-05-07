@@ -1,5 +1,8 @@
 package app;
 
+import app.ComboBoxMVC.ControllerComboBox;
+import app.ComboBoxMVC.ModelComboBox;
+import app.ComboBoxMVC.ViewComboBox;
 import app.TableMVC.ControllerTable;
 import app.TableMVC.ModelTable;
 import app.TableMVC.ViewTable;
@@ -7,37 +10,30 @@ import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
 
 import javax.swing.*;
-import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 
 
-public class CentralPanel extends JPanel implements ActionListener {
 
-    private JPanel  panelInsert, panelMid, panelOperation, panelResult;
+public class CentralPanel extends JPanel{
 
-    private JLabel labelInsertNumber, labelInsertPositionX, labelInsertPositionY, labelSelectOperation;
+    private JPanel  panelInsert, panelMid, panelBottom;
+
+    private JLabel labelInsertNumber, labelInsertPositionX, labelInsertPositionY;
 
     public static JTextField insertNumber;
 
     public static JSlider sliderX,sliderY;
 
-    private Icon iconCalculate;
-
-    private JButton calculate;
-
-    private JComboBox selectOperation;
-
-    private String[] dateComboBox = {"Średnia","Suma","MAX","MIN"};
-
-    public static JTextArea resultArea;
-
     //MVC Table
-    ModelTable modelTable = new ModelTable();
+    public static ModelTable modelTable = new ModelTable();//Muszę się dostać do tego pola z poziomu Kontrolera Combo
     ViewTable viewTable = new ViewTable();
     ControllerTable controllerTable;
+
+    //MVC ComboBox
+    ModelComboBox modelComboBox = new ModelComboBox();
+    ViewComboBox viewComboBox = new ViewComboBox();
+    ControllerComboBox controllerComboBox;
 
 
 
@@ -45,6 +41,7 @@ public class CentralPanel extends JPanel implements ActionListener {
 
         //Utworzenie kontrolera dla MVC tablicy
         controllerTable = new ControllerTable(modelTable,viewTable);
+        controllerComboBox = new ControllerComboBox(modelComboBox,viewComboBox);
 
         initGUI();
 
@@ -62,17 +59,7 @@ public class CentralPanel extends JPanel implements ActionListener {
         //Tworzenie sliderów
         createSlider();
 
-        //Tworzenie ikon do przycisków
-        createIcon();
 
-        //Tworzenie przycisków
-        createButton();
-
-        //Tworzenie comboBox'a
-        createComboBox();
-
-        //Wypełnianie comboBox'a danym
-        fillDataComboBox();
 
         //Tworzenie paneli
         createPanel();
@@ -100,8 +87,6 @@ public class CentralPanel extends JPanel implements ActionListener {
         this.labelInsertNumber = createJLabel(" Wprowadź wartość : ");
         this.labelInsertPositionX = createJLabel(" X : ");
         this.labelInsertPositionY = createJLabel(" Y : ");
-        this.labelSelectOperation = createJLabel(" Wybierz operację : ");
-
     }
 
     private JTextField createJTextField(int colNumber){
@@ -143,24 +128,6 @@ public class CentralPanel extends JPanel implements ActionListener {
     }
 
 
-    private JButton createJButton(String text,Icon icon){
-
-        JButton jButton = new JButton(text,icon);
-        jButton.addActionListener(this);
-        jButton.setBackground(Color.WHITE);
-
-        return jButton;
-
-    }
-
-
-    private void createButton(){
-
-
-        this.calculate = createJButton("Oblicz",iconCalculate);
-
-
-    }
 
     private JPanel createJPanel(){
 
@@ -170,76 +137,15 @@ public class CentralPanel extends JPanel implements ActionListener {
 
     }
 
-    private JPanel createResultPanel(String title,Color color) {
-
-        JPanel jp = new JPanel();
-
-        TitledBorder titledBorder = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(color), title);
-
-        titledBorder.setTitleJustification(TitledBorder.CENTER);
-        jp.setBorder(titledBorder);
-        jp.setLayout(new BorderLayout(0,0));
-
-        //Pole JTextArea wewnątrz paneluResult
-        this.resultArea = new JTextArea();
-        resultArea.setLineWrap(true);
-        resultArea.setEditable(false);
-
-        jp.add(resultArea,BorderLayout.CENTER);
-        return jp;
-    }
 
     private void createPanel(){
 
         //Panele pomocnicze, które będą dodane do panelMain
         this.panelInsert = createJPanel();
         this.panelMid = createJPanel();
-        this.panelOperation = createJPanel();
-        this.panelResult = createResultPanel("Rezultat operacji",Color.BLACK);
-
+        this.panelBottom = createJPanel();
 
     }
-
-    //Konstruktor ikon
-    private Icon createJIcon(String file) {
-        String name = "/grafika/"+file;
-        Icon icon = new ImageIcon(getClass().getResource(name));
-
-        return icon;
-    }
-
-    private void createIcon(){
-
-        this.iconCalculate = createJIcon("min_operation.jpg");
-
-    }
-
-    private JComboBox createJComboBox(){
-
-        JComboBox jComboBox = new JComboBox();
-        jComboBox.setBackground(Color.WHITE);
-        jComboBox.addActionListener(this);
-
-        return jComboBox;
-
-    }
-
-    private void createComboBox(){
-
-        this.selectOperation = createJComboBox();
-
-    }
-
-    private void fillDataComboBox(){
-
-        for(int i=0;i<dateComboBox.length;i++){
-
-            selectOperation.addItem(dateComboBox[i]);
-
-        }
-
-    }
-
 
 
     //Tworzenie Layoutu dla panelu CentralPanel
@@ -273,7 +179,6 @@ public class CentralPanel extends JPanel implements ActionListener {
 
         //Zmienna pomocnicza do obliczenia wielkości kolumn (dwóch)
         long windowW = Math.round(windowWidth*0.80);
-        long windowWTwo = Math.round(windowWidth*0.20);
 
         //Zmienne pomocnicze do obliczenia wielkości wierszy (jeden)
         long windowH = Math.round(windowHeight*0.28);
@@ -292,14 +197,12 @@ public class CentralPanel extends JPanel implements ActionListener {
 
 
         //Zmienna pomocnicza do obliczenia wielkości kolumn (dwóch)
-        long windowW = Math.round(windowWidth*0.20);
-        long windowWTwo = Math.round(windowWidth*0.15);
-        long windowWThree = Math.round(windowWidth*0.20);
+        long windowW = Math.round(windowWidth*0.80);
 
         //Zmienne pomocnicze do obliczenia wielkości wierszy (jeden)
-        long windowH = Math.round(windowHeight*0.15);
+        long windowH = Math.round(windowHeight*0.30);
 
-        String columnConfiguration = windowW+"px, "+windowWTwo+"px,"+windowWThree+"px";
+        String columnConfiguration = windowW+"px";
         String rowConfiguration = windowH+"px";
 
 
@@ -315,7 +218,7 @@ public class CentralPanel extends JPanel implements ActionListener {
     private void addComponentsAndSetLayout(){
 
         //Ustawianie Layoutu dla głównego okna aplikacji
-        this.setLayout(new GridLayout(4,1,0,0));
+        this.setLayout(new GridLayout(3,1,0,0));
 
         //Obiekt służący do obsługi komórek
         CellConstraints cc = new CellConstraints();
@@ -342,42 +245,21 @@ public class CentralPanel extends JPanel implements ActionListener {
         //Panel środkowy ---------------------------------------------------------------------
         panelMid.setLayout(createFormLayoutMid(Window.windowWidth,Window.windowHeight));
             //Dodanie do panelu MID przechowującego tablice modelu widoku MVC
-            panelMid.add(viewTable,cc.xy(1,1,CellConstraints.CENTER,CellConstraints.CENTER));
+            panelMid.add(ControllerTable.viewTable,cc.xy(1,1,CellConstraints.CENTER,CellConstraints.TOP));
 
         //Dodawanie paneluTable do głównego okna aplikacji
         add(panelMid);
 
 
         //Panel dolny-wybór operacji do wykonania-------------------------------------------------
-        panelOperation.setLayout(createFormLayoutBottom(Window.windowWidth,Window.windowHeight));
-
-        //Dodanie komponentów GUI do panelu Operation
-        panelOperation.add(labelSelectOperation,cc.xy(1,1,CellConstraints.RIGHT,CellConstraints.CENTER));
-        panelOperation.add(selectOperation,cc.xy(2,1,CellConstraints.LEFT,CellConstraints.CENTER));
-        panelOperation.add(calculate,cc.xy(3,1,CellConstraints.LEFT,CellConstraints.CENTER));
+        panelBottom.setLayout(createFormLayoutBottom(Window.windowWidth,Window.windowHeight));
+            //Dodane do panelu Operation przechowującego wybór możliwej operacji do wykonania modelu widoku MVC
+            panelBottom.add(ControllerComboBox.viewComboBox,cc.xy(1,1,CellConstraints.LEFT,CellConstraints.TOP));
 
         //Dodanie panelu panelOperation do okna głównego
-        add(panelOperation);
-
-
-        //Panel dolny-rezultat wykonanej operacji ------------------------------------------------
-
-        //Dodanie panelu panelResult do głównego okna
-        add(panelResult);
+        add(panelBottom);
 
     }
 
-
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-
-        if(e.getSource()==selectOperation){
-
-            Window.statusBar.setStatusAndValueOfApplication("Pasek operacji","Wybrano");
-
-        }
-    }
 
 }

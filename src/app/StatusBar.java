@@ -4,6 +4,7 @@ import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 
 
@@ -17,9 +18,13 @@ public class StatusBar extends JPanel {
 
         initGUI();
 
+
+
     }
 
     private void initGUI(){
+
+        this.setBorder(new LineBorder(Color.LIGHT_GRAY));
 
         //utworzenie etykiet
         createLabels();

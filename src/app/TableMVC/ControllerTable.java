@@ -32,7 +32,7 @@ public class ControllerTable{
             if(e.getSource()==viewTable.commitButton && CentralPanel.insertNumber.getText()!=null){
 
                 //Funkcja modyfikująca model tablicy-zmienia wartości tablicy (modelTable)
-                modelTable.insertDataIntoTableData(CentralPanel.insertNumber.getText(),CentralPanel.sliderX.getValue(),CentralPanel.sliderY.getValue(),viewTable);
+                modelTable.insertDataIntoTableData(CentralPanel.insertNumber.getText(),CentralPanel.sliderY.getValue(),CentralPanel.sliderX.getValue(),viewTable);
                 viewTable.table.setModel(modelTable);
                 viewTable.table.selectAll();
 
