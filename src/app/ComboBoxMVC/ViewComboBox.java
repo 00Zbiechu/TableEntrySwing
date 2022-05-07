@@ -109,6 +109,7 @@ public class ViewComboBox extends JPanel {
     private void createComboBox(){
 
         this.selectOperation = new JComboBox(modelComboBox.getDateComboBox());
+            selectOperation.setBackground(Color.WHITE);
 
     }
 
@@ -202,6 +203,7 @@ public class ViewComboBox extends JPanel {
     public void addComboBoxListener(ActionListener actionListener){
 
         calculate.addActionListener(actionListener);
+        selectOperation.addActionListener(actionListener);
 
     }
 

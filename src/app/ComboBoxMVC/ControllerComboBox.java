@@ -2,6 +2,8 @@ package app.ComboBoxMVC;
 
 
 import app.CentralPanel;
+import app.Window;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -31,6 +33,10 @@ public class ControllerComboBox {
             if(e.getSource()==viewComboBox.calculate){
 
                 modelComboBox.calculate((String) selectOperation.getSelectedItem(),CentralPanel.modelTable.getDataTable(), ViewComboBox.resultArea,ViewComboBox.resultArea);
+
+            }else if(e.getSource()==selectOperation){
+
+                Window.statusBar.setStatusAndValueOfApplication("Wybieranie operacji",String.valueOf(selectOperation.getSelectedItem()));
 
             }
 

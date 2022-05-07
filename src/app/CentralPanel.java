@@ -8,18 +8,19 @@ import app.TableMVC.ModelTable;
 import app.TableMVC.ViewTable;
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
-import org.freixas.jcalendar.JCalendar;
 import org.freixas.jcalendar.JCalendarCombo;
+
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 
 
+public class CentralPanel extends JPanel implements ActionListener {
 
-
-public class CentralPanel extends JPanel{
-
-    private JPanel  panelInsert, panelMid, panelBottom;
+    private JPanel  panelInsert, panelMid, panelBottom, panelCalendar;
 
     private JLabel labelInsertNumber, labelInsertPositionX, labelInsertPositionY;
 
@@ -39,7 +40,12 @@ public class CentralPanel extends JPanel{
 
 
     //Kalendarz
-    JCalendarCombo kalendarz = new JCalendarCombo();
+    private JCalendarCombo kalendarz = new JCalendarCombo();
+
+    private Icon iconViewChart;
+
+    private JButton acceptDate, viewChart;
+
 
 
 
@@ -55,6 +61,11 @@ public class CentralPanel extends JPanel{
 
     private void initGUI(){
 
+        //Tworzenie ikon
+        createIcon();
+
+        //Tworzenie przycisku
+        createButton();
 
         //Tworzenie labelów
         createLabels();
@@ -68,11 +79,55 @@ public class CentralPanel extends JPanel{
         //Tworzenie paneli
         createPanel();
 
+        //Tworzenie kalendarza
+        createCalendar();
 
         //Dodawanie komponentów do paneli oraz ustawianie layoutu dla paneli
         addComponentsAndSetLayout();
 
 
+
+    }
+
+    private void createCalendar(){
+
+        this.kalendarz = new JCalendarCombo();
+            kalendarz.setDateFormat(new SimpleDateFormat("yyyy-MM-dd"));
+            kalendarz.setBackground(Color.WHITE);
+            kalendarz.addActionListener(this);
+
+    }
+
+    //Konstruktor ikon
+    private Icon createJIcon(String file) {
+        String name = "/grafika/"+file;
+        Icon icon = new ImageIcon(getClass().getResource(name));
+
+        return icon;
+    }
+
+    private void createIcon(){
+
+        this.iconViewChart = createJIcon("chart.png");
+
+    }
+
+    private JButton createJButton(String text,String ToolTip,Icon icon){
+
+        JButton jButton = new JButton(text,icon);
+        jButton.addActionListener(this);
+        jButton.setBackground(Color.WHITE);
+        jButton.setToolTipText(ToolTip);
+
+        return jButton;
+
+    }
+
+
+    private void createButton(){
+
+        this.acceptDate = createJButton("Wybierz","",null);
+        this.viewChart = createJButton("","Pokaż wykres",iconViewChart);
 
     }
 
@@ -148,6 +203,7 @@ public class CentralPanel extends JPanel{
         this.panelInsert = createJPanel();
         this.panelMid = createJPanel();
         this.panelBottom = createJPanel();
+        this.panelCalendar = createJPanel();
 
     }
 
@@ -201,13 +257,14 @@ public class CentralPanel extends JPanel{
 
 
         //Zmienna pomocnicza do obliczenia wielkości kolumn (dwóch)
-        long windowW = Math.round(windowWidth*0.55);
-        long windowWTwo = Math.round(windowWidth*0.30);
+        long windowW = Math.round(windowWidth*0.50);
+        long windowWTwo = Math.round(windowWidth*0.15);
+        long windowWThree = Math.round(windowWidth*0.15);
 
         //Zmienne pomocnicze do obliczenia wielkości wierszy (jeden)
         long windowH = Math.round(windowHeight*0.25);
 
-        String columnConfiguration = windowW+"px,"+windowWTwo+"px";
+        String columnConfiguration = windowW+"px,"+windowWTwo+"px,"+windowWThree+"px";
         String rowConfiguration = windowH+"px";
 
 
@@ -250,7 +307,7 @@ public class CentralPanel extends JPanel{
         //Panel środkowy ---------------------------------------------------------------------
         panelMid.setLayout(createFormLayoutMid(Window.windowWidth,Window.windowHeight));
             //Dodanie do panelu MID przechowującego tablice modelu widoku MVC
-            panelMid.add(ControllerTable.viewTable,cc.xy(1,1,CellConstraints.CENTER,CellConstraints.TOP));
+            panelMid.add(ControllerTable.viewTable,cc.xy(1,1,CellConstraints.CENTER,CellConstraints.CENTER));
 
         //Dodawanie paneluTable do głównego okna aplikacji
         add(panelMid);
@@ -260,7 +317,15 @@ public class CentralPanel extends JPanel{
         panelBottom.setLayout(createFormLayoutBottom(Window.windowWidth,Window.windowHeight));
             //Dodane do panelu Operation przechowującego wybór możliwej operacji do wykonania modelu widoku MVC
             panelBottom.add(ControllerComboBox.viewComboBox,cc.xy(1,1,CellConstraints.LEFT,CellConstraints.TOP));
-            panelBottom.add(kalendarz,cc.xy(2,1,CellConstraints.FILL,CellConstraints.FILL));
+
+            //Ustawianie panelCalendar
+            panelCalendar.setLayout(new GridLayout(3,1,0,5));
+            panelCalendar.add(new JLabel("Wprowadź datę:"));
+            panelCalendar.add(kalendarz);
+            panelCalendar.add(acceptDate);
+            panelBottom.add(panelCalendar,cc.xy(2,1,CellConstraints.CENTER,CellConstraints.CENTER));
+
+            panelBottom.add(viewChart,cc.xy(3,1,CellConstraints.CENTER,CellConstraints.CENTER));
 
         //Dodanie panelu panelOperation do okna głównego
         add(panelBottom);
@@ -268,4 +333,26 @@ public class CentralPanel extends JPanel{
     }
 
 
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        if(e.getSource()==acceptDate){
+
+            String formatDateOutput = new SimpleDateFormat("yyyy-MM-dd").format(kalendarz.getDate());
+            controllerComboBox.viewComboBox.resultArea.setText("Wybrano datę: "+formatDateOutput);
+            Window.statusBar.setStatusAndValueOfApplication("Data","Wybrano");
+
+        }else if(e.getSource()==kalendarz){
+
+            Window.statusBar.setStatusAndValueOfApplication("Data","Wybieranie");
+
+        }else if(e.getSource()==viewChart){
+
+            Window.statusBar.setStatusAndValueOfApplication("Pokaż wykres","True");
+
+        }
+
+
+    }
 }

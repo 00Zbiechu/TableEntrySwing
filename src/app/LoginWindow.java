@@ -331,6 +331,8 @@ public class LoginWindow extends JDialog implements ActionListener {
                     //Miejsce na metodę zamieniającą widzialność okien Blokady i okna Aplikacji
                     login();
                     dispose();
+                    //Wyświetlanie porady przy każdym zalogowaniu
+                    new TipOfTheDay();
 
 
                 } else {

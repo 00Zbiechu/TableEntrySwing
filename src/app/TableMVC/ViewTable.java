@@ -134,7 +134,7 @@ public class ViewTable extends JPanel {
 
         //Panel środkowy ---------------------------------------------------------------------
         this.setLayout(createFormLayoutMid(Window.windowWidth,Window.windowHeight));
-        this.add(scrollTable,cc.xy(1,1, CellConstraints.FILL,CellConstraints.FILL));
+        this.add(scrollTable,cc.xy(1,1, CellConstraints.FILL,CellConstraints.CENTER));
         this.add(panelAction,cc.xy(2,1,CellConstraints.CENTER,CellConstraints.CENTER));
 
     }
