@@ -5,17 +5,21 @@ import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class ViewTable extends JPanel {
+
+    //Model danych dla tablicy przechowujący dane i metody
+    ModelTable modelTable = new ModelTable();
 
     //Panele, w których będzie tablica i operacje
     private JPanel panelTable,panelAction;
 
     //Tablica
     private JScrollPane scrollTable; //Tablica będzie w scrollPane
-    public static JTable tableView;
+    public static JTable table;
 
     //Przyciski znajdujące się obok tablicy
     public static JButton clearButton, commitButton, saveButton;
@@ -23,9 +27,7 @@ public class ViewTable extends JPanel {
 
 
     public ViewTable(){
-
         initGUI();
-
     }
 
     public void initGUI(){
@@ -35,7 +37,6 @@ public class ViewTable extends JPanel {
         createButton();
         createIcon();
         addComponentsAndSetLayout();
-
     }
 
     private JPanel createJPanel(){
@@ -81,27 +82,28 @@ public class ViewTable extends JPanel {
 
         //Wypełnianie panelu akcji przyciskami i nadanie mu stylu, żeby układały się w 1 kolumnie
         panelAction.setLayout(new GridLayout(3,1,0,5));
-        panelAction.add(clearButton);
-        panelAction.add(commitButton);
-        panelAction.add(saveButton);
+            panelAction.add(commitButton);
+            panelAction.add(clearButton);
+            panelAction.add(saveButton);
 
         //Panel środkowy ---------------------------------------------------------------------
         this.setLayout(createFormLayoutMid(Window.windowWidth,Window.windowHeight));
         this.add(scrollTable,cc.xy(1,1, CellConstraints.FILL,CellConstraints.TOP));
         this.add(panelAction,cc.xy(2,1,CellConstraints.CENTER,CellConstraints.TOP));
 
-
-
     }
 
 
     private void createTable(){
 
-        this.tableView = new JTable(
+        this.table = new JTable(modelTable);
+        table.setEnabled(false);
 
-        );
+        scrollTable = new JScrollPane(table);
 
-        scrollTable = new JScrollPane(tableView);
+        //Ustawianie justowania komórek na prawą stronę
+        ((DefaultTableCellRenderer)table.getDefaultRenderer(String.class)).setHorizontalAlignment(SwingConstants.RIGHT);
+
 
     }
 
@@ -112,7 +114,6 @@ public class ViewTable extends JPanel {
         jButton.setBackground(Color.WHITE);
 
         return jButton;
-
     }
 
     private void createButton(){
@@ -120,7 +121,6 @@ public class ViewTable extends JPanel {
         this.clearButton = createJButton("Wyczyść",iconClearButton);
         this.commitButton = createJButton("Wprowadź",iconCommitButton);
         this.saveButton = createJButton("Zapisz",iconSaveButton);
-
 
     }
 
@@ -140,10 +140,12 @@ public class ViewTable extends JPanel {
 
     }
 
+    //Metoda umożliwiająca dodanie listenera do przycisków - dodanie odbędzie się z klasy kontroler,
+    // gdzie został utworzony listener
     public void addTableListener(ActionListener listener){
 
-        clearButton.addActionListener(listener);
         commitButton.addActionListener(listener);
+        clearButton.addActionListener(listener);
         saveButton.addActionListener(listener);
 
     }

@@ -1,10 +1,17 @@
 package app;
 
 
+import app.TableMVC.ControllerTable;
+import app.TableMVC.ModelTable;
+import app.TableMVC.ViewTable;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
+
+import static app.TableMVC.ControllerTable.modelTable;
+import static app.TableMVC.ControllerTable.viewTable;
 
 public class Window extends JFrame implements ActionListener {
 
@@ -27,7 +34,7 @@ public class Window extends JFrame implements ActionListener {
 
     //MenuItems
     private JMenuItem  fileLoginMenuItem, fileLogoutMenuItem, filePrintMenuItem, fileExitMenuItem,
-            helpSettingsMenuItem, helpAboutMenuItem, editSaveItem, editCommitItem, editClearItem;
+            helpSettingsMenuItem, helpAboutMenuItem, editSaveItem, editClearItem;
 
     //ViewMenuItemsCheckbox
     private JCheckBoxMenuItem viewStatusBarMenuItem, viewJToolBarMenuItem;
@@ -36,7 +43,8 @@ public class Window extends JFrame implements ActionListener {
     private JToolBar toolBar;
 
     //toolbar items
-    private JButton saveButton, printButton, logoutButton, closeButton, helpButton, infoButton ;
+    public static JButton saveButton, printButton;
+    private JButton logoutButton, closeButton, helpButton, infoButton ;
 
 
     //Ikony do toolBara
@@ -59,6 +67,7 @@ public class Window extends JFrame implements ActionListener {
 
     //Centralny panel aplikacji-statyczne, żeby mieć dostęp z klasy LoginWindow
     public static CentralPanel centralPanel;
+
 
 
     //konstruktor klasy Window
@@ -493,7 +502,6 @@ public class Window extends JFrame implements ActionListener {
 
 
 
-
     //metoda sprawdzająca źródło wywołujące zdarzenie okna
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -517,31 +525,28 @@ public class Window extends JFrame implements ActionListener {
             Window.statusBar.setStatusAndValueOfApplication("Logowanie","False");
 
 
+        }else if(e.getSource()==filePrintMenuItem || e.getSource()==printButton){
+
+            ModelTable.printTable(viewTable.table);
+
         }
-        //Operacje powiązane z ActionPanelem (kiedyś)
-//        else if(e.getSource()==printButton || e.getSource()==filePrintMenuItem){
-//
-//            //Drukowanie
-//            Logic.printTable(CentralPanel.table);
-//
-//        }
-//        //----------------------------------------------------FileMenu
-//        else if(e.getSource()==saveButton || e.getSource()==editSaveItem){
-//
-//            //Zapis do pliku
-//            try {
-//                Logic.saveFile(this,CentralPanel.table);
-//            } catch (IOException ex) {
-//                ex.printStackTrace();
-//            }
-//
-//        }else if(e.getSource()==editClearItem){
-//
-//            //Czyszczenie tabeli
-//            Logic.clear(CentralPanel.table,CentralPanel.resultArea);
-//
-//        }
         //--------------------------------------------------EditMenu
+        else if(e.getSource()==editClearItem){
+
+            modelTable.fillTableZeros();
+            viewTable.table.setModel(modelTable);
+            viewTable.table.selectAll();
+
+
+        }else if(e.getSource()==editSaveItem || e.getSource()==this.saveButton){
+
+            try {
+                modelTable.saveFile(this);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(viewTable,"Niepowodzenie zapisywania pliku!");
+            }
+
+        }
         else if(e.getSource()==viewJToolBarMenuItem){
 
             // Ukrycie/Pokazanie toolbar'a

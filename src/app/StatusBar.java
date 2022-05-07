@@ -75,7 +75,7 @@ public class StatusBar extends JPanel {
 
     private void createLabels(){
 
-        descriptionStatusBar = createJLabel(" Pasek stanu");
+        descriptionStatusBar = createJLabel(" Pasek statusu");
         status = createJLabel("Status: ");
         value = createJLabel("Wartość: ");
 

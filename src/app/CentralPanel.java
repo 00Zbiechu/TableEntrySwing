@@ -22,7 +22,7 @@ public class CentralPanel extends JPanel implements ActionListener {
 
     public static JTextField insertNumber;
 
-    private JSlider sliderX,sliderY;
+    public static JSlider sliderX,sliderY;
 
     private Icon iconCalculate;
 
@@ -34,9 +34,17 @@ public class CentralPanel extends JPanel implements ActionListener {
 
     public static JTextArea resultArea;
 
+    //MVC Table
+    ModelTable modelTable = new ModelTable();
+    ViewTable viewTable = new ViewTable();
+    ControllerTable controllerTable;
+
 
 
     CentralPanel(){
+
+        //Utworzenie kontrolera dla MVC tablicy
+        controllerTable = new ControllerTable(modelTable,viewTable);
 
         initGUI();
 
@@ -333,8 +341,8 @@ public class CentralPanel extends JPanel implements ActionListener {
 
         //Panel środkowy ---------------------------------------------------------------------
         panelMid.setLayout(createFormLayoutMid(Window.windowWidth,Window.windowHeight));
-
-            panelMid.add(,cc.xy(1,1,CellConstraints.CENTER,CellConstraints.CENTER));
+            //Dodanie do panelu MID przechowującego tablice modelu widoku MVC
+            panelMid.add(viewTable,cc.xy(1,1,CellConstraints.CENTER,CellConstraints.CENTER));
 
         //Dodawanie paneluTable do głównego okna aplikacji
         add(panelMid);
@@ -357,17 +365,8 @@ public class CentralPanel extends JPanel implements ActionListener {
         //Dodanie panelu panelResult do głównego okna
         add(panelResult);
 
-
-
-
-
     }
 
-    public static String getInsertValue(JTextField textField){
-
-        return textField.getText();
-
-    }
 
 
     @Override
@@ -380,4 +379,5 @@ public class CentralPanel extends JPanel implements ActionListener {
 
         }
     }
+
 }

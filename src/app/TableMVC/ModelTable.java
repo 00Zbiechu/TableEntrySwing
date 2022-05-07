@@ -10,8 +10,7 @@ import java.awt.print.PrinterJob;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
+
 
 
 public class ModelTable extends AbstractTableModel {
@@ -53,17 +52,8 @@ public class ModelTable extends AbstractTableModel {
 
     public int[][] getDataTable(){return tableData;}
 
-    
 
-
-    public void setValueAt(int x, int y, int value){
-
-        tableData[x][y] = value;
-        //Poinformowanie słuchacza o zmianie w modelu-wprowadzenie wartości
-        fireTableDataChanged();
-
-    }
-
+    //Wypełnianie tabeli wartościami
     public void insertDataIntoTableData(String data, int x, int y, Component parent){
 
         int value=0;
@@ -72,18 +62,20 @@ public class ModelTable extends AbstractTableModel {
             Window.statusBar.setStatusAndValueOfApplication("Wprowadzono wartość",String.valueOf(value));
 
             //Wprowadzenie zmian do tabeliData
-            tableData[x][y]=value;
-            //table.selectAll();
+            tableData[--x][--y]=value;
 
         }catch (Exception e){
             Window.statusBar.setStatusAndValueOfApplication("Podaną złą wartość","Błąd");
             JOptionPane.showMessageDialog(parent,"Wprowadzono niewłaściwą wartość!","Zła wartość",JOptionPane.WARNING_MESSAGE);
         }
 
+        fireTableDataChanged();
+
     }
 
 
     public void fillTableZeros() {
+
 
         for (int i = 0; i < rowNumber; i++) {
 
@@ -93,11 +85,12 @@ public class ModelTable extends AbstractTableModel {
 
             }
         }
-        //Poinformowanie słuchacza o zmianie w modelu-wyzerowanie tablicy
+        fireTableDataChanged();
+        Window.statusBar.setStatusAndValueOfApplication("Zerowanie","True");
     }
 
 
-    public void printTable(JTable table) {
+    public static void printTable(JTable table) {
 
         Window.statusBar.setStatusAndValueOfApplication("Drukowanie", "True");
 
@@ -114,7 +107,7 @@ public class ModelTable extends AbstractTableModel {
 
 
 
-    public void saveFile(Component parent,JTable table) throws IOException {
+    public void saveFile(Component parent) throws IOException {
 
         Window.statusBar.setStatusAndValueOfApplication("Zapis do pliku","Tablicy");
 
@@ -157,123 +150,6 @@ public class ModelTable extends AbstractTableModel {
         fileWriter.close();
 
     }
-
-
-    public void calculate(String operation,JTextArea textArea, Component parent){
-
-        Window.statusBar.setStatusAndValueOfApplication("Wykonanie operacji",String.valueOf(operation));
-
-        if(operation.equals("Średnia")){
-
-            //Suma wszystkich elementów w tablicy
-            int sum=0;
-
-            for(int i=0;i<5;i++){
-
-                for(int j=0;j<5;j++){
-
-                    sum=sum+(int)getValueAt(i,j);
-
-                }
-
-            }
-
-            //Obliczenie średniej arytmetycznej wszystkich komórek tabeli
-            double average = sum/25.0;
-
-            //Dodanie obliczonej wartości do textArea przechowującego rezultaty wykonanych działań
-            String averageToAdd = String.valueOf(average);
-            textArea.setText("Średnia arytmetyczna: "+averageToAdd+"\n");
-
-
-        }else if(operation.equals("Suma")){
-
-
-            //Suma wszystkich elementów w tablicy
-            int sum=0;
-
-            for(int i=0;i<5;i++){
-
-                for(int j=0;j<5;j++){
-
-                    sum=sum+(int)getValueAt(i,j);
-
-                }
-
-            }
-
-            textArea.setText("Suma wszystkich elementów to: "+sum+"\n");
-
-        }else if(operation.equals("MAX")){
-
-            //Dodanie elementów tablicy do ArrayListy, która ma metodę zwracającą MAX element
-            ArrayList<Integer> allElements = new ArrayList<Integer>();
-
-            try {
-
-                for(int i=0;i<5;i++){
-
-                    for(int j=0;j<5;j++){
-
-
-                        allElements.add((int) getValueAt(i,j));
-
-                    }
-
-                }
-
-                textArea.setText("MAX element to: "+ Collections.max(allElements)+"\n");
-            }catch (Exception e){
-                Window.statusBar.setStatusAndValueOfApplication("Tablica","Pusta");
-                JOptionPane.showMessageDialog(parent,"Tablica jest pusta proszę ją wypełnić.");
-            }
-
-
-
-        }else if(operation.equals("MIN")){
-
-            //Dodanie elementów tablicy do ArrayListy, która ma metodę zwracającą MIN element
-            ArrayList<Integer> allElements = new ArrayList<Integer>();
-
-            try{
-                for(int i=0;i<5;i++){
-
-                    for(int j=0;j<5;j++){
-
-                        allElements.add((int) getValueAt(i,j));
-
-
-                    }
-
-                }
-                textArea.setText("MIN element to: "+Collections.min(allElements)+"\n");
-            }catch (Exception e){
-                Window.statusBar.setStatusAndValueOfApplication("Tablica","Pusta");
-                JOptionPane.showMessageDialog(parent,"Tablica jest pusta proszę ją wypełnić!","Brak danych",JOptionPane.WARNING_MESSAGE);
-            }
-
-
-        }
-
-    }
-
-
-    public void refreshTable(JTable table){
-
-        for(int i=0;i<table.getRowCount();i++){
-
-            for(int j=0;j<table.getColumnCount();j++){
-
-                table.setValueAt(getValueAt(i,j),i,j);
-
-            }
-
-        }
-
-
-    }
-
-
 
 
 }
