@@ -107,7 +107,7 @@ public class Window extends JFrame implements ActionListener {
 
 
         //Sprawdzenie, czy można się zalogować
-        isLaunched(statusBar.getStatus(),statusBar.getValue());
+        //isLaunched(statusBar.getStatus(),statusBar.getValue());
 
 
 
@@ -503,12 +503,12 @@ public class Window extends JFrame implements ActionListener {
 
 
             centralPanel = new CentralPanel(); //Tworzenie obiektu klasy CentralPanel
-                centralPanel.setVisible(false); //Początkowa widoczność wyłączona
+                centralPanel.setVisible(true); //Początkowa widoczność wyłączona
             loginRequired = new LockWindow(); //Tworzenie obiektu klasy LockWindow
 
         JPanel panelMain = new JPanel();
                 panelMain.add(centralPanel);
-                panelMain.add(loginRequired);
+                //panelMain.add(loginRequired);
 
             JScrollPane scrollableArea = new JScrollPane(panelMain);
             scrollableArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);

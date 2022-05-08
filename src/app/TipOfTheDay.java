@@ -14,8 +14,12 @@ public class TipOfTheDay {
 
     TipOfTheDay(){
 
+
+        //Dodaje tablice tip i title do spis_porad
         fillTips();
+        //Umieszczenie spisu porad w obiekcie klasy JTipOfTheDay
         JTipOfTheDay porady = new JTipOfTheDay(spis_porad);
+        //Pokazywanie utworzonego obiektu
         porady.showDialog(ViewTable.table);
 
     }

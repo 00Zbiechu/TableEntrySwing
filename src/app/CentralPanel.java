@@ -349,6 +349,7 @@ public class CentralPanel extends JPanel implements ActionListener {
 
         }else if(e.getSource()==viewChart){
 
+            new Chart();
             Window.statusBar.setStatusAndValueOfApplication("Pokaż wykres","True");
 
         }
