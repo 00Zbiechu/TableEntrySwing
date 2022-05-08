@@ -1,7 +1,6 @@
 package app;
 
 import app.TableMVC.ControllerTable;
-import app.TableMVC.ModelTable;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
@@ -33,7 +32,6 @@ public class Chart {
                 "Wiersz", "Suma wartości w wierszu", dataset, PlotOrientation.HORIZONTAL,
                 true, false, false);
 
-        //parametry podobnie jak w przykładach powyzej
         ChartFrame frame1=new ChartFrame("Wykres danych w tabeli",chart);
         frame1.setVisible(true);
 
@@ -82,7 +80,7 @@ public class Chart {
 
             }
 
-            dataset.setValue(sum,"Wiersz"+(i+1), "Wiersz"+(i+1));
+            dataset.setValue(sum,"Wiersz "+(i+1), "Wiersz "+(i+1));
 
         }
 

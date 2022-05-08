@@ -68,6 +68,9 @@ public class Window extends JFrame implements ActionListener {
     //Okno Logowania
     public static LoginWindow loginWindow;
 
+    //Główne okno będzie w scrollPanelu
+    JScrollPane scrollableArea;
+
     //Panel blokady aplikacji-statyczne, żeby mieć dostęp z klasy LoginWindow
     public static LockWindow loginRequired;
 
@@ -167,7 +170,7 @@ public class Window extends JFrame implements ActionListener {
         windowWidth = resolution.width/2;
         windowHeight = resolution.height/2;
         setSize(windowWidth,windowHeight);
-        setResizable(true);
+        setResizable(false);
 
         //Pokazuje ile wynosi rozmiar okna
         //System.out.println(windowWidth+" "+windowHeight);
@@ -510,7 +513,7 @@ public class Window extends JFrame implements ActionListener {
                 panelMain.add(centralPanel);
                 //panelMain.add(loginRequired);
 
-            JScrollPane scrollableArea = new JScrollPane(panelMain);
+            this.scrollableArea = new JScrollPane(panelMain);
             scrollableArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
             add(scrollableArea);
 
@@ -647,6 +650,36 @@ public class Window extends JFrame implements ActionListener {
             statusBar.setStatusAndValueOfApplication("Uruchomienie okna","Pomoc");
 
         //Nawigacja -------------------------------------------Nawigacja
+        }else if(e.getSource()==addButton){
+
+            scrollableArea.getVerticalScrollBar().setValue(0);
+            Window.statusBar.setStatusAndValueOfApplication("Skok","Wprowadzanie");
+
+        }else if(e.getSource()==whereButton){
+
+            scrollableArea.getVerticalScrollBar().setValue(0);
+            Window.statusBar.setStatusAndValueOfApplication("Skok","Pozycja");
+
+        }else if(e.getSource()==acceptButton){
+
+            scrollableArea.getVerticalScrollBar().setValue(50);
+            Window.statusBar.setStatusAndValueOfApplication("Skok","Dodawanie");
+
+        }else if(e.getSource()==trashButton){
+
+            scrollableArea.getVerticalScrollBar().setValue(50);
+            Window.statusBar.setStatusAndValueOfApplication("Skok","Usuwanie");
+
+        }else if(e.getSource()==mathButton){
+
+            scrollableArea.getVerticalScrollBar().setValue(80);
+            Window.statusBar.setStatusAndValueOfApplication("Skok","Obliczanie");
+
+        }else if(e.getSource()==resultButton){
+
+            scrollableArea.getVerticalScrollBar().setValue(80);
+            Window.statusBar.setStatusAndValueOfApplication("Skok","Wynik");
+
         }
 
 

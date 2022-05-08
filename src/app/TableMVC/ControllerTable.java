@@ -34,7 +34,7 @@ public class ControllerTable{
                 //Funkcja modyfikująca model tablicy-zmienia wartości tablicy (modelTable)
                 modelTable.insertDataIntoTableData(CentralPanel.insertNumber.getText(),CentralPanel.sliderY.getValue(),CentralPanel.sliderX.getValue(),viewTable);
                 viewTable.table.setModel(modelTable);
-                viewTable.table.selectAll();
+                viewTable.table.repaint();
 
                 //Testowanie pobierania wartości
                 //System.out.println(CentralPanel.insertNumber.getText()+" "+CentralPanel.sliderX.getValue()+" "+CentralPanel.sliderY.getValue());
@@ -43,7 +43,7 @@ public class ControllerTable{
 
                 modelTable.fillTableZeros();
                 viewTable.table.setModel(modelTable);
-                viewTable.table.selectAll();
+                viewTable.table.repaint();
 
 
             }else if(e.getSource()==viewTable.saveButton){
