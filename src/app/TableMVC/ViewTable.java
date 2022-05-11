@@ -9,6 +9,9 @@ import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+/**
+ * Klasa <code>ViewTable</code> rozszerzajaca klase <code>JPanel</code> sluzaca do pokazania widoku Tabeli
+ */
 public class ViewTable extends JPanel {
 
     //Model danych dla tablicy przechowujący dane i metody
@@ -25,7 +28,9 @@ public class ViewTable extends JPanel {
     public static JButton clearButton, commitButton, saveButton;
     private Icon iconClearButton, iconCommitButton, iconSaveButton;
 
-
+    /**
+     * Konstruktor bezargumentowy do tworzenia obiektow GUI
+     */
     public ViewTable(){
         initGUI();
     }
@@ -144,6 +149,10 @@ public class ViewTable extends JPanel {
 
     //Metoda umożliwiająca dodanie listenera do przycisków - dodanie odbędzie się z klasy kontroler,
     // gdzie został utworzony listener
+    /**
+     * Dodanie nasluchiwacza dla komponentow
+     * @param listener obiekt nasluchiwacza
+     */
     public void addTableListener(ActionListener listener){
 
         commitButton.addActionListener(listener);

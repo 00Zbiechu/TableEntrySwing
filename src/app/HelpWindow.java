@@ -5,6 +5,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.net.URL;
 
+/**
+ * Klasa <code>HelpWindow</code> rozszerzajaca klase <code>JDialog</code> tworzaca okno zawierajace kontekst
+ */
 public class HelpWindow extends JDialog {
 
 
@@ -15,8 +18,10 @@ public class HelpWindow extends JDialog {
     private URL url;
 
 
-
-    HelpWindow(){
+    /**
+     * Konstruktor bezparametorwy klasy HelpWindow tworzacy okno zawierajace kontekst pomocy
+     */
+    public HelpWindow(){
 
         setTitle("Kontekst pomocy");
         setResizable(false);
@@ -37,7 +42,6 @@ public class HelpWindow extends JDialog {
         //Ustawianie url
         setURL("/stronaPomocy/index.html");
 
-        //Ładowanie index.html do editorPane
         loadHTML(editor,url);
 
         //dodawanie załadowanego url'em pane do okna

@@ -13,7 +13,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 
-
+/**
+ * Klasa <code>ModelTable</code> dziedziczy po klasie <code>AbstractTableModel</code> zawiera dane i metody do obslugi tabeli
+ */
 public class ModelTable extends AbstractTableModel {
 
     private byte rowNumber = 5;
@@ -21,39 +23,67 @@ public class ModelTable extends AbstractTableModel {
     private int tableData[][] = new int[rowNumber][colNumber];
     private String[] labelForTableColumns = {"1","2","3","4","5"};
 
+    /**
+     * Konstruktor bezparametrowy <code>ModelTable</code> wypelnia tablice danych zerami
+     */
     public ModelTable(){
 
+        fillTableZeros();
 
     }
 
-
+    /**
+     * Pobieranie ilosci wierszy
+     * @return ilosc wierszy
+     */
     @Override
     public int getRowCount() {
         return rowNumber;
     }
 
+    /**
+     * Pobieranie ilosci kolumn
+     * @return ilosc kolumn
+     */
     @Override
     public int getColumnCount() {
         return colNumber;
     }
 
+    /**
+     * Zwraca wartosc w punkcie x,y
+     * @param x wartosc wiersza
+     * @param y wartosc kolumny
+     * @return zwraca wartosc z tablicy o indeksie x,y
+     */
     @Override
     public Object getValueAt(int x, int y) {
         return tableData[x][y];
     }
 
+    /**
+     * Pobieranie nazwy kolumny
+     * @param col nr kolumny
+     * @return zwraca tekst z nazwa kolumny
+     */
     public String getColumnName(int col) {
         return labelForTableColumns[col];
     }
 
-    public String[] getColumnNames() {
-        return labelForTableColumns;
-    }
-
+    /**
+     * Pobieranie tablicy z danymi
+     * @return tablica z danymi
+     */
     public int[][] getDataTable(){return tableData;}
 
 
-    //Wypełnianie tabeli wartościami
+    /**
+     * Wypełnianie tabeli wartościami
+     * @param data wartosc ktora zostanie wypelniona tablica
+     * @param x nr wiersza
+     * @param y nr kolumny
+     * @param parent rodzic dla ktorego zostanie wyswietlone okno dialogowe w przypadku bledu
+     */
     public void insertDataIntoTableData(String data, int x, int y, Component parent){
 
         int value=0;
@@ -78,6 +108,9 @@ public class ModelTable extends AbstractTableModel {
     }
 
 
+    /**
+     * Wypelnianie tablicy danych zerami
+     */
     public void fillTableZeros() {
 
 
@@ -96,6 +129,10 @@ public class ModelTable extends AbstractTableModel {
     }
 
 
+    /**
+     * Metoda sluzaca do drukowania wartosci tabeli
+     * @param table tabela z ktorej dane zostana wydrukowane
+     */
     public static void printTable(JTable table) {
 
         Window.statusBar.setStatusAndValueOfApplication("Drukowanie", "True");
@@ -114,7 +151,11 @@ public class ModelTable extends AbstractTableModel {
     }
 
 
-
+    /**
+     * zapisywanie wartosci z tabeli do pliku
+     * @param parent rodzic dla ktorego zostanie wywolane okno dialogowe
+     * @throws IOException wyjatek rzycony w przypadku niepowodzenia
+     */
     public void saveFile(Component parent) throws IOException {
 
         Window.statusBar.setStatusAndValueOfApplication("Zapis do pliku","Tablicy");

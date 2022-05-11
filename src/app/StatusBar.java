@@ -7,17 +7,20 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
-
+/**
+ * Klasa <code>StatusBar</code> rozszerzajaca klase <code>JPanel</code>
+ */
 public class StatusBar extends JPanel {
 
     private JLabel descriptionStatusBar,status,value;
     private JTextField statusField,valueField;
 
-
-    StatusBar(){
+    /**
+     * Konstruktor klasy <code>StatusBar</code> inicjalizujacej GUI StatusBara
+     */
+    public StatusBar(){
 
         initGUI();
-
 
 
     }
@@ -118,6 +121,11 @@ public class StatusBar extends JPanel {
 
     }
 
+    /**
+     * Metoda sluzaca do ustawiania statusu i wartosci statusu w StatusBarze
+     * @param status String zawierajacy status paska statusu
+     * @param value String zawierajacy wartosc paska statusu
+     */
     public void setStatusAndValueOfApplication(String status,String value){
 
         this.statusField.setText(status);
@@ -125,13 +133,20 @@ public class StatusBar extends JPanel {
 
     }
 
+    /**
+     * Pobieranie statusu z paska statusu
+     * @return zwraca String z tekstem zwierajacym obecny status
+     */
     public String getStatus(){
 
         return this.statusField.getText();
 
     }
 
-
+    /**
+     * Pobieranie statusu z paska statusu
+     * @return zwraca String z tekstem zwierajacym obecna wartosc
+     */
     public String getValue(){
 
         return this.valueField.getText();

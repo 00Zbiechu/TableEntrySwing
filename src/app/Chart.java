@@ -7,7 +7,11 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
-
+/**
+ * Klasa Chart sluzaca do utworzenia obiektu wykresu horyzontalnego wyswietlajacego sume wierszy z tabeli
+ * @author Mateusz Zbiewski
+ * @version 1.0
+ */
 public class Chart {
 
     private double chartWindowWidth;
@@ -16,8 +20,10 @@ public class Chart {
     //Dane do wykresu
     DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
-
-    Chart(){
+    /**
+     * Konstruktor bezparametrowy inicjalizujacy GUI i wypelniajacy dane potrzebne do zainicjalizowania wykresu
+     */
+    public Chart(){
 
 
         fillDataset();
@@ -66,6 +72,9 @@ public class Chart {
 
     }
 
+    /**
+     * Metoda sluzaca do sumowania wierszy z modelu tablicy
+     */
     public void fillDataset(){
 
         int sum;

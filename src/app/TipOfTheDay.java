@@ -5,14 +5,20 @@ import com.l2fprod.common.swing.JTipOfTheDay;
 import com.l2fprod.common.swing.tips.DefaultTip;
 import com.l2fprod.common.swing.tips.DefaultTipModel;
 
+/**
+ * Klasa TipOfTheDay sluzaca do wyswietlania okna z proadami dnia
+ */
 public class TipOfTheDay {
 
-    String[] title = {"Tip1","Tip2","Tip3","Tip4","Tip5"};
-    String[] tip = {"Porada nr 1","Porada nr 2","Porada nr 3","Porada nr 4","Porada nr 5"};
+    private String[] title = {"Tip1","Tip2","Tip3","Tip4","Tip5"};
+    private String[] tip = {"Porada nr 1","Porada nr 2","Porada nr 3","Porada nr 4","Porada nr 5"};
 
     DefaultTipModel spis_porad = new DefaultTipModel();
 
-    TipOfTheDay(){
+    /**
+     * Konstruktor bezparametrowy klasy <code>TipOfTheDay</code> sluzacy do wypelnania tablicy porad i pokazywania okna
+     */
+    public TipOfTheDay(){
 
 
         //Dodaje tablice tip i title do spis_porad
@@ -21,6 +27,8 @@ public class TipOfTheDay {
         JTipOfTheDay porady = new JTipOfTheDay(spis_porad);
         //Pokazywanie utworzonego obiektu
         porady.showDialog(ViewTable.table);
+        Main.logger.info("Pokazanie okna z poradami dnia");
+        Main.myLogger.info("Pokazanie okna z poradami dnia");
 
     }
 

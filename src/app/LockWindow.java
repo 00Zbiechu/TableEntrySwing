@@ -5,6 +5,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Klasa <code>LockWindow</code> do tworzenia panelu blokady dla niezalogowanych uzytkownikow, rozszerzajaca klase <code>JPanel</code> oraz implementujaca interfejs <code>ActionListener</code>
+ */
 public class LockWindow extends JPanel implements ActionListener {
 
 
@@ -13,7 +16,10 @@ public class LockWindow extends JPanel implements ActionListener {
     private Icon iconLogin;
     private JButton loginButton;
 
-    LockWindow(){
+    /**
+     * Konstruktor bezparametrowy klasy LockWindow tworzącej GUI okna
+     */
+    public LockWindow(){
 
         initGUI();
 
@@ -82,6 +88,10 @@ public class LockWindow extends JPanel implements ActionListener {
 
     }
 
+    /**
+     * Metoda obslugujaca zdarzenie akcji
+     * @param e obiekt klasy nasluchujacej <code>ActionListener</code>
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 

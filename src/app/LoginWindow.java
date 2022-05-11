@@ -8,6 +8,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Klasa <code>LoginWindow</code> obslugujaca logowanie, rozszerzajaca klase <code>JDialog</code> i implementujaca interfejs <code>ActionListener</code>
+ */
 public class LoginWindow extends JDialog implements ActionListener {
 
     private int loginWindowWidth;
@@ -25,7 +28,10 @@ public class LoginWindow extends JDialog implements ActionListener {
     private String login = "root";
     private String password = "1234";
 
-    LoginWindow() {
+    /**
+     * Konstruktor bezparametrowy klasy <code>LoginWindow</code> wywolujacej okno logowania i obslugujacej proces logowania
+     */
+    public LoginWindow() {
 
 
         setTitle("Logowanie");
@@ -39,6 +45,9 @@ public class LoginWindow extends JDialog implements ActionListener {
 
 
         initGUI();
+
+        Main.logger.info("Logowanie w trakcie");
+        Main.myLogger.info("Logowanie w trakcie");
 
 
     }
@@ -294,7 +303,10 @@ public class LoginWindow extends JDialog implements ActionListener {
 
     }
 
-
+    /**
+     * Metoda obslugujaca zdarzenie akcji
+     * @param e obiekt klasy nasluchujacej <code>ActionListener</code>
+     */
     @Override
     public void actionPerformed(ActionEvent e){
 

@@ -6,30 +6,48 @@ import app.Window;
 import javax.swing.*;
 import javax.swing.event.ListDataListener;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * Klasa <code>ModelComboBox</code> implementujaca interfejs<code>ComboBoxModel</code>, klasa jest modelem danych i baza regul dla struktury MVC comboBoxa
+ */
 public class ModelComboBox implements ComboBoxModel {
 
     private String[] dateComboBox;
 
+    /**
+     * Konstruktor bezparametrowy klasy <code>ModelComboBox</code> wypelniajacy tablice danych dla ComboBoxa
+     */
     public ModelComboBox(){
 
         dateComboBox = new String[] {"Średnia","Suma","MAX","MIN"};
 
     }
 
+    /**
+     * Pobieranie rozmiaru tablicy <code>dateComboBox</code>
+     * @return dateComboBox
+     */
     @Override
     public int getSize() {
         return dateComboBox.length;
     }
 
+    /**
+     * Pobieranie obiektu tablicy na pozycji opisywanej przez parametr
+     * @param i pozycja w tablicy
+     * @return zwraca obiekt bedacy na danej pozycji
+     */
     @Override
     public Object getElementAt(int i) {
         return dateComboBox[i];
     }
 
+    /**
+     * Pobieranie tablicy z danymi
+     * @return zwraca dateComboBox
+     */
     public String[] getDateComboBox(){
         return dateComboBox;
     }
@@ -55,7 +73,13 @@ public class ModelComboBox implements ComboBoxModel {
         return null;
     }
 
-
+    /**
+     * Metoda sluzaca do obliczania wartosci
+     * @param operation rodzaj operacji
+     * @param tableDataModel tabela, z ktorej maja zostac pobrane dane
+     * @param textArea textArea, w ktorej ma znalezc sie wynik
+     * @param parent rodzic w ktorym ma zostac pokazany JOptionPane z komunikatem w raze przechwycenia wyjatk
+     */
     public static void calculate(String operation,int[][] tableDataModel,JTextArea textArea, Component parent){
 
         Window.statusBar.setStatusAndValueOfApplication("Wykonanie operacji",String.valueOf(operation));

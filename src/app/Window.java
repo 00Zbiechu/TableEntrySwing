@@ -14,12 +14,27 @@ import java.awt.event.*;
 import static app.TableMVC.ControllerTable.modelTable;
 import static app.TableMVC.ControllerTable.viewTable;
 
+/**
+ * Klasa <code>Window</code> zawierajaca GUI aplikacji dziedziczaca po klasie <code>JFrame</code> oraz badaca implementacja interfejsu <code>ActionListener</code>
+ */
 public class Window extends JFrame implements ActionListener {
 
+    /**
+     * Zmienna statyczna <code>windowWidth</code> przechowujaca szerokość wyświetlacza, na którym uruchamiana jest aplikacja
+     */
     public static int windowWidth;
+    /**
+     * Zmienna statyczna <code>windowHeight</code> przechowujaca szerokość wyświetlacza, na którym uruchamiana jest aplikacja
+     */
     public static int windowHeight;
 
+    /**
+     * Zmienna statyczna <code>windowX</code> przechowujaca pozycję aplikacji na monitorze w płaszczyźnie poziomej.
+     */
     public static int windowX;
+    /**
+     * Zmienna statyczna <code>windowY</code> przechowujaca pozycję aplikacji na monitorze w płaszczyźnie pionowej.
+     */
     public static int windowY;
 
 
@@ -43,8 +58,15 @@ public class Window extends JFrame implements ActionListener {
     //toolbar
     private JToolBar toolBar;
 
-    //toolbar items
-    public static JButton saveButton, printButton;
+    /**
+     * Zmienna statyczna przechowujaca pole typu JButton <code>saveButton</code>
+     */
+    public static JButton saveButton;
+    /**
+     * Zmienna statyczna przechowujaca pole typu JButton <code>printButton</code>
+     */
+    public static JButton printButton;
+
     private JButton logoutButton, closeButton, helpButton, infoButton ;
 
     //Ikony do toolBara
@@ -56,7 +78,9 @@ public class Window extends JFrame implements ActionListener {
     private JButton addButton,whereButton,acceptButton,trashButton,mathButton,resultButton;
 
 
-    //Pasek statusu
+    /**
+     * Zmienna statyczna przechowujaca pole typu StatusBar <code>statusBar</code>
+     */
     public static StatusBar statusBar;
 
     //Okno pomocy
@@ -65,21 +89,30 @@ public class Window extends JFrame implements ActionListener {
     //Okno o aplikacji
     private AboutWindow aboutWindow;
 
-    //Okno Logowania
+    /**
+     * Zmienna statyczna przechowujaca pole typu LoginWindow <code>loginWindow</code>
+     */
     public static LoginWindow loginWindow;
 
     //Główne okno będzie w scrollPanelu
-    JScrollPane scrollableArea;
+    private JScrollPane scrollableArea;
 
-    //Panel blokady aplikacji-statyczne, żeby mieć dostęp z klasy LoginWindow
+    /**
+     * Zmienna statyczna przechowujaca obiekt <code>loginRequired</code> klasy <code>LockWindow</code>.
+     */
     public static LockWindow loginRequired;
 
     //Centralny panel aplikacji-statyczne, żeby mieć dostęp z klasy LoginWindow
+    /**
+     * Zmienna statyczna przechowujaca obiekt <code>centralPanel</code> klasy <code>CentralPanel</code>.
+     */
     public static CentralPanel centralPanel;
 
 
 
-    //konstruktor klasy Window
+    /**
+     * Konstruktor bezparametrowy klasy <code>Window</code>
+     */
     Window(){
 
         //tytuł aplikacji
@@ -110,13 +143,13 @@ public class Window extends JFrame implements ActionListener {
 
 
         //Sprawdzenie, czy można się zalogować
-        //isLaunched(statusBar.getStatus(),statusBar.getValue());
+        isLaunched(statusBar.getStatus(),statusBar.getValue());
 
 
 
     }
 
-    //Metoda służąca do wywoływania metod tworzących GUI
+
     private void initGUI(){
 
         //Metoda tworząca menuItems
@@ -508,12 +541,12 @@ public class Window extends JFrame implements ActionListener {
 
 
             centralPanel = new CentralPanel(); //Tworzenie obiektu klasy CentralPanel
-                centralPanel.setVisible(true); //Początkowa widoczność wyłączona
+                centralPanel.setVisible(false); //Początkowa widoczność wyłączona
             loginRequired = new LockWindow(); //Tworzenie obiektu klasy LockWindow
 
         JPanel panelMain = new JPanel();
                 panelMain.add(centralPanel);
-                //panelMain.add(loginRequired);
+                panelMain.add(loginRequired);
 
             this.scrollableArea = new JScrollPane(panelMain);
             scrollableArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -616,7 +649,7 @@ public class Window extends JFrame implements ActionListener {
 
             modelTable.fillTableZeros();
             viewTable.table.setModel(modelTable);
-            viewTable.table.selectAll();
+            viewTable.table.repaint();
 
 
         }else if(e.getSource()==editSaveItem || e.getSource()==this.saveButton){
@@ -648,12 +681,16 @@ public class Window extends JFrame implements ActionListener {
             //Pokazanie okna AboutWindow
             aboutWindow.setVisible(true);
             statusBar.setStatusAndValueOfApplication("Uruchomienie okna","O programie");
+            Main.logger.info("Uruchomienie okna O programie");
+            Main.myLogger.info("Uruchomienie okna O programie");
 
         }else if(e.getSource()==helpSettingsMenuItem || e.getSource()== helpButton){
 
             //Pokazane okna HelpWindow
             helpWindow.setVisible(true);
             statusBar.setStatusAndValueOfApplication("Uruchomienie okna","Pomoc");
+            Main.logger.info("Uruchomienie okna pomoc");
+            Main.myLogger.info("Uruchomienie okna pomoc");
 
         //Nawigacja -------------------------------------------Nawigacja
         }else if(e.getSource()==addButton){

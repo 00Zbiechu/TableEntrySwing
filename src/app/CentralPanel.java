@@ -17,26 +17,37 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 
-
+/**
+ * Klasa <code>CentralPanel</code> rozszerzajaca klase <code>JPanel</code> i implementujaca interfejs <code>ActionListener</code>
+ */
 public class CentralPanel extends JPanel implements ActionListener {
 
     private JPanel  panelInsert, panelMid, panelBottom, panelCalendar;
 
     private JLabel labelInsertNumber, labelInsertPositionX, labelInsertPositionY;
 
+    /**
+     * Pola zawierajace instancje obiekt klasy JTextField sluzace do wpisywania przez usera danych, ktore beda wprowadzone do tabeli
+     */
     public static JTextField insertNumber;
 
+    /**
+     * Pola zawierajace instancje obiektow JSlider, sluzacych do wybory wiersza i kolumny, do ktorych zostanie wprowadzona wartosc
+     */
     public static JSlider sliderX,sliderY;
 
     //MVC Table
+    /**
+     * Obiekt modelu Tabeli zawierajacy metody i dane potrzebne do obslugi i utworzenia tabeli
+     */
     public static ModelTable modelTable = new ModelTable();//Muszę się dostać do tego pola z poziomu Kontrolera Combo
-    ViewTable viewTable = new ViewTable();
-    ControllerTable controllerTable;
+    private ViewTable viewTable = new ViewTable();
+    private ControllerTable controllerTable;
 
     //MVC ComboBox
-    ModelComboBox modelComboBox = new ModelComboBox();
-    ViewComboBox viewComboBox = new ViewComboBox();
-    ControllerComboBox controllerComboBox;
+    private ModelComboBox modelComboBox = new ModelComboBox();
+    private ViewComboBox viewComboBox = new ViewComboBox();
+    private ControllerComboBox controllerComboBox;
 
 
     //Kalendarz
@@ -47,9 +58,10 @@ public class CentralPanel extends JPanel implements ActionListener {
     private JButton acceptDate, viewChart;
 
 
-
-
-    CentralPanel(){
+    /**
+     * Konstruktor bezparametrowy tworzacy obiekt zawierajacy widok aplikacji
+     */
+    public CentralPanel(){
 
         //Utworzenie kontrolera dla MVC tablicy
         controllerTable = new ControllerTable(modelTable,viewTable);
@@ -333,7 +345,10 @@ public class CentralPanel extends JPanel implements ActionListener {
     }
 
 
-
+    /**
+     * Metoda obslugujaca zdarzenie akcji
+     * @param e obiekt klasy nasluchujacej <code>ActionListener</code>
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -357,6 +372,7 @@ public class CentralPanel extends JPanel implements ActionListener {
             Window.statusBar.setStatusAndValueOfApplication("Pokaż wykres","True");
             Main.logger.info("Pokaż wykres True");
             Main.myLogger.info("Pokaż wykres True");
+
 
         }
 

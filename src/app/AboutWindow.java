@@ -10,30 +10,48 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+/**
+ * Klasa <code>AboutWindow</code> pokazujaca okno z informacjami o autorze i aplikacji, rozszerzajaca klase <code>JDialog</code> i implementujaca interfejs <code>ActionListener</code>
+ * @author Mateusz Zbiewski
+ * @version 1.0
+ */
 public class AboutWindow extends JDialog implements ActionListener {
 
+    /**
+     * Zmienna przechowujace szerokosc okna <code>AboutWindow</code>
+     */
     private int aboutWindowWidth;
+    /**
+     * Zmienna przechowujace wysokosc okna <code>AboutWindow</code>
+     */
     private int aboutWindowHeight;
 
-    //Panele dzielące okno
+    /**
+     * Pola klasy bedace obiektami JPanel przechowujace panele z komponentami GUI
+     */
     private JPanel panelMain,
                         panelLogo,
                         panelInfo,
                         panelMail,
                         panelOk;
 
-    //Informacje o autorze i aplikacji
+    /**
+     * Informacje o autorze i aplikacji, obiekty JLabel
+     */
     private JLabel authorIcon,
                    applicationName, applicationVersion,authorName,collageName,
                    authorMail;
 
-    //Przycisk wyjścia
+    /**
+     * Obiekt klasy JButton sluzyacy do obslugi zdarzenia wyjscia z okna <code>AboutWindow</code>
+     */
     private JButton exit;
 
 
-
-
-    AboutWindow(){
+    /**
+     * Konstruktor bezparametrowy klasy <code>AboutWindow</code>
+     */
+    public AboutWindow(){
 
         this.setTitle("Informacje o programie");
         this.setResizable(false);
@@ -56,7 +74,9 @@ public class AboutWindow extends JDialog implements ActionListener {
 
     }
 
-    //Tworzenie GUI
+    /**
+     * Metoda tworzaca komponenty GUI
+     */
     private void initGUI(){
 
         //Tworzenie komponentów GUI
@@ -71,7 +91,12 @@ public class AboutWindow extends JDialog implements ActionListener {
 
     }
 
-    //Ustawienie rozmiaru okna AboutWindow na podstawie wielkości głównego okna Window
+
+    /**
+     * Ustawienie rozmiaru okna AboutWindow na podstawie wielkości głównego okna Window
+     * @param widthMainWindow szerokosc glownego okna
+     * @param heightMainWindow wysokosc glownego okna
+     */
     private void setSizeAboutWindow(int widthMainWindow,int heightMainWindow){
 
         this.aboutWindowWidth = widthMainWindow/2;
@@ -82,7 +107,14 @@ public class AboutWindow extends JDialog implements ActionListener {
 
     }
 
-    //Ustawianie lokalizacji okna AboutWindow na podstawie lokalizacji głównego Okna
+
+    /**
+     * Ustawianie lokalizacji okna AboutWindow na podstawie lokalizacji głównego Okna
+     * @param widthMain szerokosc glownego okna
+     * @param heightMain wysokosc glownego okna
+     * @param widthAbout szerokosc okna AboutWindow
+     * @param heightAbout wysokosc okna AboutWindow
+     */
     private void setLocationAboutWindow(int widthMain, int heightMain, int widthAbout, int heightAbout){
 
         int screenSizeWidth = widthMain*2;
@@ -96,7 +128,12 @@ public class AboutWindow extends JDialog implements ActionListener {
 
     }
 
-    //Konstruktor paneli
+
+    /**
+     * Konstruktor paneli
+     * @param color kolor tła panelu
+     * @return zwraca utworzony panel
+     */
     private JPanel createJPanel(Color color){
 
         JPanel jPanel = new JPanel();
@@ -106,7 +143,13 @@ public class AboutWindow extends JDialog implements ActionListener {
 
     }
 
-    //Tworzenie Layoutu dla okna AboutWindow
+
+    /**
+     * Tworzenie Layoutu dla okna AboutWindow
+     * @param windowWidth szerokosc monitora, na ktorym wyswietlana jest aplikacja
+     * @param windowHeight wysokosc monitora, na ktorym wyswietlana jest aplikacja
+     * @return
+     */
     private LayoutManager createFormLayout(int windowWidth,int windowHeight) {
 
         //Zmienna pomocnicza do obliczenia wielkości kolumn (dwóch)
@@ -128,6 +171,10 @@ public class AboutWindow extends JDialog implements ActionListener {
 
     }
 
+
+    /**
+     * Definicja paneli i dodawanie ich do paneli, a panele do okna
+     */
     private void createPanelsAboutWindow(){
 
 
@@ -184,7 +231,11 @@ public class AboutWindow extends JDialog implements ActionListener {
 
 
 
-    //Konstruktor obrazków, tylko że JLabel
+    /**
+     * Konstruktor obrazków, tylko że JLabel
+     * @param file ciąg znakow odpowiadajacy nazwie pliku graficznego
+     * @return zwraca obiekt klasy Icon
+     */
     private JLabel createJIcon(String file) {
 
         String name = "/grafika/"+file;
@@ -194,6 +245,9 @@ public class AboutWindow extends JDialog implements ActionListener {
         return icon;
     }
 
+    /**
+     * Definiuje ikony aplikacji
+     */
     private void createIcons(){
 
         //Komponent do panelu panelLogo
@@ -201,7 +255,11 @@ public class AboutWindow extends JDialog implements ActionListener {
 
     }
 
-
+    /**
+     * Konstruktor Labeli
+     * @param label Tekst wyswietlany w JLabel'u
+     * @return zwraca obiekt klasy JLabel
+     */
     private JLabel createJLabels(String label){
 
         JLabel jLabel = new JLabel(label+"\n");
@@ -211,9 +269,9 @@ public class AboutWindow extends JDialog implements ActionListener {
     }
 
 
-
-
-
+    /**
+     * Definicja Labeli
+     */
     private void createLabels(){
 
         applicationName = createJLabels("Aplikacja PK");
@@ -229,6 +287,11 @@ public class AboutWindow extends JDialog implements ActionListener {
 
     }
 
+    /**
+     * Konstruktor przyciskow
+     * @param label Tekst wyswietlany na przycisku
+     * @return zwraca obiekt klasy JButton
+     */
     private JButton createJButton(String label){
 
         JButton jbutton = new JButton(label);
@@ -240,6 +303,9 @@ public class AboutWindow extends JDialog implements ActionListener {
     }
 
 
+    /**
+     * Definicja przyciskow
+     */
     private void createButtons(){
 
         //Przycisk do panelu panelOK-zamknięcie okna (zniknięcia okna)
@@ -248,6 +314,10 @@ public class AboutWindow extends JDialog implements ActionListener {
     }
 
 
+    /**
+     * Metoda obslugujaca zdarzenie akcji
+     * @param e obiekt klasy nasluchujacej <code>ActionListener</code>
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 

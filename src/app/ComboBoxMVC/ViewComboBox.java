@@ -9,10 +9,13 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+/**
+ * Klasa ViewComboBox dziedzicaca po <code>JPanel</code> tworzaca GUI dla ComboBoxa
+ */
 public class ViewComboBox extends JPanel {
 
     //Model potrzeby do utworzenie comboBoxa
-    ModelComboBox modelComboBox = new ModelComboBox();
+    private  ModelComboBox modelComboBox = new ModelComboBox();
 
     private JPanel panelResult, panelOperation;
 
@@ -27,6 +30,9 @@ public class ViewComboBox extends JPanel {
     public static JTextArea resultArea;
 
 
+    /**
+     * Konstruktor bezparametrowy klasy <code>ViewComboBox</code> sluzy do tworzenia GUI ComboBoxa na podstawie modelu danych
+     */
     public ViewComboBox(){
 
         initGUI();
@@ -200,6 +206,10 @@ public class ViewComboBox extends JPanel {
 
     }
 
+    /**
+     * Dodanie nasluchiwacza dla komponentow
+     * @param actionListener obiekt nasluchiwacza
+     */
     public void addComboBoxListener(ActionListener actionListener){
 
         calculate.addActionListener(actionListener);
