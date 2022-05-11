@@ -325,6 +325,8 @@ public class LoginWindow extends JDialog implements ActionListener {
                     //Ustawianie wartości na pasku statusu za pomocą zmiennej statycznej przechowującej obiekt StatusBar,
                     // wywołany w klasie Window
                     Window.statusBar.setStatusAndValueOfApplication("Logowanie", "True");
+                    Main.logger.info("Logowanie True");
+                    Main.myLogger.info("Logowanie True");
 
 
                     //Wywołanie metody ukrywającej widoczność paneluBlokady z klasy Window, pokazującej CentralPanel (panele są zmiennymi statycznymi)
@@ -340,6 +342,8 @@ public class LoginWindow extends JDialog implements ActionListener {
                     loginMessage.setText("Błędne dane logowania");
                     loginMessage.setForeground(Color.RED);
                     Window.statusBar.setStatusAndValueOfApplication("Logowanie", "False");
+                    Main.logger.info("Logowanie False");
+                    Main.myLogger.info("Logowanie False");
                     logout();
 
 
@@ -352,6 +356,8 @@ public class LoginWindow extends JDialog implements ActionListener {
                 loginMessage.setForeground(Color.BLACK);
 
                 Window.statusBar.setStatusAndValueOfApplication("Logowanie", "False");
+                Main.logger.info("Logowanie False");
+                Main.myLogger.info("Logowanie False");
 
                 dispose();
             }

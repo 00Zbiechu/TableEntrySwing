@@ -210,6 +210,8 @@ public class Window extends JFrame implements ActionListener {
         //System.out.println(JOptionPane.YES_NO_OPTION); == 0
         if (value == JOptionPane.YES_NO_OPTION) {
             dispose();
+            Main.logger.info("Koniec działania aplikacji");
+            Main.myLogger.info("Koniec działania aplikacji");
             System.exit(0);
         }
     }
@@ -600,6 +602,8 @@ public class Window extends JFrame implements ActionListener {
             Window.loginRequired.setVisible(true);
             Window.centralPanel.setVisible(false);
             Window.statusBar.setStatusAndValueOfApplication("Logowanie","False");
+            Main.logger.info("Logowanie False");
+            Main.myLogger.info("Logowanie False");
 
 
         }else if(e.getSource()==filePrintMenuItem || e.getSource()==printButton){
@@ -621,6 +625,8 @@ public class Window extends JFrame implements ActionListener {
                 modelTable.saveFile(this);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(viewTable,"Niepowodzenie zapisywania pliku!");
+                Main.logger.warn("Niepowodzenie zapisywania pliku!");
+                Main.myLogger.warn("Niepowodzenie zapisywania pliku!");
             }
 
         }
@@ -654,31 +660,45 @@ public class Window extends JFrame implements ActionListener {
 
             scrollableArea.getVerticalScrollBar().setValue(0);
             Window.statusBar.setStatusAndValueOfApplication("Skok","Wprowadzanie");
+            Main.logger.info("Skok do wprowadzanie");
+            Main.myLogger.info("Skok do wprowadzanie");
 
         }else if(e.getSource()==whereButton){
 
             scrollableArea.getVerticalScrollBar().setValue(0);
             Window.statusBar.setStatusAndValueOfApplication("Skok","Pozycja");
+            Main.logger.info("Skok do pozycja");
+            Main.myLogger.info("Skok do pozycja");
+
 
         }else if(e.getSource()==acceptButton){
 
             scrollableArea.getVerticalScrollBar().setValue(50);
             Window.statusBar.setStatusAndValueOfApplication("Skok","Dodawanie");
+            Main.logger.info("Skok do dodawanie");
+            Main.myLogger.info("Skok do dodawanie");
+
 
         }else if(e.getSource()==trashButton){
 
             scrollableArea.getVerticalScrollBar().setValue(50);
             Window.statusBar.setStatusAndValueOfApplication("Skok","Usuwanie");
+            Main.logger.info("Skok do usuwanie");
+            Main.myLogger.info("Skok do usuwanie");
 
         }else if(e.getSource()==mathButton){
 
             scrollableArea.getVerticalScrollBar().setValue(80);
             Window.statusBar.setStatusAndValueOfApplication("Skok","Obliczanie");
+            Main.logger.info("Skok do obliczanie");
+            Main.myLogger.info("Skok do obliczanie");
 
         }else if(e.getSource()==resultButton){
 
             scrollableArea.getVerticalScrollBar().setValue(80);
             Window.statusBar.setStatusAndValueOfApplication("Skok","Wynik");
+            Main.logger.info("Skok do wynik");
+            Main.myLogger.info("Skok do wynik");
 
         }
 

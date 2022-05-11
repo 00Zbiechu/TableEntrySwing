@@ -342,15 +342,21 @@ public class CentralPanel extends JPanel implements ActionListener {
             String formatDateOutput = new SimpleDateFormat("yyyy-MM-dd").format(kalendarz.getDate());
             controllerComboBox.viewComboBox.resultArea.setText("Wybrano datę: "+formatDateOutput);
             Window.statusBar.setStatusAndValueOfApplication("Data","Wybrano");
+            Main.logger.info("Data Wybrano");
+            Main.myLogger.info("Data Wybrano");
 
         }else if(e.getSource()==kalendarz){
 
             Window.statusBar.setStatusAndValueOfApplication("Data","Wybieranie");
+            Main.logger.info("Data Wybieranie");
+            Main.myLogger.info("Data Wybieranie");
 
         }else if(e.getSource()==viewChart){
 
             new Chart();
             Window.statusBar.setStatusAndValueOfApplication("Pokaż wykres","True");
+            Main.logger.info("Pokaż wykres True");
+            Main.myLogger.info("Pokaż wykres True");
 
         }
 

@@ -88,6 +88,8 @@ public class LockWindow extends JPanel implements ActionListener {
         if(e.getSource()==loginButton){
 
             Window.statusBar.setStatusAndValueOfApplication("Logowanie","W trakcie");
+            Main.logger.info("Logowanie W trakcie");
+            Main.myLogger.info("Logowanie W trakcie");
             Window.loginWindow.setVisible(true);
 
         }

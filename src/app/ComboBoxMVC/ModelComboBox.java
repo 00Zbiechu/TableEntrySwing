@@ -1,5 +1,6 @@
 package app.ComboBoxMVC;
 
+import app.Main;
 import app.Window;
 
 import javax.swing.*;
@@ -58,6 +59,8 @@ public class ModelComboBox implements ComboBoxModel {
     public static void calculate(String operation,int[][] tableDataModel,JTextArea textArea, Component parent){
 
         Window.statusBar.setStatusAndValueOfApplication("Wykonanie operacji",String.valueOf(operation));
+        Main.logger.info("Wykonanie operacji "+String.valueOf(operation));
+        Main.myLogger.info("Wykonanie operacji "+String.valueOf(operation));
 
         if(operation.equals("Średnia")){
 
@@ -122,6 +125,8 @@ public class ModelComboBox implements ComboBoxModel {
             }catch (Exception e){
                 Window.statusBar.setStatusAndValueOfApplication("Tablica","Pusta");
                 JOptionPane.showMessageDialog(parent,"Tablica jest pusta proszę ją wypełnić.");
+                Main.logger.warn("Tablica jest pusta");
+                Main.myLogger.warn("Tablica jest pusta");
             }
 
 
@@ -146,6 +151,8 @@ public class ModelComboBox implements ComboBoxModel {
             }catch (Exception e){
                 Window.statusBar.setStatusAndValueOfApplication("Tablica","Pusta");
                 JOptionPane.showMessageDialog(parent,"Tablica jest pusta proszę ją wypełnić!","Brak danych",JOptionPane.WARNING_MESSAGE);
+                Main.logger.warn("Tablica jest pusta");
+                Main.myLogger.warn("Tablica jest pusta");
             }
 
 

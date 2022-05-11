@@ -1,0 +1,46 @@
+INFO [2022-05-11 12:39:07,042]: Main.java 15 Start aplikacji 
+INFO [2022-05-11 12:39:07,579]: ModelTable.java 96 Zerowanie tablicy 
+INFO [2022-05-11 12:39:07,583]: ModelTable.java 96 Zerowanie tablicy 
+INFO [2022-05-11 12:39:17,890]: ModelTable.java 65 Wprowadzono wartość 
+INFO [2022-05-11 12:39:20,937]: ModelTable.java 65 Wprowadzono wartość 
+INFO [2022-05-11 12:39:24,484]: ModelTable.java 65 Wprowadzono wartość 
+INFO [2022-05-11 12:39:26,109]: ModelTable.java 96 Zerowanie tablicy 
+INFO [2022-05-11 12:39:27,516]: ModelTable.java 123 Zapis do pliku tablicy 
+INFO [2022-05-11 12:42:17,606]: Main.java 15 Start aplikacji 
+INFO [2022-05-11 12:42:18,169]: ModelTable.java 96 Zerowanie tablicy 
+INFO [2022-05-11 12:42:18,169]: ModelTable.java 96 Zerowanie tablicy 
+WARN [2022-05-11 12:42:24,826]: ModelTable.java 74 Wprowadzono niewłaściwą wartość! 
+INFO [2022-05-11 12:42:33,123]: ModelTable.java 65 Wprowadzono wartość 
+INFO [2022-05-11 12:42:39,358]: ModelTable.java 65 Wprowadzono wartość 
+INFO [2022-05-11 12:42:43,280]: CentralPanel.java 359 Pokaż wykres True 
+INFO [2022-05-11 12:42:51,984]: ModelTable.java 123 Zapis do pliku tablicy 
+INFO [2022-05-11 12:42:56,937]: ModelTable.java 123 Zapis do pliku tablicy 
+INFO [2022-05-11 12:43:21,876]: Main.java 15 Start aplikacji 
+INFO [2022-05-11 12:43:22,423]: ModelTable.java 96 Zerowanie tablicy 
+INFO [2022-05-11 12:43:22,423]: ModelTable.java 96 Zerowanie tablicy 
+INFO [2022-05-11 12:43:25,705]: ModelComboBox.java 63 Wykonanie operacji Średnia 
+INFO [2022-05-11 12:43:28,736]: ModelComboBox.java 63 Wykonanie operacji MAX 
+INFO [2022-05-11 12:43:30,361]: CentralPanel.java 346 Data Wybrano 
+INFO [2022-05-11 12:43:33,799]: CentralPanel.java 352 Data Wybieranie 
+INFO [2022-05-11 12:43:35,971]: CentralPanel.java 346 Data Wybrano 
+INFO [2022-05-11 12:43:37,581]: ModelTable.java 96 Zerowanie tablicy 
+INFO [2022-05-11 12:43:40,315]: Window.java 214 Koniec działania aplikacji 
+INFO [2022-05-11 12:44:12,755]: Main.java 15 Start aplikacji 
+INFO [2022-05-11 12:44:17,239]: ModelTable.java 64 Wprowadzono wartość 
+INFO [2022-05-11 12:44:19,630]: ModelTable.java 95 Zerowanie tablicy 
+WARN [2022-05-11 12:44:25,646]: ModelTable.java 73 Wprowadzono niewłaściwą wartość! 
+INFO [2022-05-11 12:44:28,443]: ModelTable.java 95 Zerowanie tablicy 
+INFO [2022-05-11 12:44:30,084]: ModelComboBox.java 63 Wykonanie operacji Średnia 
+INFO [2022-05-11 12:44:33,131]: CentralPanel.java 346 Data Wybrano 
+INFO [2022-05-11 12:44:34,741]: Window.java 664 Skok do wprowadzanie 
+INFO [2022-05-11 12:44:36,944]: Window.java 701 Skok do wynik 
+INFO [2022-05-11 12:44:38,553]: Window.java 687 Skok do usuwanie 
+INFO [2022-05-11 12:44:40,382]: ModelTable.java 122 Zapis do pliku tablicy 
+WARN [2022-05-11 12:44:43,492]: Window.java 629 Niepowodzenie zapisywania pliku! 
+INFO [2022-05-11 12:44:43,492]: ModelTable.java 122 Zapis do pliku tablicy 
+WARN [2022-05-11 12:44:47,398]: Window.java 629 Niepowodzenie zapisywania pliku! 
+INFO [2022-05-11 12:44:49,023]: ModelTable.java 103 Drukowanie tablicy 
+INFO [2022-05-11 12:44:50,257]: ModelTable.java 103 Drukowanie tablicy 
+INFO [2022-05-11 12:44:53,226]: Window.java 606 Logowanie False 
+INFO [2022-05-11 12:44:53,226]: Window.java 606 Logowanie False 
+INFO [2022-05-11 12:44:59,242]: Window.java 214 Koniec działania aplikacji 

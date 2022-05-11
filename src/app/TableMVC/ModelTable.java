@@ -1,5 +1,6 @@
 package app.TableMVC;
 
+import app.Main;
 import app.Window;
 
 import javax.swing.*;
@@ -22,7 +23,6 @@ public class ModelTable extends AbstractTableModel {
 
     public ModelTable(){
 
-        fillTableZeros();
 
     }
 
@@ -60,6 +60,8 @@ public class ModelTable extends AbstractTableModel {
         try {
             value =  Integer.parseInt(data);
             Window.statusBar.setStatusAndValueOfApplication("Wprowadzono wartość",String.valueOf(value));
+            Main.logger.info("Wprowadzono wartość");
+            Main.myLogger.info("Wprowadzono wartość");
 
             //Wprowadzenie zmian do tabeliData
             tableData[--x][--y]=value;
@@ -67,6 +69,8 @@ public class ModelTable extends AbstractTableModel {
         }catch (Exception e){
             Window.statusBar.setStatusAndValueOfApplication("Podaną złą wartość","Błąd");
             JOptionPane.showMessageDialog(parent,"Wprowadzono niewłaściwą wartość!","Zła wartość",JOptionPane.WARNING_MESSAGE);
+            Main.logger.warn("Wprowadzono niewłaściwą wartość!");
+            Main.myLogger.warn("Wprowadzono niewłaściwą wartość!");
         }
 
         fireTableDataChanged();
@@ -87,12 +91,16 @@ public class ModelTable extends AbstractTableModel {
         }
         fireTableDataChanged();
         Window.statusBar.setStatusAndValueOfApplication("Zerowanie","True");
+        Main.logger.info("Zerowanie tablicy");
+        Main.myLogger.info("Zerowanie tablicy");
     }
 
 
     public static void printTable(JTable table) {
 
         Window.statusBar.setStatusAndValueOfApplication("Drukowanie", "True");
+        Main.logger.info("Drukowanie tablicy");
+        Main.myLogger.info("Drukowanie tablicy");
 
         PrinterJob pj = PrinterJob.getPrinterJob();
 
@@ -110,6 +118,8 @@ public class ModelTable extends AbstractTableModel {
     public void saveFile(Component parent) throws IOException {
 
         Window.statusBar.setStatusAndValueOfApplication("Zapis do pliku","Tablicy");
+        Main.logger.info("Zapis do pliku tablicy");
+        Main.myLogger.info("Zapis do pliku tablicy");
 
         //Stworzenie obiektu do obsługi okna wyboru pliku
         JFileChooser fileChooser = new JFileChooser();
