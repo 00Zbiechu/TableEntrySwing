@@ -11,7 +11,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 /**
- * Klasa <code>AboutWindow</code> pokazujaca okno z informacjami o autorze i aplikacji, rozszerzajaca klase <code>JDialog</code> i implementujaca interfejs <code>ActionListener</code>
+ * Klasa <code>AboutWindow</code> pokazująca okno z informacjami o autorze i aplikacji, rozszerzająca klasę <code>JDialog</code> i implementująca interfejs <code>ActionListener</code>
  * @author Mateusz Zbiewski
  * @version 1.0
  */
