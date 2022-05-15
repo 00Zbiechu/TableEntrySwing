@@ -25,34 +25,35 @@ public class ControllerComboBox {
 
     /**
      * Konstruktor klasy <code>ControllerComboBox</code> laczacej Model i View
+     *
      * @param modelComboBox model ComboBoxa zawierajacy dane i metody
-     * @param viewComboBox widok comboBoxa zawierajacy GUI
+     * @param viewComboBox  widok comboBoxa zawierajacy GUI
      */
-    public ControllerComboBox(ModelComboBox modelComboBox, ViewComboBox viewComboBox){
+    public ControllerComboBox(ModelComboBox modelComboBox, ViewComboBox viewComboBox) {
 
-        this.modelComboBox = modelComboBox;
-        this.viewComboBox = viewComboBox;
+        ControllerComboBox.modelComboBox = modelComboBox;
+        ControllerComboBox.viewComboBox = viewComboBox;
 
         //Dodanie słuchacza do widoku
-        this.viewComboBox.addComboBoxListener(new ComboBoxListener());
+        ControllerComboBox.viewComboBox.addComboBoxListener(new ComboBoxListener());
 
     }
 
     /**
      * Klasa wewnetrza sluzaca do oslugi zdarzen wywolanych przez sluchacza
      */
-    public class ComboBoxListener implements ActionListener{
+    public class ComboBoxListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            if(e.getSource()==viewComboBox.calculate){
+            if (e.getSource() == ViewComboBox.calculate) {
 
-                modelComboBox.calculate((String) selectOperation.getSelectedItem(),CentralPanel.modelTable.getDataTable(), ViewComboBox.resultArea,ViewComboBox.resultArea);
+                ModelComboBox.calculate((String) selectOperation.getSelectedItem(), CentralPanel.modelTable.getDataTable(), ViewComboBox.resultArea, ViewComboBox.resultArea);
 
-            }else if(e.getSource()==selectOperation){
+            } else if (e.getSource() == selectOperation) {
 
-                Window.statusBar.setStatusAndValueOfApplication("Wybieranie operacji",String.valueOf(selectOperation.getSelectedItem()));
+                Window.statusBar.setStatusAndValueOfApplication("Wybieranie operacji", String.valueOf(selectOperation.getSelectedItem()));
 
             }
 

@@ -1,94 +1,99 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
-<project name = "Aplikacja" default = "Run-Project" basedir = ".">
+<project name = "Aplikacja" default = "run" basedir = ".">
 
-    <target name = "Init" >
+    <target name="init">
 
         <echo message = "Inicjacja zmiennych parametrycznych..."/>
 
-        <property name = "Aplikacja.bin" value = "bin" />
-        <property name = "Aplikacja.dist" value = "dist" />
-        <property name = "Aplikacja.doc" value = "doc" />
-        <property name = "Aplikacja.log" value = "log" />
-        <property name = "Aplikacja.lib" value = "lib" />
-        <property name = "Aplikacja.src" value = "src" />
+            <property name = "Aplikacja.bin" value = "bin" />
+            <property name = "Aplikacja.dist" value = "dist" />
+            <property name = "Aplikacja.doc" value = "doc" />
+            <property name = "Aplikacja.log" value = "log" />
+            <property name = "Aplikacja.lib" value = "lib" />
+            <property name = "Aplikacja.src" value = "src" />
 
-
-        <property name = "p.app" value = "${Aplikacja.src}/app" />
-            <property name = "p.combo" value = "${Aplikacja.src}/app/ComboBoxMVC" />
-            <property name = "p.table" value = "${Aplikacja.src}/app/TableMVC" />
-
+                <property name = "p.app" value = "${Aplikacja.src}/app" />
+                <property name = "p.combo" value = "${Aplikacja.src}/app/ComboBoxMVC" />
+                <property name = "p.table" value = "${Aplikacja.src}/app/TableMVC" />
 
     </target>
 
 
-    <target name = "Clean" depends = "Init" >
+    <target name ="clean" depends ="init" >
 
-        <echo message = "Usuwanie zbednych czesci projektu..."/>
+        <echo message = "Usuwanie zbędnych części projektu..."/>
 
-        <delete dir = "${Aplikacja.bin}" />
-        <delete dir = "${Aplikacja.dist}" />
-        <delete dir = "${Aplikacja.doc}/Aplikacja" />
+            <delete dir="${Aplikacja.bin}" />
+            <delete dir="${Aplikacja.doc}" />
+            <delete dir="${Aplikacja.dist}" />
 
     </target>
 
-    <target name = "Prepare" depends = "Clean" >
+
+    <target name ="prepare" depends ="clean" >
+
         <echo message = "Przygotowanie struktury projektu..."/>
-        <mkdir dir = "${Aplikacja.bin}"/>
-        <mkdir dir = "${Aplikacja.dist}" />
-        <mkdir dir = "${Aplikacja.doc}/JAVADOC"/>
+
+            <mkdir dir="${Aplikacja.bin}" />
+            <mkdir dir="${Aplikacja.doc}" />
+            <mkdir dir="${Aplikacja.dist}" />
+
     </target>
 
-    <target name = "Compile-combo" depends = "Init, Prepare">
-        <echo message = "Kompilacja pakietu ComboBoxMVC..." />
-        <javac srcdir = "${p.combo}"
-               destdir = "${Aplikacja.bin}"
-               classpath="${Aplikacja.lib}/forms-1.2.0.jar" />
+
+    <target name="compile" depends="prepare">
+
+        <echo message = "Kompilowanie plików źródłowych aplikacji"/>
+
+            <javac srcdir="${Aplikacja.src}" destdir="bin">
+                <classpath>
+                    <pathelement location="${Aplikacja.lib}/forms-1.2.0.jar"/>
+                    <pathelement location="${Aplikacja.lib}/jcalendar.jar"/>
+                    <pathelement location="${Aplikacja.lib}/jcommon-1.0.23.jar"/>
+                    <pathelement location="${Aplikacja.lib}/jfreechart-1.0.19.jar"/>
+                    <pathelement location="${Aplikacja.lib}/l2fprod-common-buttonbar.jar"/>
+                    <pathelement location="${Aplikacja.lib}/l2fprod-common-totd.jar"/>
+                    <pathelement location="${Aplikacja.lib}/log4j-1.2.11.jar"/>
+                </classpath>
+            </javac>
+
     </target>
 
-    <target name = "Compile-table" depends = "Compile-combo">
-        <echo message = "Kompilacja pakietu TableMVC..." />
-        <javac srcdir = "${p.table}"
-               destdir = "${Aplikacja.bin}"
-               classpath="${Aplikacja.lib}/forms-1.2.0.jar" />
-    </target>
+    <target name = "javadoc" depends = "compile">
 
-    <target name = "Compile-app" depends = "Compile-table">
-        <echo message = "Kompilacja pakietu app..." />
-        <javac srcdir = "${p.app}" destdir = "${Aplikacja.bin}"
-                classpath = "${Aplikacja.lib}/log4j.jar,
-                             ${Aplikacja.lib}/l2fprod-common-totd.jar,
-                             ${Aplikacja.lib}/l2fprod-common-buttonbar.jar,
-                             ${Aplikacja.lib}/jfreechart-1.0.19.jar,
-                             ${Aplikacja.lib}/jcommon-1.0.23.jar,
-                             ${Aplikacja.lib}/jcalendar.jar,
-                             ${Aplikacja.lib}/forms-1.2.0.jar" />
-    </target>
-
-    <target name = "Javadoc" depends = "Compile-app">
         <echo message = "Utworzenie dokumentacji javadoc..." />
-        <javadoc sourcefiles = "${p.combo}/*.java,${p.table}/*.java,${p.app}/*.java"
-                 destdir = "${Aplikacja.doc}/javadoc"
-        />
+        <javadoc destdir = "${Aplikacja.doc}">
+            <fileset dir="${Aplikacja.src}" />
+            <classpath>
+                <pathelement location="${Aplikacja.lib}/forms-1.2.0.jar"/>
+                <pathelement location="${Aplikacja.lib}/jcalendar.jar"/>
+                <pathelement location="${Aplikacja.lib}/jcommon-1.0.23.jar"/>
+                <pathelement location="${Aplikacja.lib}/jfreechart-1.0.19.jar"/>
+                <pathelement location="${Aplikacja.lib}/l2fprod-common-buttonbar.jar"/>
+                <pathelement location="${Aplikacja.lib}/l2fprod-common-totd.jar"/>
+                <pathelement location="${Aplikacja.lib}/log4j-1.2.11.jar"/>
+            </classpath>
+        </javadoc>
+
     </target>
 
-    <target name = "Run-Project" depends = "Javadoc">
-        <echo message = "Start aplikacji..." />
-        <java classname="${p.app}/Main">
-            <classpath id = "1">
-                <pathelement location = "." />
-                <pathelement location = "${Aplikacja.bin}" />
-                <pathelement location = "${Aplikacja.dist}" />
-                <pathelement location = "${Aplikacja.doc}" />
-                <pathelement location = "${Aplikacja.lib}/log4j.jar" />
-                <pathelement location = "${Aplikacja.lib}/l2fprod-common-totd.jar"  />
-                <pathelement location = "${Aplikacja.lib}/l2fprod-common-buttonbar.jar" />
-                <pathelement location = "${Aplikacja.lib}/jfreechart-1.0.19.jar" />
-                <pathelement location = "${Aplikacja.lib}/jcommon-1.0.23.jar" />
-                <pathelement location = "${Aplikacja.lib}/jcalendar.jar" />
-                <pathelement location = "${Aplikacja.lib}/forms-1.2.0.jar" />
-                <pathelement location = "${Aplikacja.src}" />
-            </classpath>
-        </java>
+
+    <target name="jar" depends="javadoc">
+        <jar destfile="${Aplikacja.dist}/Aplikacja.jar" basedir="${Aplikacja.src}">
+            <manifest>
+                <attribute name="Main–Class" value="${p.app}/Main.java"/>
+            </manifest>
+        </jar>
     </target>
+
+
+
+    <target name = "run" depends = "jar">
+
+        <echo message = "Start aplikacji..." />
+
+    </target>
+
+
 
 </project>

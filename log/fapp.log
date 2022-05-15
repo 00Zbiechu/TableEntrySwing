@@ -8,3 +8,8 @@ INFO [2022-05-14 23:20:56,012]: LoginWindow.java 50 Logowanie w trakcie
 INFO [2022-05-14 23:20:56,093]: ModelTable.java 128 Zerowanie tablicy 
 INFO [2022-05-14 23:20:56,097]: ModelTable.java 128 Zerowanie tablicy 
 INFO [2022-05-14 23:20:59,590]: Window.java 247 Koniec działania aplikacji 
+INFO [2022-05-15 17:38:23,253]: Main.java 30 Start aplikacji 
+INFO [2022-05-15 17:38:24,367]: LoginWindow.java 50 Logowanie w trakcie 
+INFO [2022-05-15 17:38:24,460]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-15 17:38:24,463]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-15 17:38:27,726]: Window.java 247 Koniec działania aplikacji 
