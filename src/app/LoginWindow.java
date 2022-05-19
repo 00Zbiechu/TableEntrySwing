@@ -238,6 +238,7 @@ public class LoginWindow extends JDialog implements ActionListener {
 
         Window.loginRequired.setVisible(false);
         Window.centralPanel.setVisible(true);
+        Window.navigation.setVisible(true);
 
     }
 

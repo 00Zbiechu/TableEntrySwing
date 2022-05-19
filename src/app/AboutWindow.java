@@ -238,7 +238,7 @@ public class AboutWindow extends JDialog implements ActionListener {
      */
     private JLabel createJIcon(String file) {
 
-        String name = "/grafika/"+file;
+        String name = "/graphics/" +file;
         JLabel icon = new JLabel(new ImageIcon(getClass().getResource(name)));
 
 

@@ -2,11 +2,9 @@ package app;
 
 import app.TableMVC.ModelTable;
 import com.l2fprod.common.swing.JButtonBar;
-import com.l2fprod.common.swing.JTipOfTheDay;
-import com.l2fprod.common.swing.tips.DefaultTip;
-import com.l2fprod.common.swing.tips.DefaultTipModel;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -73,7 +71,7 @@ public class Window extends JFrame implements ActionListener {
     private Icon iconSave, iconPrint, iconLogout, iconClose, iconHelp, iconInfo;
 
     //nawigacja
-    private JButtonBar nawigacja;
+    public static JButtonBar navigation;
     private Icon iconAdd, iconWhere, iconAccept, iconTrash, iconMath, iconEqual;
     private JButton addButton,whereButton,acceptButton,trashButton,mathButton,resultButton;
 
@@ -120,7 +118,7 @@ public class Window extends JFrame implements ActionListener {
 
 
         //Rozmiar i położenie okna
-        setDimensionWindow(getResolution());
+        setDimensionWindow(new Dimension(1366,768));
         setLocationWindow(getResolution());
 
 
@@ -433,16 +431,16 @@ public class Window extends JFrame implements ActionListener {
     private JButtonBar createJButtonBar(){
 
         JButtonBar jButtonBar = new JButtonBar();
-            jButtonBar.setPreferredSize(new Dimension((int) (windowWidth*0.05), (int) (windowHeight*0.80)));
+            jButtonBar.setPreferredSize(new Dimension((int) (windowWidth*0.1), (int) (windowHeight*0.80)));
 
         return jButtonBar;
 
     }
 
     //Konstruktor przycisków do toolbar'a
-    private JButton createJButtonBarButton(String tooltip,Icon icon){
+    private JButton createJButtonBarButton(String text,String tooltip,Icon icon){
 
-        JButton jButton = new JButton("",icon);
+        JButton jButton = new JButton(text,icon);
         jButton.setToolTipText(tooltip);
         jButton.addActionListener(this);
         jButton.setEnabled(true);
@@ -454,37 +452,38 @@ public class Window extends JFrame implements ActionListener {
 
     private void createButtonBarButton(){
 
-        addButton = createJButtonBarButton("Idź do: Dodaj",iconAdd);
-        whereButton = createJButtonBarButton("Idź do: Pozycja",iconWhere);
-        acceptButton = createJButtonBarButton("Idź do: Wprowadź",iconAccept);
-        trashButton = createJButtonBarButton("Idź do: Usuń",iconTrash);
-        mathButton = createJButtonBarButton("Idź do: Oblicz",iconMath);
-        resultButton = createJButtonBarButton("Idź do: Wynik",iconEqual);
+        addButton = createJButtonBarButton("Dodaj","Idź do: Dodaj",iconAdd);
+        whereButton = createJButtonBarButton("Pozycja","Idź do: Pozycja",iconWhere);
+        acceptButton = createJButtonBarButton("Akceptuj","Idź do: Wprowadź",iconAccept);
+        trashButton = createJButtonBarButton("Usuń","Idź do: Usuń",iconTrash);
+        mathButton = createJButtonBarButton("Oblicz","Idź do: Oblicz",iconMath);
+        resultButton = createJButtonBarButton("Wynik","Idź do: Wynik",iconEqual);
 
     }
 
     private void createButtonBar(){
 
-        this.nawigacja = createJButtonBar();
-            nawigacja.setOrientation(SwingConstants.VERTICAL);
+        this.navigation = createJButtonBar();
+            navigation.setOrientation(SwingConstants.VERTICAL);
+            navigation.setVisible(false);
 
             //Dodawanie do JButtonBara
-            nawigacja.add(addButton);
-            nawigacja.add(whereButton);
-            nawigacja.add(acceptButton);
-            nawigacja.add(trashButton);
-            nawigacja.add(mathButton);
-            nawigacja.add(resultButton);
+            navigation.add(addButton);
+            navigation.add(whereButton);
+            navigation.add(acceptButton);
+            navigation.add(trashButton);
+            navigation.add(mathButton);
+            navigation.add(resultButton);
 
 
-        add(nawigacja,BorderLayout.WEST);
+        add(navigation,BorderLayout.WEST);
 
     }
 
 
     //Konstruktor ikon
     private Icon createJIcon(String file) {
-        String name = "/grafika/"+file;
+        String name = "/graphics/" +file;
         Icon icon = new ImageIcon(getClass().getResource(name));
 
         return icon;

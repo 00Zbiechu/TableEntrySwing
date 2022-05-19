@@ -13,3 +13,180 @@ INFO [2022-05-15 17:38:24,367]: LoginWindow.java 50 Logowanie w trakcie
 INFO [2022-05-15 17:38:24,460]: ModelTable.java 128 Zerowanie tablicy 
 INFO [2022-05-15 17:38:24,463]: ModelTable.java 128 Zerowanie tablicy 
 INFO [2022-05-15 17:38:27,726]: Window.java 247 Koniec działania aplikacji 
+INFO [2022-05-16 21:22:32,975]: ? ? Start aplikacji 
+INFO [2022-05-16 21:28:39,393]: ? ? Start aplikacji 
+INFO [2022-05-16 22:13:26,481]: ? ? Start aplikacji 
+INFO [2022-05-17 11:43:12,581]: Main.java 30 Start aplikacji 
+INFO [2022-05-17 11:43:13,225]: LoginWindow.java 50 Logowanie w trakcie 
+INFO [2022-05-17 11:43:13,298]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-17 11:43:13,301]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-17 11:43:17,599]: LoginWindow.java 341 Logowanie True 
+INFO [2022-05-17 11:43:19,082]: TipOfTheDay.java 31 Pokazanie okna z poradami dnia 
+INFO [2022-05-17 11:43:23,339]: Window.java 247 Koniec działania aplikacji 
+INFO [2022-05-17 15:43:23,116]: ? ? Start aplikacji 
+INFO [2022-05-17 15:51:26,515]: ? ? Start aplikacji 
+INFO [2022-05-18 13:14:16,891]: Main.java 30 Start aplikacji 
+INFO [2022-05-18 13:14:17,881]: LoginWindow.java 50 Logowanie w trakcie 
+INFO [2022-05-18 13:14:17,966]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-18 13:14:17,969]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-18 13:14:22,801]: LoginWindow.java 341 Logowanie True 
+INFO [2022-05-18 13:14:27,551]: TipOfTheDay.java 31 Pokazanie okna z poradami dnia 
+INFO [2022-05-18 13:14:33,541]: ModelTable.java 94 Wprowadzono wartość 
+INFO [2022-05-18 13:14:35,707]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-18 13:14:37,166]: ModelComboBox.java 87 Wykonanie operacji Średnia 
+INFO [2022-05-18 13:14:38,837]: CentralPanel.java 374 Pokaż wykres True 
+INFO [2022-05-18 13:14:45,083]: ModelTable.java 94 Wprowadzono wartość 
+INFO [2022-05-18 13:14:47,739]: ModelTable.java 94 Wprowadzono wartość 
+INFO [2022-05-18 13:14:49,835]: ModelTable.java 94 Wprowadzono wartość 
+INFO [2022-05-18 13:14:56,251]: ModelComboBox.java 87 Wykonanie operacji Średnia 
+INFO [2022-05-18 13:14:57,227]: CentralPanel.java 374 Pokaż wykres True 
+INFO [2022-05-18 13:15:06,309]: Window.java 698 Skok do wprowadzanie 
+INFO [2022-05-18 13:15:06,819]: Window.java 705 Skok do pozycja 
+INFO [2022-05-18 13:15:07,780]: Window.java 735 Skok do wynik 
+INFO [2022-05-18 13:15:11,293]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-18 13:15:12,444]: ModelTable.java 163 Zapis do pliku tablicy 
+WARN [2022-05-18 13:15:15,143]: Window.java 659 Niepowodzenie zapisywania pliku! 
+INFO [2022-05-18 13:15:22,976]: Window.java 690 Uruchomienie okna pomoc 
+INFO [2022-05-18 13:15:28,165]: CentralPanel.java 367 Data Wybieranie 
+INFO [2022-05-18 13:15:28,747]: CentralPanel.java 361 Data Wybrano 
+INFO [2022-05-18 13:15:30,788]: CentralPanel.java 361 Data Wybrano 
+INFO [2022-05-18 13:15:35,254]: Window.java 244 Koniec działania aplikacji 
+INFO [2022-05-19 20:21:43,977]: Main.java 30 Start aplikacji 
+INFO [2022-05-19 20:21:44,923]: LoginWindow.java 50 Logowanie w trakcie 
+INFO [2022-05-19 20:21:45,043]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 20:21:45,046]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 20:21:51,461]: LoginWindow.java 372 Logowanie False 
+INFO [2022-05-19 20:22:27,564]: Main.java 30 Start aplikacji 
+INFO [2022-05-19 20:22:28,048]: LoginWindow.java 50 Logowanie w trakcie 
+INFO [2022-05-19 20:22:28,111]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 20:22:28,115]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 20:22:32,519]: Window.java 244 Koniec działania aplikacji 
+INFO [2022-05-19 20:24:10,777]: Main.java 30 Start aplikacji 
+INFO [2022-05-19 20:24:11,245]: LoginWindow.java 50 Logowanie w trakcie 
+INFO [2022-05-19 20:24:11,311]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 20:24:11,314]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 20:24:15,803]: LoginWindow.java 341 Logowanie True 
+INFO [2022-05-19 20:24:17,318]: TipOfTheDay.java 31 Pokazanie okna z poradami dnia 
+INFO [2022-05-19 20:24:21,246]: Window.java 244 Koniec działania aplikacji 
+INFO [2022-05-19 20:25:06,045]: Main.java 30 Start aplikacji 
+INFO [2022-05-19 20:25:06,549]: LoginWindow.java 50 Logowanie w trakcie 
+INFO [2022-05-19 20:25:06,615]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 20:25:06,618]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 20:25:12,947]: LoginWindow.java 341 Logowanie True 
+INFO [2022-05-19 20:25:14,414]: TipOfTheDay.java 31 Pokazanie okna z poradami dnia 
+INFO [2022-05-19 20:25:24,238]: Window.java 244 Koniec działania aplikacji 
+INFO [2022-05-19 20:26:30,000]: Main.java 30 Start aplikacji 
+INFO [2022-05-19 20:26:30,472]: LoginWindow.java 50 Logowanie w trakcie 
+INFO [2022-05-19 20:26:30,541]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 20:26:30,545]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 20:26:34,126]: Window.java 244 Koniec działania aplikacji 
+INFO [2022-05-19 20:27:02,688]: Main.java 30 Start aplikacji 
+INFO [2022-05-19 20:27:03,183]: LoginWindow.java 50 Logowanie w trakcie 
+INFO [2022-05-19 20:27:03,244]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 20:27:03,246]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 20:27:08,179]: LoginWindow.java 341 Logowanie True 
+INFO [2022-05-19 20:27:10,366]: TipOfTheDay.java 31 Pokazanie okna z poradami dnia 
+INFO [2022-05-19 20:27:26,213]: Window.java 244 Koniec działania aplikacji 
+INFO [2022-05-19 20:29:08,800]: Main.java 30 Start aplikacji 
+INFO [2022-05-19 20:29:09,306]: LoginWindow.java 50 Logowanie w trakcie 
+INFO [2022-05-19 20:29:09,373]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 20:29:09,376]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 20:29:23,527]: Window.java 244 Koniec działania aplikacji 
+INFO [2022-05-19 20:29:38,864]: Main.java 30 Start aplikacji 
+INFO [2022-05-19 20:29:39,329]: LoginWindow.java 50 Logowanie w trakcie 
+INFO [2022-05-19 20:29:39,392]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 20:29:39,395]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 20:30:05,003]: LoginWindow.java 372 Logowanie False 
+INFO [2022-05-19 20:30:07,146]: LockWindow.java 102 Logowanie W trakcie 
+INFO [2022-05-19 20:30:10,185]: LoginWindow.java 341 Logowanie True 
+INFO [2022-05-19 20:30:11,943]: TipOfTheDay.java 31 Pokazanie okna z poradami dnia 
+INFO [2022-05-19 20:30:21,126]: Window.java 244 Koniec działania aplikacji 
+INFO [2022-05-19 20:32:00,948]: Main.java 30 Start aplikacji 
+INFO [2022-05-19 20:32:01,461]: LoginWindow.java 50 Logowanie w trakcie 
+INFO [2022-05-19 20:32:01,534]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 20:32:01,538]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 20:32:22,339]: LoginWindow.java 372 Logowanie False 
+INFO [2022-05-19 20:32:24,335]: Window.java 244 Koniec działania aplikacji 
+INFO [2022-05-19 21:19:46,134]: Main.java 30 Start aplikacji 
+INFO [2022-05-19 21:19:46,985]: LoginWindow.java 50 Logowanie w trakcie 
+INFO [2022-05-19 21:19:47,079]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 21:19:47,082]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 21:20:15,390]: Window.java 244 Koniec działania aplikacji 
+INFO [2022-05-19 21:20:24,636]: Main.java 30 Start aplikacji 
+INFO [2022-05-19 21:20:25,104]: LoginWindow.java 50 Logowanie w trakcie 
+INFO [2022-05-19 21:20:25,171]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 21:20:25,174]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 21:20:31,366]: Window.java 244 Koniec działania aplikacji 
+INFO [2022-05-19 21:20:59,209]: Main.java 30 Start aplikacji 
+INFO [2022-05-19 21:20:59,789]: LoginWindow.java 50 Logowanie w trakcie 
+INFO [2022-05-19 21:20:59,877]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 21:20:59,881]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 21:21:09,159]: Window.java 244 Koniec działania aplikacji 
+INFO [2022-05-19 21:21:44,321]: Main.java 30 Start aplikacji 
+INFO [2022-05-19 21:21:44,795]: LoginWindow.java 50 Logowanie w trakcie 
+INFO [2022-05-19 21:21:44,859]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 21:21:44,861]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 21:22:03,819]: LoginWindow.java 372 Logowanie False 
+INFO [2022-05-19 21:22:04,970]: LockWindow.java 102 Logowanie W trakcie 
+INFO [2022-05-19 21:22:08,280]: LoginWindow.java 341 Logowanie True 
+INFO [2022-05-19 21:22:09,397]: TipOfTheDay.java 31 Pokazanie okna z poradami dnia 
+INFO [2022-05-19 21:22:23,484]: Window.java 244 Koniec działania aplikacji 
+INFO [2022-05-19 21:23:24,817]: Main.java 30 Start aplikacji 
+INFO [2022-05-19 21:23:25,278]: LoginWindow.java 50 Logowanie w trakcie 
+INFO [2022-05-19 21:23:25,339]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 21:23:25,343]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 21:23:37,754]: LoginWindow.java 341 Logowanie True 
+INFO [2022-05-19 21:23:38,996]: TipOfTheDay.java 31 Pokazanie okna z poradami dnia 
+INFO [2022-05-19 21:24:05,333]: Window.java 244 Koniec działania aplikacji 
+INFO [2022-05-19 21:24:22,004]: Main.java 30 Start aplikacji 
+INFO [2022-05-19 21:24:22,475]: LoginWindow.java 50 Logowanie w trakcie 
+INFO [2022-05-19 21:24:22,536]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 21:24:22,539]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 21:24:37,514]: LoginWindow.java 372 Logowanie False 
+INFO [2022-05-19 21:24:47,589]: Window.java 244 Koniec działania aplikacji 
+INFO [2022-05-19 21:29:44,741]: Main.java 30 Start aplikacji 
+INFO [2022-05-19 21:29:45,314]: LoginWindow.java 50 Logowanie w trakcie 
+INFO [2022-05-19 21:29:45,388]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 21:29:45,392]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 21:29:47,466]: Window.java 637 Logowanie False 
+INFO [2022-05-19 21:29:47,467]: Window.java 637 Logowanie False 
+INFO [2022-05-19 21:29:52,536]: LoginWindow.java 342 Logowanie True 
+INFO [2022-05-19 21:29:55,509]: TipOfTheDay.java 31 Pokazanie okna z poradami dnia 
+INFO [2022-05-19 21:30:04,026]: Window.java 699 Skok do wprowadzanie 
+INFO [2022-05-19 21:30:07,280]: Window.java 706 Skok do pozycja 
+INFO [2022-05-19 21:30:08,365]: Window.java 714 Skok do dodawanie 
+INFO [2022-05-19 21:30:09,000]: Window.java 722 Skok do usuwanie 
+INFO [2022-05-19 21:30:09,578]: Window.java 729 Skok do obliczanie 
+INFO [2022-05-19 21:30:10,168]: Window.java 736 Skok do wynik 
+INFO [2022-05-19 21:30:11,242]: Window.java 699 Skok do wprowadzanie 
+INFO [2022-05-19 21:30:27,388]: CentralPanel.java 374 Pokaż wykres True 
+INFO [2022-05-19 21:30:32,993]: ModelTable.java 94 Wprowadzono wartość 
+INFO [2022-05-19 21:30:35,712]: ModelTable.java 94 Wprowadzono wartość 
+INFO [2022-05-19 21:30:37,168]: CentralPanel.java 374 Pokaż wykres True 
+INFO [2022-05-19 21:30:43,192]: ModelComboBox.java 87 Wykonanie operacji Suma 
+INFO [2022-05-19 21:30:44,881]: CentralPanel.java 361 Data Wybrano 
+INFO [2022-05-19 21:30:46,427]: CentralPanel.java 367 Data Wybieranie 
+INFO [2022-05-19 21:30:47,073]: CentralPanel.java 361 Data Wybrano 
+INFO [2022-05-19 21:30:50,321]: CentralPanel.java 361 Data Wybrano 
+INFO [2022-05-19 21:31:04,045]: Window.java 244 Koniec działania aplikacji 
+INFO [2022-05-19 21:31:53,157]: Main.java 30 Start aplikacji 
+INFO [2022-05-19 21:31:53,617]: LoginWindow.java 50 Logowanie w trakcie 
+INFO [2022-05-19 21:31:53,680]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 21:31:53,683]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 21:32:00,025]: LoginWindow.java 342 Logowanie True 
+INFO [2022-05-19 21:32:01,213]: TipOfTheDay.java 31 Pokazanie okna z poradami dnia 
+INFO [2022-05-19 21:32:33,509]: Window.java 245 Koniec działania aplikacji 
+INFO [2022-05-19 21:34:29,475]: Main.java 30 Start aplikacji 
+INFO [2022-05-19 21:34:29,942]: LoginWindow.java 50 Logowanie w trakcie 
+INFO [2022-05-19 21:34:30,007]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 21:34:30,010]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 21:34:33,794]: LoginWindow.java 342 Logowanie True 
+INFO [2022-05-19 21:34:34,996]: TipOfTheDay.java 31 Pokazanie okna z poradami dnia 
+INFO [2022-05-19 21:34:36,718]: Window.java 245 Koniec działania aplikacji 
+INFO [2022-05-19 21:34:52,279]: Main.java 30 Start aplikacji 
+INFO [2022-05-19 21:34:52,735]: LoginWindow.java 50 Logowanie w trakcie 
+INFO [2022-05-19 21:34:52,797]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 21:34:52,800]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-05-19 21:34:56,665]: LoginWindow.java 342 Logowanie True 
+INFO [2022-05-19 21:34:57,780]: TipOfTheDay.java 31 Pokazanie okna z poradami dnia 
+INFO [2022-05-19 21:35:06,620]: Window.java 245 Koniec działania aplikacji 

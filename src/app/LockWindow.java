@@ -59,7 +59,7 @@ public class LockWindow extends JPanel implements ActionListener {
 
     //Konstruktor ikon
     private Icon createJIcon(String file) {
-        String name = "/grafika/"+file;
+        String name = "/graphics/" +file;
         Icon icon = new ImageIcon(getClass().getResource(name));
 
         return icon;

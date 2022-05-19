@@ -40,7 +40,7 @@ public class HelpWindow extends JDialog {
         createEditorPane();
 
         //Ustawianie url
-        setURL("/stronaPomocy/index.html");
+        setURL("/siteHelp/index.html");
 
         loadHTML(editor,url);
 
