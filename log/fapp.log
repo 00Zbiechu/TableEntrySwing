@@ -190,3 +190,222 @@ INFO [2022-05-19 21:34:52,800]: ModelTable.java 128 Zerowanie tablicy
 INFO [2022-05-19 21:34:56,665]: LoginWindow.java 342 Logowanie True 
 INFO [2022-05-19 21:34:57,780]: TipOfTheDay.java 31 Pokazanie okna z poradami dnia 
 INFO [2022-05-19 21:35:06,620]: Window.java 245 Koniec dziaÅ‚ania aplikacji 
+INFO [2022-06-01 10:34:07,509]: ? ? Start aplikacji 
+INFO [2022-06-01 10:40:51,900]: ? ? Start aplikacji 
+INFO [2022-06-01 10:42:42,333]: ? ? Start aplikacji 
+INFO [2022-06-01 10:43:08,077]: ? ? Start aplikacji 
+INFO [2022-06-01 10:43:20,140]: ? ? Start aplikacji 
+INFO [2022-06-01 10:44:01,731]: ? ? Start aplikacji 
+INFO [2022-06-01 11:06:29,674]: ? ? Start aplikacji 
+INFO [2022-06-01 11:06:40,106]: ? ? Start aplikacji 
+INFO [2022-06-01 11:06:47,854]: ? ? Start aplikacji 
+INFO [2022-06-01 11:07:30,814]: ? ? Start aplikacji 
+INFO [2022-06-01 11:47:48,123]: ? ? Start aplikacji 
+INFO [2022-06-01 11:52:58,535]: ? ? Start aplikacji 
+INFO [2022-06-01 11:57:52,094]: ? ? Start aplikacji 
+INFO [2022-06-01 11:58:11,017]: ? ? Start aplikacji 
+INFO [2022-06-01 11:58:34,925]: ? ? Start aplikacji 
+INFO [2022-06-01 12:10:23,053]: ? ? Start aplikacji 
+INFO [2022-06-01 12:14:10,152]: ? ? Start aplikacji 
+INFO [2022-06-01 12:21:24,614]: ? ? Start aplikacji 
+INFO [2022-06-01 12:21:52,366]: ? ? Start aplikacji 
+INFO [2022-06-01 12:24:39,009]: ? ? Start aplikacji 
+INFO [2022-06-01 12:27:21,367]: ? ? Start aplikacji 
+INFO [2022-06-01 12:35:30,409]: ? ? Start aplikacji 
+INFO [2022-06-01 12:36:40,625]: ? ? Start aplikacji 
+INFO [2022-06-01 12:38:17,240]: ? ? Start aplikacji 
+INFO [2022-06-01 13:01:20,583]: ? ? Start aplikacji 
+INFO [2022-06-01 13:03:47,590]: ? ? Start aplikacji 
+INFO [2022-06-01 13:09:33,782]: ? ? Start aplikacji 
+INFO [2022-06-01 13:12:41,255]: ? ? Start aplikacji 
+INFO [2022-06-01 13:13:05,038]: ? ? Start aplikacji 
+INFO [2022-06-01 13:13:35,807]: ? ? Start aplikacji 
+INFO [2022-06-01 13:17:49,564]: ? ? Start aplikacji 
+INFO [2022-06-01 13:33:44,531]: ? ? Start aplikacji 
+INFO [2022-06-01 13:35:19,081]: ? ? Start aplikacji 
+INFO [2022-06-01 13:39:25,556]: ? ? Start aplikacji 
+INFO [2022-06-01 13:47:19,038]: ? ? Start aplikacji 
+INFO [2022-06-01 17:27:49,779]: ? ? Start aplikacji 
+INFO [2022-06-01 17:34:51,030]: ? ? Start aplikacji 
+INFO [2022-06-01 17:36:30,518]: ? ? Start aplikacji 
+INFO [2022-06-01 17:37:35,366]: ? ? Start aplikacji 
+INFO [2022-06-01 17:38:05,618]: ? ? Start aplikacji 
+INFO [2022-06-01 17:38:52,043]: ? ? Start aplikacji 
+INFO [2022-06-01 17:44:38,222]: ? ? Start aplikacji 
+INFO [2022-06-01 17:54:08,611]: ? ? Start aplikacji 
+INFO [2022-06-01 17:54:57,364]: ? ? Start aplikacji 
+INFO [2022-06-01 17:55:09,271]: ? ? Start aplikacji 
+INFO [2022-06-01 17:55:09,771]: ? ? Logowanie w trakcie 
+INFO [2022-06-01 17:55:09,849]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 17:55:09,865]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 17:55:14,193]: ? ? Logowanie True 
+INFO [2022-06-01 17:55:15,365]: ? ? Pokazanie okna z poradami dnia 
+INFO [2022-06-01 17:55:17,506]: ? ? Koniec dzia³ania aplikacji 
+INFO [2022-06-01 17:56:47,683]: ? ? Start aplikacji 
+INFO [2022-06-01 17:56:48,105]: ? ? Logowanie w trakcie 
+INFO [2022-06-01 17:56:48,168]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 17:56:48,168]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 17:56:52,918]: ? ? Logowanie True 
+INFO [2022-06-01 17:56:56,527]: ? ? Pokazanie okna z poradami dnia 
+INFO [2022-06-01 17:57:00,137]: ? ? Koniec dzia³ania aplikacji 
+INFO [2022-06-01 17:57:19,276]: ? ? Start aplikacji 
+INFO [2022-06-01 17:57:19,698]: ? ? Logowanie w trakcie 
+INFO [2022-06-01 17:57:19,729]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 17:57:19,745]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 17:57:24,417]: ? ? Logowanie True 
+INFO [2022-06-01 17:57:29,230]: ? ? Pokazanie okna z poradami dnia 
+INFO [2022-06-01 17:57:30,839]: ? ? Skok do wprowadzanie 
+INFO [2022-06-01 17:57:31,277]: ? ? Skok do pozycja 
+INFO [2022-06-01 17:57:31,948]: ? ? Skok do usuwanie 
+INFO [2022-06-01 17:57:32,542]: ? ? Skok do obliczanie 
+INFO [2022-06-01 17:57:33,042]: ? ? Skok do wynik 
+INFO [2022-06-01 17:57:35,511]: ? ? Koniec dzia³ania aplikacji 
+INFO [2022-06-01 17:57:51,559]: ? ? Start aplikacji 
+INFO [2022-06-01 17:57:51,997]: ? ? Logowanie w trakcie 
+INFO [2022-06-01 17:57:52,044]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 17:57:52,044]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 17:57:54,731]: ? ? Koniec dzia³ania aplikacji 
+INFO [2022-06-01 17:58:12,170]: ? ? Start aplikacji 
+INFO [2022-06-01 17:58:12,607]: ? ? Logowanie w trakcie 
+INFO [2022-06-01 17:58:12,654]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 17:58:12,654]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 17:58:17,092]: ? ? Logowanie True 
+INFO [2022-06-01 17:58:18,108]: ? ? Pokazanie okna z poradami dnia 
+INFO [2022-06-01 17:58:19,717]: ? ? Koniec dzia³ania aplikacji 
+INFO [2022-06-01 17:59:00,343]: ? ? Start aplikacji 
+INFO [2022-06-01 17:59:00,764]: ? ? Logowanie w trakcie 
+INFO [2022-06-01 17:59:00,811]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 17:59:00,827]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 17:59:05,702]: ? ? Logowanie True 
+INFO [2022-06-01 17:59:06,781]: ? ? Pokazanie okna z poradami dnia 
+INFO [2022-06-01 17:59:08,140]: ? ? Uruchomienie okna pomoc 
+INFO [2022-06-01 17:59:08,156]: ? ? Uruchomienie okna pomoc 
+INFO [2022-06-01 17:59:11,375]: ? ? Koniec dzia³ania aplikacji 
+INFO [2022-06-01 18:00:22,848]: ? ? Start aplikacji 
+INFO [2022-06-01 18:00:23,286]: ? ? Logowanie w trakcie 
+INFO [2022-06-01 18:00:23,333]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:00:23,348]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:00:49,553]: ? ? Koniec dzia³ania aplikacji 
+INFO [2022-06-01 18:01:24,775]: ? ? Start aplikacji 
+INFO [2022-06-01 18:01:25,197]: ? ? Logowanie w trakcie 
+INFO [2022-06-01 18:01:25,243]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:01:25,259]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:01:33,676]: ? ? Logowanie True 
+INFO [2022-06-01 18:01:34,692]: ? ? Pokazanie okna z poradami dnia 
+INFO [2022-06-01 18:05:06,774]: ? ? Start aplikacji 
+INFO [2022-06-01 18:05:07,209]: ? ? Logowanie w trakcie 
+INFO [2022-06-01 18:05:07,251]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:05:07,263]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:05:12,179]: ? ? Logowanie True 
+INFO [2022-06-01 18:05:13,232]: ? ? Pokazanie okna z poradami dnia 
+INFO [2022-06-01 18:05:15,401]: ? ? Koniec dzia³ania aplikacji 
+INFO [2022-06-01 18:09:57,420]: ? ? Start aplikacji 
+INFO [2022-06-01 18:09:57,873]: ? ? Logowanie w trakcie 
+INFO [2022-06-01 18:09:57,933]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:09:57,937]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:10:09,520]: ? ? Start aplikacji 
+INFO [2022-06-01 18:10:09,977]: ? ? Logowanie w trakcie 
+INFO [2022-06-01 18:10:10,035]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:10:10,038]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:10:24,384]: ? ? Start aplikacji 
+INFO [2022-06-01 18:10:24,819]: ? ? Logowanie w trakcie 
+INFO [2022-06-01 18:10:24,860]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:10:24,872]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:10:28,741]: ? ? Logowanie True 
+INFO [2022-06-01 18:10:29,728]: ? ? Pokazanie okna z poradami dnia 
+INFO [2022-06-01 18:10:33,663]: ? ? Koniec dzia³ania aplikacji 
+INFO [2022-06-01 18:11:23,957]: ? ? Start aplikacji 
+INFO [2022-06-01 18:11:24,390]: ? ? Logowanie w trakcie 
+INFO [2022-06-01 18:11:24,436]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:11:24,446]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:11:28,652]: ? ? Logowanie True 
+INFO [2022-06-01 18:11:29,968]: ? ? Pokazanie okna z poradami dnia 
+INFO [2022-06-01 18:11:32,521]: ? ? Koniec dzia³ania aplikacji 
+INFO [2022-06-01 18:12:57,457]: ? ? Start aplikacji 
+INFO [2022-06-01 18:13:06,387]: ? ? Start aplikacji 
+INFO [2022-06-01 18:13:06,812]: ? ? Logowanie w trakcie 
+INFO [2022-06-01 18:13:06,861]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:13:06,865]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:13:09,697]: ? ? Koniec dzia³ania aplikacji 
+INFO [2022-06-01 18:13:37,477]: ? ? Start aplikacji 
+INFO [2022-06-01 18:21:07,123]: ? ? Start aplikacji 
+INFO [2022-06-01 18:21:07,548]: ? ? Logowanie w trakcie 
+INFO [2022-06-01 18:21:07,588]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:21:07,599]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:21:11,510]: ? ? Logowanie True 
+INFO [2022-06-01 18:21:12,576]: ? ? Pokazanie okna z poradami dnia 
+INFO [2022-06-01 18:21:14,513]: ? ? Koniec dzia³ania aplikacji 
+INFO [2022-06-01 18:21:19,357]: Main.java 30 Start aplikacji 
+INFO [2022-06-01 18:21:19,853]: LoginWindow.java 50 Logowanie w trakcie 
+INFO [2022-06-01 18:21:19,917]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-06-01 18:21:19,919]: ModelTable.java 128 Zerowanie tablicy 
+INFO [2022-06-01 18:21:23,819]: Window.java 245 Koniec dziaÅ‚ania aplikacji 
+INFO [2022-06-01 18:21:32,284]: ? ? Start aplikacji 
+INFO [2022-06-01 18:21:32,714]: ? ? Logowanie w trakcie 
+INFO [2022-06-01 18:21:32,760]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:21:32,773]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:21:35,503]: ? ? Logowanie W trakcie 
+INFO [2022-06-01 18:21:38,325]: ? ? Logowanie True 
+INFO [2022-06-01 18:21:39,289]: ? ? Pokazanie okna z poradami dnia 
+INFO [2022-06-01 18:21:41,103]: ? ? Skok do wynik 
+INFO [2022-06-01 18:21:42,182]: ? ? Skok do pozycja 
+INFO [2022-06-01 18:21:42,507]: ? ? Skok do wprowadzanie 
+INFO [2022-06-01 18:21:44,297]: ? ? Koniec dzia³ania aplikacji 
+INFO [2022-06-01 18:22:20,218]: ? ? Start aplikacji 
+INFO [2022-06-01 18:22:20,649]: ? ? Logowanie w trakcie 
+INFO [2022-06-01 18:22:20,698]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:22:20,704]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:22:24,058]: ? ? Koniec dzia³ania aplikacji 
+INFO [2022-06-01 18:22:47,763]: ? ? Start aplikacji 
+INFO [2022-06-01 18:22:48,229]: ? ? Logowanie w trakcie 
+INFO [2022-06-01 18:22:48,292]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:22:48,299]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:22:51,397]: ? ? Koniec dzia³ania aplikacji 
+INFO [2022-06-01 18:32:40,548]: ? ? Start aplikacji 
+INFO [2022-06-01 18:32:40,988]: ? ? Logowanie w trakcie 
+INFO [2022-06-01 18:32:41,018]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:32:41,028]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:32:45,557]: ? ? Logowanie True 
+INFO [2022-06-01 18:32:46,667]: ? ? Pokazanie okna z poradami dnia 
+INFO [2022-06-01 18:32:51,997]: ? ? Koniec dzia³ania aplikacji 
+INFO [2022-06-01 18:37:06,654]: ? ? Start aplikacji 
+INFO [2022-06-01 18:37:07,076]: ? ? Logowanie w trakcie 
+INFO [2022-06-01 18:37:07,122]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:37:07,122]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:37:10,044]: ? ? Koniec dzia³ania aplikacji 
+INFO [2022-06-01 18:40:13,044]: ? ? Start aplikacji 
+INFO [2022-06-01 18:40:13,471]: ? ? Logowanie w trakcie 
+INFO [2022-06-01 18:40:13,510]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:40:13,523]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:40:14,743]: ? ? Logowanie False 
+INFO [2022-06-01 18:40:16,321]: ? ? Koniec dzia³ania aplikacji 
+INFO [2022-06-01 18:48:26,071]: ? ? Start aplikacji 
+INFO [2022-06-01 18:48:26,501]: ? ? Logowanie w trakcie 
+INFO [2022-06-01 18:48:26,531]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:48:26,551]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 18:48:29,051]: ? ? Logowanie False 
+INFO [2022-06-01 18:48:31,111]: ? ? Koniec dzia³ania aplikacji 
+INFO [2022-06-01 19:00:21,347]: ? ? Start aplikacji 
+INFO [2022-06-01 19:00:21,769]: ? ? Logowanie w trakcie 
+INFO [2022-06-01 19:00:21,816]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 19:00:21,832]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 19:00:25,738]: ? ? Koniec dzia³ania aplikacji 
+INFO [2022-06-01 19:01:33,212]: ? ? Start aplikacji 
+INFO [2022-06-01 19:01:33,649]: ? ? Logowanie w trakcie 
+INFO [2022-06-01 19:01:33,696]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 19:01:33,696]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 19:01:36,524]: ? ? Koniec dzia³ania aplikacji 
+INFO [2022-06-01 19:03:02,686]: ? ? Start aplikacji 
+INFO [2022-06-01 19:03:03,107]: ? ? Logowanie w trakcie 
+INFO [2022-06-01 19:03:03,154]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 19:03:03,170]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 19:03:06,873]: ? ? Logowanie True 
+INFO [2022-06-01 19:03:07,920]: ? ? Pokazanie okna z poradami dnia 
+INFO [2022-06-01 19:03:09,842]: ? ? Koniec dzia³ania aplikacji 
+INFO [2022-06-01 19:05:14,681]: ? ? Start aplikacji 
+INFO [2022-06-01 19:05:15,119]: ? ? Logowanie w trakcie 
+INFO [2022-06-01 19:05:15,150]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 19:05:15,166]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 19:05:19,150]: ? ? Logowanie True 
+INFO [2022-06-01 19:05:20,260]: ? ? Pokazanie okna z poradami dnia 
+INFO [2022-06-01 19:05:22,166]: ? ? Koniec dzia³ania aplikacji 

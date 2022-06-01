@@ -1,30 +1,26 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <project name = "Aplikacja" default = "run" basedir = ".">
 
-    <!--Ok -->
     <target name="init">
+
+        <echo message="Deklarowanie zmiennych parametrycznych"/>
 
         <property name = "app.bin" value = "bin" />
         <property name = "app.dist" value = "dist" />
         <property name = "app.doc" value = "doc" />
-        <property name = "app.log" value = "log" />
         <property name = "app.lib" value = "lib" />
+        <property name = "app.log" value = "log" />
         <property name = "app.src" value = "src" />
-
             <property name = "p.app" value = "${app.src}/app" />
             <property name = "p.combo" value = "${app.src}/app/ComboBoxMVC" />
             <property name = "p.table" value = "${app.src}/app/TableMVC" />
 
-
-        <path id="build.classpath">
-            <fileset dir="${app.lib}" includes="**/*.jar"/>
-            <fileset dir="${app.bin}"/>
-        </path>
-
     </target>
 
-    <!--Ok -->
+
     <target name ="clean" depends ="init" >
+
+        <echo message="Usuwanie folderów i pakietów"/>
 
         <delete dir="${app.bin}" />
         <delete dir="${app.doc}" />
@@ -32,8 +28,10 @@
 
     </target>
 
-    <!--Ok -->
+
     <target name ="prepare" depends ="clean" >
+
+        <echo message="Przygotowywanie struktury folderów i pakietów"/>
 
         <mkdir dir="${app.bin}" />
         <mkdir dir="${app.doc}" />
@@ -43,17 +41,30 @@
 
     <target name="compile" depends="prepare">
 
-        <javac srcdir = "${app.src}"
-               destdir = "${app.bin}"
-               classpathref="build.classpath">
+        <echo message="Kompilacja plików JAVA"/>
+
+        <javac srcdir = "${app.src}" destdir = "${app.bin}">
+
+                <classpath id="lib.classpath">
+                    <pathelement path="${app.lib}/forms-1.2.0.jar"/>
+                    <pathelement path="${app.lib}/jcalendar.jar"/>
+                    <pathelement path="${app.lib}/jcommon-1.0.23.jar"/>
+                    <pathelement path="${app.lib}/jfreechart-1.0.19.jar"/>
+                    <pathelement path="${app.lib}/l2fprod-common-buttonbar.jar"/>
+                    <pathelement path="${app.lib}/l2fprod-common-totd.jar"/>
+                    <pathelement path="${app.lib}/log4j-1.2.11.jar"/>
+                </classpath>
+
         </javac>
 
     </target>
 
 
-    <target name = "javadoc" depends = "compile">
+    <target name ="javadoc" depends="compile">
 
-        <javadoc destdir = "${app.doc}/Documentation" encoding="UTF-8" classpathref="build.classpath">
+        <echo message="Tworzenie dokumentacji JavaDoc."/>
+
+        <javadoc destdir = "${app.doc}/Documentation" encoding="UTF-8" classpathref="lib.classpath">
             <fileset dir="${app.src}"/>
         </javadoc>
 
@@ -64,6 +75,28 @@
     <target name="jar" depends="javadoc">
 
 
+        <echo message="Tworzenie pliku wykonywalnego .jar"/>
+
+            <jar destfile="${app.dist}/Aplikacja.jar" duplicate="preserve" filesetmanifest="mergewithoutmain">
+
+                <zipfileset dir="${basedir}"/>
+                <zipfileset dir="${app.bin}"/>
+                <zipfileset dir="${app.src}"/>
+                <zipfileset src="${basedir}/lib/log4j-1.2.11.jar"/>
+                <zipfileset src="${basedir}/lib/l2fprod-common-buttonbar.jar"/>
+                <zipfileset src="${basedir}/lib/jfreechart-1.0.19.jar"/>
+                <zipfileset src="${basedir}/lib/l2fprod-common-totd.jar"/>
+                <zipfileset src="${basedir}/lib/jcommon-1.0.23.jar"/>
+                <zipfileset src="${basedir}/lib/jcalendar.jar"/>
+                <zipfileset src="${basedir}/lib/forms-1.2.0.jar"/>
+
+                <manifest>
+                    <attribute name="Main-Class" value="app.Main"/>
+                </manifest>
+            </jar>
+
+
+
 
     </target>
 
@@ -71,7 +104,15 @@
 
     <target name = "run" depends = "jar">
 
-        <java classname="app.Main" classpathref="build.classpath"/>
+        <echo message = "Start aplikacji..." />
+
+        <java classname="app.Main" fork="true" classpathref="lib.classpath">
+            <classpath>
+                <pathelement location="."/>
+                <pathelement location = "${app.bin}" />
+                <pathelement location = "${app.src}" />
+            </classpath>
+        </java>
 
     </target>
 
