@@ -75,7 +75,7 @@
 
         <echo message="Tworzenie pliku wykonywalnego .jar"/>
 
-            <jar destfile="${app.dist}/Aplikacja.jar" duplicate="preserve" filesetmanifest="mergewithoutmain">
+            <jar destfile="${app.dist}/Aplikacja.jar" duplicate="preserve">
 
                 <zipfileset dir="${basedir}"/>
                 <zipfileset dir="${app.bin}"/>

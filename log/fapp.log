@@ -444,3 +444,36 @@ INFO [2022-06-08 11:09:50,160]: ? ? Zerowanie tablicy
 INFO [2022-06-08 11:09:50,175]: ? ? Zerowanie tablicy 
 INFO [2022-06-08 11:09:54,383]: ? ? Logowanie False 
 INFO [2022-06-08 11:09:57,899]: ? ? Koniec dzia³ania aplikacji 
+INFO [2022-06-08 11:11:05,511]: ? ? Start aplikacji 
+INFO [2022-06-08 11:11:05,932]: ? ? Logowanie w trakcie 
+INFO [2022-06-08 11:11:05,979]: ? ? Zerowanie tablicy 
+INFO [2022-06-08 11:11:05,995]: ? ? Zerowanie tablicy 
+INFO [2022-06-08 11:11:19,383]: ? ? Logowanie True 
+INFO [2022-06-08 11:11:21,165]: ? ? Pokazanie okna z poradami dnia 
+INFO [2022-06-08 11:11:22,806]: ? ? Skok do wynik 
+INFO [2022-06-08 11:11:23,790]: ? ? Skok do wprowadzanie 
+INFO [2022-06-08 11:11:24,118]: ? ? Skok do wprowadzanie 
+INFO [2022-06-08 11:11:24,774]: ? ? Zapis do pliku tablicy 
+WARN [2022-06-08 11:11:27,384]: ? ? Niepowodzenie zapisywania pliku! 
+INFO [2022-06-08 11:11:27,384]: ? ? Zapis do pliku tablicy 
+WARN [2022-06-08 11:11:29,947]: ? ? Niepowodzenie zapisywania pliku! 
+INFO [2022-06-08 11:11:31,275]: ? ? Zerowanie tablicy 
+INFO [2022-06-08 11:11:34,275]: ? ? Wprowadzono wartoœæ 
+WARN [2022-06-08 11:11:49,175]: ? ? Wprowadzono niew³aœciw¹ wartoœæ! 
+INFO [2022-06-08 11:11:53,503]: ? ? Wykonanie operacji Œrednia 
+INFO [2022-06-08 11:11:55,035]: ? ? Data Wybrano 
+INFO [2022-06-08 11:11:55,644]: ? ? Poka¿ wykres True 
+INFO [2022-06-08 11:12:01,379]: ? ? Uruchomienie okna pomoc 
+INFO [2022-06-08 11:12:04,160]: ? ? Uruchomienie okna O programie 
+INFO [2022-06-08 11:12:11,364]: ? ? Koniec dzia³ania aplikacji 
+INFO [2022-06-08 11:16:51,394]: ? ? Start aplikacji 
+INFO [2022-06-08 11:16:51,816]: ? ? Logowanie w trakcie 
+INFO [2022-06-08 11:16:51,863]: ? ? Zerowanie tablicy 
+INFO [2022-06-08 11:16:51,878]: ? ? Zerowanie tablicy 
+INFO [2022-06-08 11:16:54,988]: ? ? Koniec dzia³ania aplikacji 
+INFO [2022-06-08 11:17:08,662]: ? ? Start aplikacji 
+INFO [2022-06-08 11:17:09,115]: ? ? Logowanie w trakcie 
+INFO [2022-06-08 11:17:09,162]: ? ? Zerowanie tablicy 
+INFO [2022-06-08 11:17:09,177]: ? ? Zerowanie tablicy 
+INFO [2022-06-08 11:17:11,349]: ? ? Logowanie False 
+INFO [2022-06-08 11:17:14,053]: ? ? Koniec dzia³ania aplikacji 
