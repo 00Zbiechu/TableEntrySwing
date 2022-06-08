@@ -409,3 +409,32 @@ INFO [2022-06-01 19:05:15,166]: ? ? Zerowanie tablicy
 INFO [2022-06-01 19:05:19,150]: ? ? Logowanie True 
 INFO [2022-06-01 19:05:20,260]: ? ? Pokazanie okna z poradami dnia 
 INFO [2022-06-01 19:05:22,166]: ? ? Koniec dzia³ania aplikacji 
+INFO [2022-06-01 23:21:11,954]: ? ? Start aplikacji 
+INFO [2022-06-01 23:21:12,407]: ? ? Logowanie w trakcie 
+INFO [2022-06-01 23:21:12,451]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 23:21:12,453]: ? ? Zerowanie tablicy 
+INFO [2022-06-01 23:21:28,659]: ? ? Logowanie W trakcie 
+INFO [2022-06-01 23:21:35,456]: ? ? Logowanie True 
+INFO [2022-06-01 23:21:37,093]: ? ? Pokazanie okna z poradami dnia 
+INFO [2022-06-01 23:21:40,970]: ? ? Wprowadzono wartoœæ 
+INFO [2022-06-01 23:21:44,984]: ? ? Wprowadzono wartoœæ 
+INFO [2022-06-01 23:21:49,192]: ? ? Wprowadzono wartoœæ 
+INFO [2022-06-01 23:22:10,708]: ? ? Poka¿ wykres True 
+INFO [2022-06-01 23:22:21,529]: ? ? Zapis do pliku tablicy 
+WARN [2022-06-01 23:22:24,396]: ? ? Niepowodzenie zapisywania pliku! 
+INFO [2022-06-01 23:22:24,397]: ? ? Zapis do pliku tablicy 
+WARN [2022-06-01 23:22:26,596]: ? ? Niepowodzenie zapisywania pliku! 
+INFO [2022-06-01 23:22:50,289]: ? ? Wykonanie operacji Œrednia 
+INFO [2022-06-01 23:29:58,785]: ? ? Koniec dzia³ania aplikacji 
+INFO [2022-06-08 11:03:58,794]: ? ? Start aplikacji 
+INFO [2022-06-08 11:03:59,451]: ? ? Logowanie w trakcie 
+INFO [2022-06-08 11:03:59,529]: ? ? Zerowanie tablicy 
+INFO [2022-06-08 11:03:59,544]: ? ? Zerowanie tablicy 
+INFO [2022-06-08 11:04:11,731]: ? ? Logowanie True 
+INFO [2022-06-08 11:04:12,796]: ? ? Pokazanie okna z poradami dnia 
+INFO [2022-06-08 11:04:20,669]: ? ? Skok do wprowadzanie 
+INFO [2022-06-08 11:04:21,435]: ? ? Skok do pozycja 
+INFO [2022-06-08 11:04:22,154]: ? ? Skok do dodawanie 
+INFO [2022-06-08 11:04:22,826]: ? ? Skok do usuwanie 
+INFO [2022-06-08 11:04:23,779]: ? ? Skok do wynik 
+INFO [2022-06-08 11:04:28,139]: ? ? Koniec dzia³ania aplikacji 

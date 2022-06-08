@@ -11,9 +11,7 @@
         <property name = "app.lib" value = "lib" />
         <property name = "app.log" value = "log" />
         <property name = "app.src" value = "src" />
-            <property name = "p.app" value = "${app.src}/app" />
-            <property name = "p.combo" value = "${app.src}/app/ComboBoxMVC" />
-            <property name = "p.table" value = "${app.src}/app/TableMVC" />
+
 
     </target>
 
